@@ -1,0 +1,50 @@
+import { ReactNode } from 'react';
+
+export type ViewMode = 'landing' | 'scientist' | 'artist';
+
+export interface Education {
+  degree: string;
+  institution: string;
+  year: string;
+  description?: string;
+}
+
+export interface WorkExperience {
+  role: string;
+  company: string;
+  period: string;
+  description: string[];
+}
+
+export interface ResearchOutput {
+  title: string;
+  authors: string;
+  journal: string;
+  year: string;
+  thumbnail: string;
+  link?: string;
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  content: string;
+  category: 'science' | 'art' | 'both';
+  image: string;
+}
+
+export interface Artwork {
+  title: string;
+  year: string;
+  vimeoId: string;
+  description: string;
+}
+
+export interface Outreach {
+  title: string;
+  role: string;
+  description: string;
+  date: string;
+}
