@@ -147,7 +147,7 @@ export default function ArtistView() {
               <a href="https://calendar.google.com" target="_blank" className="bg-rose-500 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-rose-600 transition-colors flex items-center gap-2">
                 <Calendar size={14} /> BOOK A MEETING
               </a>
-              <a href="/cv-artist.pdf" download className="border border-zinc-800 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-zinc-900 transition-colors flex items-center gap-2">
+              <a href="/cv-artist-fung.pdf" download className="border border-zinc-800 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-zinc-900 transition-colors flex items-center gap-2">
                 <Download size={14} /> DOWNLOAD CV
               </a>
             </div>

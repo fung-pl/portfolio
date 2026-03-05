@@ -228,7 +228,7 @@ export default function ScientistView() {
               <a href="#contact" className="bg-slate-900 text-white px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-emerald-600 transition-colors flex items-center gap-2">
                 <Calendar size={14} /> BOOK A MEETING
               </a>
-              <a href="/cv-scientist.pdf" download className="border border-slate-200 text-slate-900 px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-slate-100 transition-colors flex items-center gap-2">
+              <a href="/cv-scientist-fung.pdf" download className="border border-slate-200 text-slate-900 px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-slate-100 transition-colors flex items-center gap-2">
                 <Download size={14} /> DOWNLOAD CV
               </a>
             </div>
