@@ -11,7 +11,6 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
     { name: 'Education', id: 'education' },
     { name: 'Experience', id: 'experience' },
     { name: 'Research', id: 'research' },
-    { name: 'Blog', id: 'blog' },
   ];
 
   const artistSections = [
@@ -23,7 +22,7 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
   return (
     <div className="h-screen w-full flex flex-col overflow-hidden bg-white relative">
       {/* Top Section (30%) */}
-      <div className="h-[30vh] w-full z-30 p-6 md:p-12 bg-white border-b border-slate-100 flex items-center py-10 md:py-12">
+      <div className="h-[30vh] w-full z-30 p-6 md:p-12 bg-zinc-700 border-b border-zinc-600 flex items-center py-10 md:py-12">
         <motion.div 
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -31,8 +30,8 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
           className="max-w-7xl mx-auto w-full flex justify-between items-center gap-8"
         >
           <div className="flex-1">
-            <h1 className="text-3xl md:text-5xl font-sans font-bold tracking-tight text-slate-900 mb-1 md:mb-2">DR. P. L. FUNG</h1>
-            <p className="text-xs md:text-sm font-mono tracking-widest text-slate-500 uppercase">Sustainability Scientist & Data Artist</p>
+            <h1 className="text-3xl md:text-5xl font-sans font-bold tracking-tight text-white mb-1 md:mb-2">DR. P. L. FUNG</h1>
+            <p className="text-xs md:text-sm font-mono tracking-widest text-zinc-300 uppercase">Sustainability Scientist & Data Artist</p>
           </div>
           <div className="flex-shrink-0">
             <div className="w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-emerald-500/20 shadow-lg my-1">

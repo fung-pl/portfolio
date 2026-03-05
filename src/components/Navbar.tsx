@@ -25,7 +25,6 @@ export default function Navbar({ currentView, setView, onOpenNutshell }: NavbarP
   const artistLinks = [
     { name: 'About', href: '#about' },
     { name: 'Works', href: '#works' },
-    { name: 'Education', href: '#education' },
     { name: 'Outreach', href: '#outreach' },
     { name: 'Blog', href: '#blog' },
     { name: 'Collaborators', href: '#collaborators' },
@@ -47,7 +46,7 @@ export default function Navbar({ currentView, setView, onOpenNutshell }: NavbarP
       <nav className={`w-full backdrop-blur-md border-b transition-colors duration-500 ${
         isArtist ? 'bg-black border-zinc-800 text-white' : 'bg-white/80 border-slate-200 text-slate-900'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-[10%] h-16 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <button 
               onClick={() => setView('landing')}
@@ -109,7 +108,7 @@ export default function Navbar({ currentView, setView, onOpenNutshell }: NavbarP
       <div className={`w-full border-b backdrop-blur-sm transition-colors duration-500 ${
         isArtist ? 'bg-black border-zinc-800 text-zinc-400' : 'bg-slate-50/50 border-slate-200 text-slate-500'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 h-10 flex items-center justify-center sm:justify-start gap-6 overflow-x-auto scrollbar-hide">
+        <div className="max-w-7xl mx-auto px-[10%] h-10 flex items-center justify-center sm:justify-start gap-6 overflow-x-auto scrollbar-hide">
           {links.map((link) => (
             <a
               key={link.name}

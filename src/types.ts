@@ -23,6 +23,7 @@ export interface ResearchOutput {
   year: string;
   thumbnail: string;
   link?: string;
+  summary?: string;
 }
 
 export interface BlogPost {

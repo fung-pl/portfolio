@@ -15,6 +15,11 @@ export default function App() {
   const [view, setView] = useState<ViewMode>('landing');
   const [showNutshell, setShowNutshell] = useState(false);
 
+  // Scroll to top when view changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [view]);
+
   // Handle back button/navigation
   useEffect(() => {
     const handlePopState = () => {
@@ -54,11 +59,11 @@ export default function App() {
           >
             <Navbar currentView={view} setView={handleSetView} onOpenNutshell={() => setShowNutshell(true)} />
             <main>
-              {view === 'scientist' && <ScientistView />}
-              {view === 'artist' && <ArtistView />}
+              {view === 'scientist' && <ScientistView key="scientist" />}
+              {view === 'artist' && <ArtistView key="artist" />}
             </main>
             
-            <footer className={`py-12 px-6 text-center text-sm ${view === 'artist' ? 'bg-black text-zinc-500' : 'bg-slate-50 text-slate-400'}`}>
+            <footer className={`py-12 px-[10%] text-center text-sm ${view === 'artist' ? 'bg-black text-zinc-500' : 'bg-slate-50 text-slate-400'}`}>
               <p>© {new Date().getFullYear()} — Dr. P. L. Fung. Built with precision and passion.</p>
             </footer>
           </motion.div>

@@ -125,9 +125,9 @@ export default function ArtistView() {
   }, []);
 
   return (
-    <div className="bg-black min-h-screen text-white artistic-gradient pb-20">
+    <div className="bg-black min-h-screen text-white artistic-gradient pb-20 px-[10%]">
       {/* Hero Section */}
-      <section id="about" className="max-w-7xl mx-auto px-6 pt-32 pb-24 scroll-mt-32">
+      <section id="about" className="max-w-7xl mx-auto pt-32 pb-24 scroll-mt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -195,14 +195,14 @@ export default function ArtistView() {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 space-y-32">
+      <div className="max-w-7xl mx-auto space-y-32">
         {/* Artwork Section */}
         <section id="works" className="scroll-mt-32">
           <div className="flex items-center gap-4 mb-12">
             <Video className="text-rose-500" size={32} />
             <h2 className="text-4xl font-serif italic">Selected Works</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 gap-12">
             {artworks.map((art, idx) => (
               <motion.div 
                 key={idx}

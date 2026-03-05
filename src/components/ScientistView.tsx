@@ -82,7 +82,8 @@ const research: ResearchOutput[] = [
     journal: "Environmental Research Letters",
     year: "2025",
     thumbnail: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.1088/1748-9326/ad9f1a"
+    link: "https://doi.org/10.1088/1748-9326/ad9f1a",
+    summary: "This study develops a novel framework for estimating dynamic on-road emissions using open-access floating car data. By integrating high-resolution traffic information with emission models, it provides a more accurate representation of urban air quality. The findings highlight the potential of using real-time data for sustainable urban planning."
   },
   {
     title: "Constructing transferable and interpretable machine learning models for black carbon concentrations",
@@ -90,7 +91,8 @@ const research: ResearchOutput[] = [
     journal: "Environment International",
     year: "2024",
     thumbnail: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.1016/j.envint.2024.108449"
+    link: "https://doi.org/10.1016/j.envint.2024.108449",
+    summary: "The research explores the development of machine learning models for estimating black carbon concentrations that are both transferable and interpretable. By utilizing multi-pollutant datasets from various urban environments, the study achieves high predictive accuracy. It emphasizes the importance of model transparency in environmental monitoring."
   },
   {
     title: "Ozone Fluxes Over a Boreal Lake Exhibit Higher Deposition at Nights",
@@ -98,7 +100,8 @@ const research: ResearchOutput[] = [
     journal: "Geophysical Research Letters",
     year: "2023",
     thumbnail: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.1029/2023GL104354"
+    link: "https://doi.org/10.1029/2023GL104354",
+    summary: "This paper investigates ozone deposition over a boreal lake, revealing significantly higher deposition rates during the night. The study utilizes eddy covariance measurements to quantify the exchange of ozone between the atmosphere and the water surface. These insights are critical for improving regional air quality models."
   },
   {
     title: "Exploring the discrepancy between top-down and bottom-up approaches of fine spatio-temporal vehicular CO2 emission in an urban road network",
@@ -106,7 +109,8 @@ const research: ResearchOutput[] = [
     journal: "Science of The Total Environment",
     year: "2023",
     thumbnail: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.1016/j.scitotenv.2023.165827"
+    link: "https://doi.org/10.1016/j.scitotenv.2023.165827",
+    summary: "The study compares top-down and bottom-up approaches for estimating vehicular CO2 emissions in an urban road network. It identifies key discrepancies between the two methods and suggests ways to reconcile them for better emission inventories. The results support more effective climate mitigation strategies in cities."
   },
   {
     title: "Improving the current air quality index with new particulate indicators using a robust statistical approach",
@@ -114,7 +118,8 @@ const research: ResearchOutput[] = [
     journal: "Science of The Total Environment",
     year: "2022",
     thumbnail: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.1016/j.scitotenv.2022.157099"
+    link: "https://doi.org/10.1016/j.scitotenv.2022.157099",
+    summary: "This research proposes an enhanced air quality index that incorporates new particulate indicators using a robust statistical approach. By including a wider range of pollutants, the new index provides a more comprehensive assessment of health risks. It offers a valuable tool for public health communication."
   },
   {
     title: "Input-adaptive linear mixed-effects model for estimating alveolar lung-deposited surface area (LDSA) using multipollutant datasets",
@@ -122,7 +127,8 @@ const research: ResearchOutput[] = [
     journal: "Atmospheric Chemistry and Physics",
     year: "2022",
     thumbnail: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.5194/acp-22-1861-2022"
+    link: "https://doi.org/10.5194/acp-22-1861-2022",
+    summary: "The paper presents an input-adaptive model for estimating lung-deposited surface area (LDSA) of particles using multi-pollutant datasets. The model adapts to different input configurations, making it versatile for various monitoring networks. It contributes to a better understanding of the health impacts of aerosol exposure."
   },
   {
     title: "Data imputation in in situ-measured particle size distributions by means of neural networks",
@@ -130,7 +136,8 @@ const research: ResearchOutput[] = [
     journal: "Atmospheric Measurement Technique",
     year: "2021",
     thumbnail: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.5194/amt-14-5535-2021"
+    link: "https://doi.org/10.5194/amt-14-5535-2021",
+    summary: "This study utilizes neural networks for imputing missing data in in-situ measured particle size distributions. The proposed method effectively reconstructs missing values, ensuring the continuity of long-term environmental datasets. It demonstrates the power of deep learning in atmospheric data processing."
   },
   {
     title: "Evaluation of white-box versus black-box machine learning models in estimating ambient black carbon concentration",
@@ -138,7 +145,8 @@ const research: ResearchOutput[] = [
     journal: "Journal of Aerosol Science",
     year: "2021",
     thumbnail: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.1016/j.jaerosci.2021.105694"
+    link: "https://doi.org/10.1016/j.jaerosci.2021.105694",
+    summary: "The research evaluates the performance of white-box and black-box machine learning models in estimating ambient black carbon concentrations. It compares the accuracy and interpretability of different algorithms, providing guidance for selecting appropriate models. The study highlights the trade-offs between complexity and transparency."
   }
 ];
 
@@ -174,8 +182,13 @@ const collaborators = [
 
 export default function ScientistView() {
   const [showAllPublications, setShowAllPublications] = useState(false);
+  const [showAllEducation, setShowAllEducation] = useState(false);
+  const [showAllExperience, setShowAllExperience] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const displayedPublications = showAllPublications ? research : research.slice(0, 5);
+  
+  const displayedPublications = showAllPublications ? research : research.slice(0, 3);
+  const displayedEducation = showAllEducation ? education : education.slice(0, 3);
+  const displayedExperience = showAllExperience ? work : work.slice(0, 3);
 
   const heroImages = [
     "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800&h=400",
@@ -193,9 +206,9 @@ export default function ScientistView() {
   }, []);
 
   return (
-    <div className="bg-slate-50 min-h-screen scientific-grid pb-20">
+    <div className="bg-slate-50 min-h-screen scientific-grid pb-20 px-[10%]">
       {/* Hero Section */}
-      <section id="about" className="max-w-7xl mx-auto px-6 pt-24 pb-16 scroll-mt-32">
+      <section id="about" className="max-w-7xl mx-auto pt-24 pb-16 scroll-mt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -268,134 +281,148 @@ export default function ScientistView() {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
-        {/* Left Column: Education & Experience */}
-        <div className="lg:col-span-7 space-y-20">
-          {/* Education */}
-          <section id="education" className="scroll-mt-32">
-            <div className="flex items-center gap-3 mb-8">
-              <GraduationCap className="text-emerald-600" size={24} />
-              <h2 className="text-2xl font-sans font-semibold tracking-tight">Education</h2>
-            </div>
-            <div className="space-y-12">
-              {education.map((edu, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="science-border border-emerald-200"
-                >
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-bold text-slate-900">{edu.degree}</h3>
-                    <span className="text-sm font-mono text-slate-400">{edu.year}</span>
-                  </div>
-                  <p className="text-emerald-600 font-medium mb-2">{edu.institution}</p>
-                  <p className="text-slate-600 text-sm leading-relaxed">{edu.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-
-          {/* Work Experience */}
-          <section id="experience" className="scroll-mt-32">
-            <div className="flex items-center gap-3 mb-8">
-              <Briefcase className="text-emerald-600" size={24} />
-              <h2 className="text-2xl font-sans font-semibold tracking-tight">Professional Experience</h2>
-            </div>
-            <div className="space-y-12">
-              {work.map((job, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  className="science-border border-emerald-200"
-                >
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-bold text-slate-900">{job.role}</h3>
-                    <span className="text-sm font-mono text-slate-400">{job.period}</span>
-                  </div>
-                  <p className="text-emerald-600 font-medium mb-4">{job.company}</p>
-                  <ul className="space-y-2">
-                    {job.description.map((item, i) => (
-                      <li key={i} className="text-slate-600 text-sm flex gap-2">
-                        <span className="text-emerald-300">•</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-        </div>
-
-        {/* Right Column: Research Outputs */}
-        <div className="lg:col-span-5">
-          <section id="research" className="sticky top-32 scroll-mt-32">
-            <div className="flex items-center gap-3 mb-8">
-              <FileText className="text-emerald-600" size={24} />
-              <h2 className="text-2xl font-sans font-semibold tracking-tight">Selected Publications</h2>
-            </div>
-            <div className="space-y-6">
-              <AnimatePresence mode="popLayout">
-                {displayedPublications.map((pub, idx) => (
-                  <motion.div 
-                    key={idx}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl hover:shadow-emerald-500/5 transition-all flex gap-4 p-4"
-                  >
-                    <div className="w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg">
-                      <img 
-                        src={pub.thumbnail} 
-                        alt={pub.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-[9px] font-mono tracking-widest text-emerald-600 uppercase bg-emerald-50 px-1.5 py-0.5 rounded">
-                          {pub.journal}
-                        </span>
-                        <span className="text-[10px] font-mono text-slate-400">{pub.year}</span>
-                      </div>
-                      <h3 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-emerald-600 transition-colors leading-tight">
-                        {pub.title}
-                      </h3>
-                      <p className="text-[10px] text-slate-500 mb-2 italic">{pub.authors}</p>
-                      <a 
-                        href={pub.link}
-                        target="_blank"
-                        className="inline-flex items-center gap-1 text-[10px] font-mono font-bold tracking-widest text-slate-400 hover:text-slate-900 transition-colors"
-                      >
-                        VIEW <ExternalLink size={10} />
-                      </a>
-                    </div>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
-            
-            {!showAllPublications && research.length > 5 && (
-              <button 
-                onClick={() => setShowAllPublications(true)}
-                className="w-full mt-6 py-3 border border-dashed border-slate-300 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 hover:border-emerald-600 hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
+      <div className="max-w-7xl mx-auto space-y-24">
+        {/* Education */}
+        <section id="education" className="scroll-mt-32">
+          <div className="flex items-center gap-3 mb-8">
+            <GraduationCap className="text-emerald-600" size={24} />
+            <h2 className="text-2xl font-sans font-semibold tracking-tight">Education</h2>
+          </div>
+          <div className="space-y-12">
+            {displayedEducation.map((edu, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="science-border border-emerald-200"
               >
-                <Plus size={14} /> SEE MORE PUBLICATIONS
-              </button>
-            )}
-          </section>
-        </div>
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-lg font-bold text-slate-900">{edu.degree}</h3>
+                  <span className="text-sm font-mono text-slate-400">{edu.year}</span>
+                </div>
+                <p className="text-emerald-600 font-medium mb-2">{edu.institution}</p>
+                <p className="text-slate-600 text-sm leading-relaxed">{edu.description}</p>
+              </motion.div>
+            ))}
+          </div>
+          {!showAllEducation && education.length > 3 && (
+            <button 
+              onClick={() => setShowAllEducation(true)}
+              className="w-full mt-8 py-3 border border-dashed border-slate-300 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 hover:border-emerald-600 hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
+            >
+              <Plus size={14} /> SEE MORE EDUCATION
+            </button>
+          )}
+        </section>
+
+        {/* Work Experience */}
+        <section id="experience" className="scroll-mt-32">
+          <div className="flex items-center gap-3 mb-8">
+            <Briefcase className="text-emerald-600" size={24} />
+            <h2 className="text-2xl font-sans font-semibold tracking-tight">Professional Experience</h2>
+          </div>
+          <div className="space-y-12">
+            {displayedExperience.map((job, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="science-border border-emerald-200"
+              >
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-lg font-bold text-slate-900">{job.role}</h3>
+                  <span className="text-sm font-mono text-slate-400">{job.period}</span>
+                </div>
+                <p className="text-emerald-600 font-medium mb-4">{job.company}</p>
+                <ul className="space-y-2">
+                  {job.description.map((item, i) => (
+                    <li key={i} className="text-slate-600 text-sm flex gap-2">
+                      <span className="text-emerald-300">•</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+          {!showAllExperience && work.length > 3 && (
+            <button 
+              onClick={() => setShowAllExperience(true)}
+              className="w-full mt-8 py-3 border border-dashed border-slate-300 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 hover:border-emerald-600 hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
+            >
+              <Plus size={14} /> SEE MORE EXPERIENCE
+            </button>
+          )}
+        </section>
+
+        {/* Research Outputs */}
+        <section id="research" className="scroll-mt-32">
+          <div className="flex items-center gap-3 mb-8">
+            <FileText className="text-emerald-600" size={24} />
+            <h2 className="text-2xl font-sans font-semibold tracking-tight">Selected Publications</h2>
+          </div>
+          <div className="space-y-8">
+            <AnimatePresence mode="popLayout">
+              {displayedPublications.map((pub, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl hover:shadow-emerald-500/5 transition-all flex flex-col md:flex-row gap-6 p-6"
+                >
+                  <div className="w-full md:w-48 h-32 flex-shrink-0 overflow-hidden rounded-lg">
+                    <img 
+                      src={pub.thumbnail} 
+                      alt={pub.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-[10px] font-mono tracking-widest text-emerald-600 uppercase bg-emerald-50 px-2 py-1 rounded">
+                        {pub.journal}
+                      </span>
+                      <span className="text-xs font-mono text-slate-400">{pub.year}</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors leading-tight">
+                      {pub.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 mb-3 italic">{pub.authors}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                      {pub.summary}
+                    </p>
+                    <a 
+                      href={pub.link}
+                      target="_blank"
+                      className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400 hover:text-slate-900 transition-colors"
+                    >
+                      VIEW PUBLICATION <ExternalLink size={12} />
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+          
+          {!showAllPublications && research.length > 3 && (
+            <button 
+              onClick={() => setShowAllPublications(true)}
+              className="w-full mt-8 py-3 border border-dashed border-slate-300 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 hover:border-emerald-600 hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
+            >
+              <Plus size={14} /> SEE MORE PUBLICATIONS
+            </button>
+          )}
+        </section>
       </div>
 
       {/* Blog Section */}
-      <section id="blog" className="max-w-7xl mx-auto px-6 py-32 border-t border-slate-200 mt-20 scroll-mt-32">
+      <section id="blog" className="max-w-7xl mx-auto py-32 border-t border-slate-200 mt-20 scroll-mt-32">
         <div className="flex items-center gap-3 mb-12">
           <Newspaper className="text-emerald-600" size={24} />
           <h2 className="text-2xl font-sans font-semibold tracking-tight">Science & Art Blog</h2>
@@ -429,7 +456,7 @@ export default function ScientistView() {
       </section>
 
       {/* Collaborators Section */}
-      <section id="collaborators" className="max-w-7xl mx-auto px-6 py-32 border-t border-slate-200 mt-20 scroll-mt-32">
+      <section id="collaborators" className="max-w-7xl mx-auto py-32 border-t border-slate-200 mt-20 scroll-mt-32">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-sans font-bold tracking-tight text-slate-900 mb-4">Collaborators & Partners</h2>
           <p className="text-slate-500 font-mono text-xs tracking-widest uppercase">Institutions I've worked with</p>
@@ -448,7 +475,7 @@ export default function ScientistView() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="max-w-7xl mx-auto px-6 py-32 bg-white rounded-3xl border border-slate-200 shadow-sm scroll-mt-32">
+      <section id="contact" className="max-w-7xl mx-auto py-32 bg-white rounded-3xl border border-slate-200 shadow-sm px-12 scroll-mt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
             <h2 className="text-4xl font-sans font-bold tracking-tight text-slate-900 mb-6">Let's Collaborate.</h2>
