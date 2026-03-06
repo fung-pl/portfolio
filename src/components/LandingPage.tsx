@@ -32,14 +32,14 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
           className="max-w-7xl mx-auto w-full flex justify-between items-center gap-8"
         >
           <div className="flex-1">
-            <h1 className="text-[11vh] md:text-5xl font-sans font-bold tracking-tight text-white mb-1 md:mb-2 leading-none">DR. P. L. FUNG</h1>
+            <h1 className="text-[min(11vh,3rem)] md:text-5xl font-sans font-bold tracking-tight text-white mb-1 md:mb-2 leading-none">DR. P. L. FUNG</h1>
             <p className="text-xs md:text-sm font-mono tracking-widest text-zinc-300 uppercase">Sustainability Scientist & Data Artist</p>
           </div>
           <div className="flex-shrink-0">
-            <div className="w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-zinc-500 shadow-xl">
+            <div className="w-[min(15vh,4.5rem)] h-[min(15vh,4.5rem)] rounded-full overflow-hidden border-2 border-zinc-500 shadow-xl">
               <img 
                 src={profilePic} 
-                alt="Dr. P. L. Fung" 
+                alt="Dr. Fung" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -67,9 +67,9 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
               <Beaker size={48} strokeWidth={1.5} />
             </motion.div>
             
-            <div className="flex items-center justify-center gap-4 md:gap-0">
+            <div className="flex items-center justify-center gap-4 md:gap-6">
               <motion.h2 
-                className="text-[11vh] md:text-5xl font-sans font-light tracking-tighter text-slate-900 md:mb-6"
+                className="text-[min(11vh,3rem)] md:text-5xl font-sans font-light tracking-tighter text-slate-900"
                 style={{ lineHeight: 1 }}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -78,8 +78,8 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
                 SCIENTIST
               </motion.h2>
               
-              {/* Mobile Logo next to word */}
-              <div className="md:hidden w-[10vh] h-[10vh] rounded-full overflow-hidden border-2 border-emerald-500/30">
+              {/* Logo next to word */}
+              <div className="w-[min(10vh,3rem)] h-[min(10vh,3rem)] rounded-full overflow-hidden border-2 border-emerald-500/30">
                 <img 
                   src={profilePic} 
                   alt="S" 
@@ -94,7 +94,7 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="hidden md:flex flex-wrap justify-center gap-3 max-w-sm"
+              className="hidden md:flex flex-wrap justify-center gap-3 max-w-sm mt-6"
             >
               {scientistSections.map((sec) => (
                 <button
@@ -137,9 +137,9 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
               <Palette size={48} strokeWidth={1.5} />
             </motion.div>
             
-            <div className="flex items-center justify-center gap-4 md:gap-0">
-              {/* Mobile Logo next to word */}
-              <div className="md:hidden w-[10vh] h-[10vh] rounded-full overflow-hidden border-2 border-rose-500/30">
+            <div className="flex items-center justify-center gap-4 md:gap-6">
+              {/* Logo next to word */}
+              <div className="w-[min(10vh,3rem)] h-[min(10vh,3rem)] rounded-full overflow-hidden border-2 border-rose-500/30">
                 <img 
                   src={profilePic} 
                   alt="A" 
@@ -149,7 +149,7 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
               </div>
               
               <motion.h2 
-                className="text-[11vh] md:text-5xl font-serif italic text-white md:mb-6"
+                className="text-[min(11vh,3rem)] md:text-5xl font-serif italic text-white"
                 style={{ lineHeight: 1 }}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -164,7 +164,7 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="hidden md:flex flex-wrap justify-center gap-3 max-w-sm"
+              className="hidden md:flex flex-wrap justify-center gap-3 max-w-sm mt-6"
             >
               {artistSections.map((sec) => (
                 <button
