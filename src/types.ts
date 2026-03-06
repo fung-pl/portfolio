@@ -6,7 +6,7 @@ export interface Education {
   degree: string;
   institution: string;
   year: string;
-  description?: string;
+  description?: string | string[];
 }
 
 export interface WorkExperience {

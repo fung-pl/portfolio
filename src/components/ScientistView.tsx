@@ -6,22 +6,31 @@ import BlogOverlay from './BlogOverlay';
 
 const education: Education[] = [
   {
-    degree: "Doctoral of Science (Atmospheric Science)",
+    degree: "Doctor of Philosophy (Atmospheric Science)",
     institution: "University of Helsinki",
     year: "3/2019 − 2/2022",
-    description: "Doctoral dissertation (Pass with distinction): Derivation of Black Carbon Proxies in an Integrated Urban Air Quality Monitoring Network. Fields: Urban aerosols, air pollutant proxy, air quality."
+    description: [
+      "Doctoral dissertation (Pass with distinction): Derivation of Black Carbon Proxies in an Integrated Urban Air Quality Monitoring Network.", 
+      "Fields: Urban aerosols, air pollutant proxy, air quality."
+      ]
   },
   {
     degree: "Master of Business Administration",
     institution: "Lapland University of Applied Science",
     year: "9/2023 − 12/2025",
-    description: "Specialized in Managing Sustainability and Systems Change. Master thesis: Challenges and Insights from Pioneer Higher Education Institutions Utilising Carbon Roadmap."
+    description: [
+      "Specialized in Managing Sustainability and Systems Change.",
+      "Master thesis: Challenges and Insights from Pioneer Higher Education Institutions Utilising Carbon Roadmap."
+    ]
   },
   {
     degree: "Master of Science (Atmospheric Science)",
     institution: "University of Helsinki",
     year: "8/2015 − 8/2018",
-    description: "Master thesis: Ozone deposition over a boreal lake by the eddy covariance method. Including Exchange Study (Earth and Ecosystem Science) at Lund University (1/2016 − 6/2016) with Satellite Remote Sensing (Pass with distinction)."
+    description: [
+      "Master thesis: Ozone deposition over a boreal lake by the eddy covariance method.",
+      "Exchange Study (Earth and Ecosystem Science) at Lund University (1/2016 − 6/2016) with Satellite Remote Sensing (Pass with distinction)."
+    ]
   },
   {
     degree: "Bachelor of Science (Earth Sciences)",
@@ -35,9 +44,10 @@ const work: WorkExperience[] = [
   {
     role: "Air Quality Expert/Data Analyst",
     company: "MegaSense Oy",
-    period: "1/2023 − Present",
+    period: "4/2025 − Present",
     description: [
-      "Data analytics of urban traffic and air quality modeling to support the implementation of green navigation application by using multiple sources of geospatial data"
+      "Data analytics of urban traffic and air quality modeling to support the implementation of green navigation application by using multiple sources of geospatial data",
+      "Develped novel digital solutions to high spatio-temporal emission model for anthropogenic pollution sources"
     ]
   },
   {
@@ -46,7 +56,8 @@ const work: WorkExperience[] = [
     period: "3/2022 − 12/2024",
     description: [
       "Conducted spatial analysis and modelling of urban traffic emission",
-      "2-month work exchange at Technical University of Munich (TUM) during the post-doctoral period"
+      "Investigated impacts of autonomous driving on traffic emission",
+      "2-month work exchange at Technical University of Munich (TUM) for improving emission inventory"
     ]
   },
   {
@@ -54,7 +65,8 @@ const work: WorkExperience[] = [
     company: "University of Helsinki",
     period: "3/2019 − 2/2022",
     description: [
-      "Developed machine learning solutions to urban air quality problems"
+      "Developed machine learning solutions to urban air quality problems",
+      "Developed an improved Air Quality Index for Helsinki"
     ]
   },
   {
@@ -71,7 +83,8 @@ const work: WorkExperience[] = [
     company: "Jacobs China Limited",
     period: "12/2011 − 1/2015",
     description: [
-      "Geological assessment and site investigation (one year secondment in 2013 to Gammon Construction Limited)"
+      "Geological assessment and site investigation",
+      "One-year secondment to Gammon Construction Limited for rock logging"
     ]
   }
 ];
@@ -382,8 +395,18 @@ export default function ScientistView() {
                   <span className="text-sm font-mono text-slate-400">{edu.year}</span>
                 </div>
                 <p className="text-emerald-600 font-medium mb-2">{edu.institution}</p>
-                <p className="text-slate-600 text-sm leading-relaxed">{edu.description}</p>
-              </motion.div>
+                {Array.isArray(edu.description) ? (
+                  <ul className="space-y-2 mt-2">
+                    {edu.description.map((item, i) => (
+                      <li key={i} className="text-slate-600 text-sm flex gap-2">
+                        <span className="text-emerald-300">•</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-slate-600 text-sm leading-relaxed">{edu.description}</p>
+                )}              </motion.div>
             ))}
           </div>
           {!showAllEducation && education.length > 3 && (
