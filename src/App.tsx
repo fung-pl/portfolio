@@ -96,7 +96,7 @@ export default function App() {
                 <div className="flex-shrink-0 mx-auto md:mx-0">
                   <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-zinc-600 shadow-xl bg-zinc-800 flex items-center justify-center">
                     <img 
-                      src="images/profile.gif" 
+                      src="/images/profile.gif" 
                       alt="Dr. Fung" 
                       className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                       referrerPolicy="no-referrer"

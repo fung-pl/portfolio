@@ -19,7 +19,7 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
     { name: 'Blog', id: 'blog' },
   ];
 
-  const profilePic = "images/profile.gif";
+  const profilePic = "/images/profile.gif";
 
   return (
     <div className="h-screen w-full flex flex-col overflow-hidden bg-white relative">
