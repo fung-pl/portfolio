@@ -19,7 +19,7 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
     { name: 'Blog', id: 'blog' },
   ];
 
-  const profilePic = "https://picsum.photos/seed/drfung/400/400";
+  const profilePic = "images/profile.gif";
 
   return (
     <div className="h-screen w-full flex flex-col overflow-hidden bg-white relative">
