@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Artwork, Outreach, BlogPost } from '../types';
 import { Sparkles, Video, Globe, GraduationCap, Mail, Instagram, Twitter, ExternalLink, Download, Calendar, Theater, Newspaper, Plus } from 'lucide-react';
@@ -107,6 +107,43 @@ const collaborators = [
 export default function ArtistView() {
   const [showAllOutreach, setShowAllOutreach] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+      view: 'Artist'
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error('Failed to send message');
+
+      setIsSubmitted(true);
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error('Contact error:', error);
+      alert('Sorry, there was an error sending your message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setIsSubmitted(false), 5000);
+    }
+  };
+
   const displayedOutreach = showAllOutreach ? outreach : outreach.slice(0, 4);
 
   const heroImages = [
@@ -361,15 +398,23 @@ export default function ArtistView() {
                 </div>
               </div>
             </div>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input type="text" placeholder="NAME" className="w-full bg-black border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-rose-500 transition-colors" />
-                <input type="email" placeholder="EMAIL" className="w-full bg-black border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-rose-500 transition-colors" />
+                <input required name="name" type="text" placeholder="NAME" className="w-full bg-black border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-rose-500 transition-colors" />
+                <input required name="email" type="email" placeholder="EMAIL" className="w-full bg-black border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-rose-500 transition-colors" />
               </div>
-              <textarea placeholder="MESSAGE" rows={5} className="w-full bg-black border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-rose-500 transition-colors" />
-              <button className="w-full bg-rose-500 text-white py-4 rounded-2xl font-mono text-xs font-bold tracking-[0.2em] hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/20">
-                SEND MESSAGE
+              <textarea required name="message" placeholder="MESSAGE" rows={5} className="w-full bg-black border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-rose-500 transition-colors" />
+              <button 
+                disabled={isSubmitting || isSubmitted}
+                className="w-full bg-rose-500 text-white py-4 rounded-2xl font-mono text-xs font-bold tracking-[0.2em] hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'SENDING...' : isSubmitted ? 'MESSAGE SENT!' : 'SEND MESSAGE'}
               </button>
+              {isSubmitted && (
+                <p className="text-rose-500 font-mono text-[10px] text-center uppercase tracking-widest mt-2">
+                  Thank you! I'll get back to you soon.
+                </p>
+              )}
             </form>
           </div>
         </section>

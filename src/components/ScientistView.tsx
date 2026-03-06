@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Education, WorkExperience, ResearchOutput, BlogPost } from '../types';
 import { GraduationCap, Briefcase, FileText, ExternalLink, Mail, Linkedin, Twitter, Github, Download, Calendar, BookOpen, Newspaper, Plus } from 'lucide-react';
@@ -185,7 +185,46 @@ export default function ScientistView() {
   const [showAllEducation, setShowAllEducation] = useState(false);
   const [showAllExperience, setShowAllExperience] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+      view: 'Scientist'
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error('Failed to send message');
+
+      setIsSubmitted(true);
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error('Contact error:', error);
+      alert('Sorry, there was an error sending your message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setIsSubmitted(false), 5000);
+    }
+  };
   const displayedPublications = showAllPublications ? research : research.slice(0, 3);
   const displayedEducation = showAllEducation ? education : education.slice(0, 3);
   const displayedExperience = showAllExperience ? work : work.slice(0, 3);
@@ -475,48 +514,58 @@ export default function ScientistView() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="max-w-7xl mx-auto py-32 bg-white rounded-3xl border border-slate-200 shadow-sm px-12 scroll-mt-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div>
-            <h2 className="text-4xl font-sans font-bold tracking-tight text-slate-900 mb-6">Let's Collaborate.</h2>
-            <p className="text-lg text-slate-600 mb-12">
-              Interested in my research or looking to discuss potential collaborations in sustainability and climate modelling? 
-              I'm always open to new ideas and partnerships.
-            </p>
-            <div className="space-y-6">
-              <a href="mailto:pleakley9@gmail.com" className="flex items-center gap-4 text-slate-900 hover:text-emerald-600 transition-colors">
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
-                  <Mail size={20} />
+      <div className="max-w-7xl mx-auto">
+        <section id="contact" className="py-32 bg-white rounded-3xl border border-slate-200 shadow-sm px-12 scroll-mt-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div>
+              <h2 className="text-4xl font-sans font-bold tracking-tight text-slate-900 mb-6">Let's Collaborate.</h2>
+              <p className="text-lg text-slate-600 mb-12">
+                Interested in my research or looking to discuss potential collaborations in sustainability and climate modelling? 
+                I'm always open to new ideas and partnerships.
+              </p>
+              <div className="space-y-6">
+                <a href="mailto:pleakley9@gmail.com" className="flex items-center gap-4 text-slate-900 hover:text-emerald-600 transition-colors">
+                  <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
+                    <Mail size={20} />
+                  </div>
+                  <span className="font-mono text-sm tracking-widest uppercase">pleakley9@gmail.com</span>
+                </a>
+                <a href="https://calendar.google.com" target="_blank" className="flex items-center gap-4 text-slate-900 hover:text-emerald-600 transition-colors">
+                  <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
+                    <Calendar size={20} />
+                  </div>
+                  <span className="font-mono text-sm tracking-widest">BOOK A TIME (GOOGLE CALENDAR)</span>
+                </a>
+                <div className="flex gap-4">
+                  {[Linkedin, Twitter, Github].map((Icon, i) => (
+                    <a key={i} href="#" className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-all">
+                      <Icon size={20} />
+                    </a>
+                  ))}
                 </div>
-                <span className="font-mono text-sm tracking-widest uppercase">pleakley9@gmail.com</span>
-              </a>
-              <a href="https://calendar.google.com" target="_blank" className="flex items-center gap-4 text-slate-900 hover:text-emerald-600 transition-colors">
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
-                  <Calendar size={20} />
-                </div>
-                <span className="font-mono text-sm tracking-widest">BOOK A TIME (GOOGLE CALENDAR)</span>
-              </a>
-              <div className="flex gap-4">
-                {[Linkedin, Twitter, Github].map((Icon, i) => (
-                  <a key={i} href="#" className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-all">
-                    <Icon size={20} />
-                  </a>
-                ))}
               </div>
             </div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input required name="name" type="text" placeholder="NAME" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-emerald-600 transition-colors" />
+                <input required name="email" type="email" placeholder="EMAIL" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-emerald-600 transition-colors" />
+              </div>
+              <textarea required name="message" placeholder="MESSAGE" rows={5} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-emerald-600 transition-colors" />
+              <button 
+                disabled={isSubmitting || isSubmitted}
+                className="w-full bg-slate-900 text-white py-4 rounded-xl font-mono text-xs font-bold tracking-[0.2em] hover:bg-emerald-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'SENDING...' : isSubmitted ? 'MESSAGE SENT!' : 'SEND MESSAGE'}
+              </button>
+              {isSubmitted && (
+                <p className="text-emerald-600 font-mono text-[10px] text-center uppercase tracking-widest mt-2">
+                  Thank you! I'll get back to you soon.
+                </p>
+              )}
+            </form>
           </div>
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input type="text" placeholder="NAME" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-emerald-600 transition-colors" />
-              <input type="email" placeholder="EMAIL" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-emerald-600 transition-colors" />
-            </div>
-            <textarea placeholder="MESSAGE" rows={5} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-emerald-600 transition-colors" />
-            <button className="w-full bg-slate-900 text-white py-4 rounded-xl font-mono text-xs font-bold tracking-[0.2em] hover:bg-emerald-600 transition-all">
-              SEND MESSAGE
-            </button>
-          </form>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }
