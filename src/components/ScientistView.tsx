@@ -10,7 +10,7 @@ const education: Education[] = [
     institution: "University of Helsinki",
     year: "3/2019 − 2/2022",
     description: [
-      "Doctoral dissertation (Pass with distinction): Derivation of Black Carbon Proxies in an Integrated Urban Air Quality Monitoring Network.", 
+      <span>Doctoral dissertation (Pass with distinction): <a href="http://hdl.handle.net/10138/338035" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Derivation of Black Carbon Proxies in an Integrated Urban Air Quality Monitoring Network.</a></span>, 
       "Fields: Urban aerosols, air pollutant proxy, air quality."
       ]
   },
@@ -20,7 +20,7 @@ const education: Education[] = [
     year: "9/2023 − 12/2025",
     description: [
       "Specialized in Managing Sustainability and Systems Change.",
-      "Master thesis: Challenges and Insights from Pioneer Higher Education Institutions Utilising Carbon Roadmap."
+      <span>Master thesis: <a href="https://urn.fi/URN:NBN:fi:amk-2025121034323" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Challenges and Insights from Pioneer Higher Education Institutions Utilising Carbon Roadmap.</a></span>
     ]
   },
   {
@@ -28,7 +28,7 @@ const education: Education[] = [
     institution: "University of Helsinki",
     year: "8/2015 − 8/2018",
     description: [
-      "Master thesis: Ozone deposition over a boreal lake by the eddy covariance method.",
+      <span>Master thesis: <a href="http://hdl.handle.net/10138/273491" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Ozone deposition over a boreal lake by the eddy covariance method.</a></span>,
       "Exchange Study (Earth and Ecosystem Science) at Lund University (1/2016 − 6/2016) with Satellite Remote Sensing (Pass with distinction)."
     ]
   },
@@ -400,7 +400,7 @@ export default function ScientistView() {
                     {edu.description.map((item, i) => (
                       <li key={i} className="text-slate-600 text-sm flex gap-2">
                         <span className="text-emerald-300">•</span>
-                        {item}
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>

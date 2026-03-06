@@ -299,20 +299,12 @@ export default function ArtistView() {
                   className="space-y-6"
                 >
                   <div className="aspect-video rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl group relative">
-                    <iframe 
-                      src={`https://player.vimeo.com/video/${art.vimeoId}?background=1&autoplay=0&loop=1&byline=0&title=0`}
+                    <iframe   
+                      src={`https://player.vimeo.com/video/${art.vimeoId}?autoplay=0&loop=0&byline=0&title=0&portrait=0`}
                       className="w-full h-full"
                       allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
                     />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <a 
-                        href={`https://vimeo.com/${art.vimeoId}`}
-                        target="_blank"
-                        className="p-4 bg-white rounded-full text-black hover:scale-110 transition-transform"
-                      >
-                        <ExternalLink size={24} />
-                      </a>
-                    </div>
                   </div>
                   <div className="px-8">
                     <div className="flex justify-between items-baseline mb-2">
