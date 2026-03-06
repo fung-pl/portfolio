@@ -61,7 +61,6 @@ async function startServer() {
     } catch (err: any) {
       console.error("Unexpected Server Error:", err);
       res.status(500).json({ error: `Internal server error: ${err.message || 'Unknown error'}` });
-
     }
   });
 

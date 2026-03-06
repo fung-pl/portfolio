@@ -162,7 +162,7 @@ export default function ArtistView() {
       } else {
         const text = await response.text();
         console.error("Non-JSON response received:", text);
-        throw new Error("The server returned an unexpected response. This usually happens if the backend is not available (e.g., on static hosting like GitHub Pages).");
+        throw new Error("The server returned an unexpected response. This usually happens if the backend API is not correctly configured or available in this environment.");
       }
 
       if (!response.ok) {
