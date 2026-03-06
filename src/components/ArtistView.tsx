@@ -1,7 +1,8 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Artwork, Outreach, BlogPost } from '../types';
-import { Sparkles, Video, Globe, GraduationCap, Mail, Instagram, Twitter, ExternalLink, Download, Calendar, Theater, Newspaper, Plus } from 'lucide-react';
+import { Sparkles, Video, Globe, GraduationCap, Mail, Instagram, Twitter, ExternalLink, Download, Calendar, Theater, Newspaper, Plus, X } from 'lucide-react';
+import BlogOverlay from './BlogOverlay';
 
 const artworks: Artwork[] = [
   {
@@ -90,9 +91,18 @@ const blogPosts: BlogPost[] = [
     title: "Neural Networks as a Creative Medium",
     date: "February 2024",
     excerpt: "Exploring the aesthetic potential of latent spaces in generative performance art.",
-    content: "...",
+    content: "Generative Adversarial Networks (GANs) offer a unique window into the 'subconscious' of machine learning models. By navigating the latent space of custom-trained networks, we can uncover visual forms that are both alien and strangely familiar. \n\nThis post delves into the process of using neural networks as a collaborative partner in performance art. We discuss how the unpredictability of AI output can be harnessed to create visceral theatrical experiences that reflect on identity, memory, and the evolving relationship between humans and technology.",
     category: 'art',
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800&h=400"
+  },
+  {
+    id: '5',
+    title: "The Sound of Sea Level Rise",
+    date: "December 2023",
+    excerpt: "Sonifying climate data for immersive theatrical experiences.",
+    content: "Data sonification transforms numbers into sound, offering a different sensory path to understanding complex phenomena. In our project 'The echo from the Earth', we converted decades of sea level rise data into a multi-layered soundscape. \n\nBy assigning different frequencies and timbres to various environmental parameters, we created an immersive auditory experience that allows the audience to 'hear' the melting of glaciers and the rising of the oceans. This approach moves beyond visual charts, creating a more visceral and emotional connection to the data of climate change.",
+    category: 'art',
+    image: "https://images.unsplash.com/photo-1503095396549-807039045349?auto=format&fit=crop&q=80&w=800&h=450"
   }
 ];
 
@@ -109,6 +119,7 @@ export default function ArtistView() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -172,7 +183,7 @@ export default function ArtistView() {
             transition={{ duration: 0.8 }}
           >
             <span className="text-rose-500 font-sans text-sm tracking-[0.4em] uppercase mb-6 block">Data Art & Performance</span>
-            <h1 className="text-7xl md:text-8xl font-serif italic mb-8 leading-tight">
+            <h1 className="text-5xl md:text-6xl font-serif italic mb-8 leading-tight">
               Where <span className="text-rose-500">Data</span> Meets the Stage.
             </h1>
             <p className="max-w-2xl text-xl text-zinc-400 font-light leading-relaxed mb-10">
@@ -201,7 +212,7 @@ export default function ArtistView() {
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="relative"
+            className="space-y-8"
           >
             <div className="aspect-[2/1] rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl shadow-rose-500/10 relative">
               <AnimatePresence mode="wait">
@@ -218,14 +229,25 @@ export default function ArtistView() {
                 />
               </AnimatePresence>
             </div>
-            {/* Info Bubble ON the picture - matched to scientist layout */}
-            <div className="absolute -bottom-6 -right-6 bg-zinc-900/90 backdrop-blur-md p-6 rounded-xl border border-rose-500/30 shadow-xl hidden md:block z-10">
-              <p className="text-[10px] font-mono tracking-widest text-rose-500 uppercase mb-1">Current Projects</p>
-              <ul className="text-sm font-serif italic text-white space-y-1">
-                <li>Atmospheric Data Play</li>
-                <li>Inner Complexity Performance</li>
-                <li>My Planetary Boundary</li>
-                <li>Generative Latent Portraits</li>
+            <div className="bg-zinc-900/90 backdrop-blur-md p-8 rounded-2xl border border-rose-500/30 shadow-xl">
+              <p className="text-[10px] font-mono tracking-widest text-rose-500 uppercase mb-3">Current Projects</p>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-serif italic text-white">
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                  Atmospheric Data Play
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                  Inner Complexity Performance
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                  My Planetary Boundary
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                  Generative Latent Portraits
+                </li>
               </ul>
             </div>
           </motion.div>
@@ -348,6 +370,12 @@ export default function ArtistView() {
           </div>
         </section>
 
+        {/* Blog Overlay */}
+      <BlogOverlay 
+        post={selectedPost} 
+        onClose={() => setSelectedPost(null)} 
+        theme={selectedPost?.category === 'both' ? 'both' : 'art'} 
+      />
         {/* Collaborators Section */}
         <section id="collaborators" className="py-32 border-t border-zinc-800 scroll-mt-32">
           <div className="text-center mb-16">

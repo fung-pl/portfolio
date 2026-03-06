@@ -1,7 +1,8 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Education, WorkExperience, ResearchOutput, BlogPost } from '../types';
-import { GraduationCap, Briefcase, FileText, ExternalLink, Mail, Linkedin, Twitter, Github, Download, Calendar, BookOpen, Newspaper, Plus } from 'lucide-react';
+import { GraduationCap, Briefcase, FileText, ExternalLink, Mail, Linkedin, Twitter, Github, Download, Calendar, BookOpen, Newspaper, Plus, X } from 'lucide-react';
+import BlogOverlay from './BlogOverlay';
 
 const education: Education[] = [
   {
@@ -156,7 +157,7 @@ const blogPosts: BlogPost[] = [
     title: "The Intersection of Data and Aesthetics",
     date: "March 2024",
     excerpt: "How visualizing air quality data can change public perception of climate change.",
-    content: "...",
+    content: "In the realm of environmental science, data is often perceived as cold, hard, and purely objective. However, when we translate these complex datasets into visual narratives, we bridge the gap between scientific understanding and public engagement. \n\nAir quality data, specifically, carries a weight that numbers alone cannot convey. By using aesthetics to represent pollutant concentrations, we can create an emotional resonance that motivates action. This blog post explores the techniques used to transform nitrogen dioxide and black carbon measurements into compelling visual art that speaks to the urgency of our planetary boundaries.",
     category: 'both',
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800&h=400"
   },
@@ -165,9 +166,18 @@ const blogPosts: BlogPost[] = [
     title: "Modelling Traffic in the Post-Pandemic Era",
     date: "January 2024",
     excerpt: "New trends in urban mobility and their impact on nitrogen dioxide levels.",
-    content: "...",
+    content: "The COVID-19 pandemic served as a global experiment in urban mobility. As cities ground to a halt, we witnessed unprecedented drops in air pollution. However, as we transition into a post-pandemic world, traffic patterns have shifted in unexpected ways. \n\nOur recent modelling work in Helsinki reveals that while overall volume may have stabilized, the temporal distribution of traffic has changed. This has significant implications for nitrogen dioxide (NO2) hotspots. By utilizing open-access floating car data, we can now model these emissions with higher spatio-temporal resolution than ever before, allowing for more targeted urban planning and public health interventions.",
     category: 'science',
     image: "https://images.unsplash.com/photo-1545143333-11ad2b04f147?auto=format&fit=crop&q=80&w=800&h=400"
+  },
+  {
+    id: '4',
+    title: "Machine Learning for Urban Air Quality",
+    date: "November 2023",
+    excerpt: "Developing interpretable models for black carbon concentration estimation.",
+    content: "Machine learning has revolutionized how we approach environmental monitoring. However, the 'black box' nature of many algorithms can be a hurdle for policy-making. Our research focuses on developing 'white-box' or interpretable models that not only predict concentrations but also explain the underlying drivers. \n\nBy integrating multi-pollutant datasets from integrated monitoring networks, we've developed proxies for black carbon that are both accurate and transferable across different urban environments. This transparency is crucial for building trust in data-driven environmental solutions.",
+    category: 'science',
+    image: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&q=80&w=800&h=400"
   }
 ];
 
@@ -187,6 +197,7 @@ export default function ScientistView() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -290,7 +301,7 @@ export default function ScientistView() {
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="relative"
+            className="space-y-8"
           >
             <div className="aspect-[2/1] rounded-2xl overflow-hidden border-8 border-white shadow-2xl relative">
               <AnimatePresence mode="wait">
@@ -307,13 +318,25 @@ export default function ScientistView() {
                 />
               </AnimatePresence>
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-xl border border-slate-100 hidden md:block z-10">
-              <p className="text-[10px] font-mono tracking-widest text-emerald-600 uppercase mb-1">Research Area</p>
-              <ul className="text-sm font-bold text-slate-900 space-y-1">
-                <li>Air Quality & Traffic Emissions</li>
-                <li>Machine Learning Solutions</li>
-                <li>Sustainability & Systems Change</li>
-                <li>Urban Geospatial Analysis</li>
+            <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+              <p className="text-[10px] font-mono tracking-widest text-emerald-600 uppercase mb-3">Research Area</p>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-bold text-slate-900">
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  Air Quality & Traffic Emissions
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  Machine Learning Solutions
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  Sustainability & Systems Change
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  Urban Geospatial Analysis
+                </li>
               </ul>
             </div>
           </motion.div>
@@ -485,7 +508,10 @@ export default function ScientistView() {
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">{post.title}</h3>
                 <p className="text-sm text-slate-500 mb-4">{post.excerpt}</p>
-                <button className="text-xs font-mono font-bold text-slate-900 hover:text-emerald-600 transition-colors flex items-center gap-2">
+                <button 
+                  onClick={() => setSelectedPost(post)}
+                  className="text-xs font-mono font-bold text-slate-900 hover:text-emerald-600 transition-colors flex items-center gap-2"
+                >
                   READ MORE <ExternalLink size={12} />
                 </button>
               </div>
@@ -493,6 +519,13 @@ export default function ScientistView() {
           ))}
         </div>
       </section>
+      
+      {/* Blog Overlay */}
+      <BlogOverlay 
+        post={selectedPost} 
+        onClose={() => setSelectedPost(null)} 
+        theme={selectedPost?.category === 'both' ? 'both' : 'science'} 
+      />
 
       {/* Collaborators Section */}
       <section id="collaborators" className="max-w-7xl mx-auto py-32 border-t border-slate-200 mt-20 scroll-mt-32">

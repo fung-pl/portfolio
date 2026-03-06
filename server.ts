@@ -19,6 +19,13 @@ async function startServer() {
   app.post("/api/contact", async (req, res) => {
     const { name, email, message, view } = req.body;
 
+    if (!process.env.RESEND_API_KEY) {
+      console.error("RESEND_API_KEY is missing");
+      return res.status(503).json({ 
+        error: "Email service not configured. Please add RESEND_API_KEY to environment variables." 
+      });
+    }
+    
     if (!name || !email || !message) {
       return res.status(400).json({ error: "Missing required fields" });
     }
