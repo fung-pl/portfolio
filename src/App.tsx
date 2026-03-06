@@ -105,7 +105,7 @@ export default function App() {
                 </div>
                 <div className="flex-1 space-y-8">
                   <div>
-                    <h2 className="text-rose-500 font-mono text-xs tracking-[0.4em] uppercase mb-4">info</h2>
+                    <h2 className="text-rose-500 font-mono text-xs tracking-[0.4em] uppercase mb-4">In a nutshell</h2>
                     <h3 className="text-3xl font-serif italic text-white mb-2">Scientist & Artist</h3>
                     <p className="text-zinc-400 font-mono text-[10px] tracking-widest uppercase">Dr. Fung</p>
                   </div>

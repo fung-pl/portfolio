@@ -74,7 +74,8 @@ export default function Navbar({ currentView, setView, onOpenNutshell }: NavbarP
                   : 'border-slate-200 text-slate-500 hover:border-emerald-600 hover:text-emerald-600'
               }`}
             >
-              In a nutshell
+              <span className="hidden sm:inline">In a nutshell</span>
+              <span className="sm:hidden">Info</span>
             </button>
 
             <button 
