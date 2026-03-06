@@ -128,6 +128,7 @@ const collaborators = [
 export default function ArtistView() {
   const [showAllOutreach, setShowAllOutreach] = useState(false);
   const [showAllArtworks, setShowAllArtworks] = useState(false);
+  const [showAllBlogPosts, setShowAllBlogPosts] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -154,7 +155,15 @@ export default function ArtistView() {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      let result;
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        result = await response.json();
+      } else {
+        const text = await response.text();
+        console.error("Non-JSON response received:", text);
+        throw new Error("The server returned an unexpected response. This usually happens if the backend is not available (e.g., on static hosting like GitHub Pages).");
+      }
 
       if (!response.ok) {
         throw new Error(result.error || 'Failed to send message');
@@ -173,6 +182,7 @@ export default function ArtistView() {
 
   const displayedOutreach = showAllOutreach ? outreach : outreach.slice(0, 4);
   const displayedArtworks = showAllArtworks ? artworks : artworks.slice(0, 2);
+  const displayedBlogPosts = showAllBlogPosts ? blogPosts : blogPosts.slice(0, 2);
 
   const heroImages = [
     "https://images.unsplash.com/photo-1503095396549-807039045349?auto=format&fit=crop&q=80&w=900&h=450",
@@ -379,10 +389,13 @@ export default function ArtistView() {
             <h2 className="text-4xl font-serif italic">Science & Art Blog</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {blogPosts.map((post) => (
-              <motion.div 
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
+            <AnimatePresence mode="popLayout">
+              {displayedBlogPosts.map((post) => (
+                <motion.div 
+                  key={post.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-rose-500 transition-all group"
@@ -403,7 +416,17 @@ export default function ArtistView() {
                 </div>
               </motion.div>
             ))}
+            </AnimatePresence>
           </div>
+          
+          {!showAllBlogPosts && blogPosts.length > 2 && (
+            <button 
+              onClick={() => setShowAllBlogPosts(true)}
+              className="w-full mt-12 py-4 border border-dashed border-zinc-800 rounded-3xl text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 hover:border-rose-500 hover:bg-rose-500/5 transition-all flex items-center justify-center gap-2"
+            >
+              <Plus size={14} /> SEE MORE POSTS
+            </button>
+          )}
         </section>
 
         {/* Blog Overlay */}

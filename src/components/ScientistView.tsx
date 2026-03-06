@@ -198,6 +198,7 @@ export default function ScientistView() {
   const [showAllPublications, setShowAllPublications] = useState(false);
   const [showAllEducation, setShowAllEducation] = useState(false);
   const [showAllExperience, setShowAllExperience] = useState(false);
+  const [showAllBlogPosts, setShowAllBlogPosts] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -227,7 +228,16 @@ export default function ScientistView() {
         },
         body: JSON.stringify(data),
       });
-      const result = await response.json();
+
+      let result;
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        result = await response.json();
+      } else {
+        const text = await response.text();
+        console.error("Non-JSON response received:", text);
+        throw new Error("The server returned an unexpected response. This usually happens if the backend is not available (e.g., on static hosting like GitHub Pages).");
+      }
 
       if (!response.ok) {
         throw new Error(result.error || 'Failed to send message');
@@ -246,6 +256,7 @@ export default function ScientistView() {
   const displayedPublications = showAllPublications ? research : research.slice(0, 3);
   const displayedEducation = showAllEducation ? education : education.slice(0, 3);
   const displayedExperience = showAllExperience ? work : work.slice(0, 3);
+  const displayedBlogPosts = showAllBlogPosts ? blogPosts : blogPosts.slice(0, 2);
 
   const heroImages = [
     "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800&h=400",
@@ -497,10 +508,13 @@ export default function ScientistView() {
           <h2 className="text-2xl font-sans font-semibold tracking-tight">Science & Art Blog</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {blogPosts.map((post) => (
-            <motion.div 
-              key={post.id}
-              initial={{ opacity: 0, y: 20 }}
+          <AnimatePresence mode="popLayout">
+            {displayedBlogPosts.map((post) => (
+              <motion.div 
+                key={post.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-lg transition-all group"
@@ -524,7 +538,17 @@ export default function ScientistView() {
               </div>
             </motion.div>
           ))}
+          </AnimatePresence>
         </div>
+        
+        {!showAllBlogPosts && blogPosts.length > 2 && (
+          <button 
+            onClick={() => setShowAllBlogPosts(true)}
+            className="w-full mt-12 py-4 border border-dashed border-slate-300 rounded-2xl text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 hover:border-emerald-600 hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
+          >
+            <Plus size={14} /> SEE MORE POSTS
+          </button>
+        )}
       </section>
       
       {/* Blog Overlay */}
