@@ -19,6 +19,8 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
     { name: 'Blog', id: 'blog' },
   ];
 
+  const profilePic = "https://picsum.photos/seed/drfung/400/400";
+
   return (
     <div className="h-screen w-full flex flex-col overflow-hidden bg-white relative">
       {/* Top Section (30%) */}
@@ -30,14 +32,14 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
           className="max-w-7xl mx-auto w-full flex justify-between items-center gap-8"
         >
           <div className="flex-1">
-            <h1 className="text-3xl md:text-5xl font-sans font-bold tracking-tight text-white mb-1 md:mb-2">DR. P. L. FUNG</h1>
+            <h1 className="text-[11vh] md:text-5xl font-sans font-bold tracking-tight text-white mb-1 md:mb-2 leading-none">DR. P. L. FUNG</h1>
             <p className="text-xs md:text-sm font-mono tracking-widest text-zinc-300 uppercase">Sustainability Scientist & Data Artist</p>
           </div>
           <div className="flex-shrink-0">
-            <div className="w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-emerald-500/20 shadow-lg my-1">
+            <div className="w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-zinc-500 shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=200&h=200" 
-                alt="Sustainability" 
+                src={profilePic} 
+                alt="Dr. P. L. Fung" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -50,7 +52,7 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
       <div className="h-[70vh] w-full flex flex-col md:flex-row">
         {/* Scientist Side */}
         <motion.div 
-          className="relative flex-1 group cursor-pointer overflow-hidden bg-slate-50 scientific-grid border-b md:border-b-0 md:border-r border-slate-100"
+          className="relative flex-1 group cursor-pointer overflow-hidden bg-white border-b md:border-b-0 md:border-r border-slate-100"
           whileHover={{ flex: 1.4 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           onClick={() => onSelect('scientist')}
@@ -64,14 +66,28 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
             >
               <Beaker size={48} strokeWidth={1.5} />
             </motion.div>
-            <motion.h2 
-              className="text-3xl md:text-7xl font-sans font-light tracking-tighter text-slate-900 mb-4 md:mb-6"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              SCIENTIST
-            </motion.h2>
+            
+            <div className="flex items-center justify-center gap-4 md:gap-0">
+              <motion.h2 
+                className="text-[11vh] md:text-5xl font-sans font-light tracking-tighter text-slate-900 md:mb-6"
+                style={{ lineHeight: 1 }}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                SCIENTIST
+              </motion.h2>
+              
+              {/* Mobile Logo next to word */}
+              <div className="md:hidden w-[10vh] h-[10vh] rounded-full overflow-hidden border-2 border-emerald-500/30">
+                <img 
+                  src={profilePic} 
+                  alt="S" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </div>
             
             {/* Sub-sections (hidden on mobile) */}
             <motion.div 
@@ -106,7 +122,7 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
 
         {/* Artist Side */}
         <motion.div 
-          className="relative flex-1 group cursor-pointer overflow-hidden bg-black artistic-gradient"
+          className="relative flex-1 group cursor-pointer overflow-hidden bg-black"
           whileHover={{ flex: 1.4 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           onClick={() => onSelect('artist')}
@@ -120,14 +136,28 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
             >
               <Palette size={48} strokeWidth={1.5} />
             </motion.div>
-            <motion.h2 
-              className="text-3xl md:text-7xl font-serif italic text-white mb-4 md:mb-6"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              ARTIST
-            </motion.h2>
+            
+            <div className="flex items-center justify-center gap-4 md:gap-0">
+              {/* Mobile Logo next to word */}
+              <div className="md:hidden w-[10vh] h-[10vh] rounded-full overflow-hidden border-2 border-rose-500/30">
+                <img 
+                  src={profilePic} 
+                  alt="A" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              
+              <motion.h2 
+                className="text-[11vh] md:text-5xl font-serif italic text-white md:mb-6"
+                style={{ lineHeight: 1 }}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                ARTIST
+              </motion.h2>
+            </div>
 
             {/* Sub-sections (hidden on mobile) */}
             <motion.div 
