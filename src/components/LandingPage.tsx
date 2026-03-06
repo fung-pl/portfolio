@@ -78,14 +78,9 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
                 SCIENTIST
               </motion.h2>
               
-              {/* Logo next to word */}
-              <div className="w-[min(10vh,3rem)] h-[min(10vh,3rem)] rounded-full overflow-hidden border-2 border-emerald-500/30">
-                <img 
-                  src={profilePic} 
-                  alt="S" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
+              {/* Graphic Logo next to word (Mobile only) */}
+              <div className="w-[min(10vh,2.5rem)] h-[min(10vh,2.5rem)] rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                <Beaker size={20} strokeWidth={1.5} />
               </div>
             </div>
             
@@ -138,14 +133,11 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
             </motion.div>
             
             <div className="flex items-center justify-center gap-4 md:gap-6">
-              {/* Logo next to word */}
-              <div className="w-[min(10vh,3rem)] h-[min(10vh,3rem)] rounded-full overflow-hidden border-2 border-rose-500/30">
-                <img 
-                  src={profilePic} 
-                  alt="A" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
+              {/* Graphic Logo next to word (Mobile only) */}
+
+                <div className="w-[min(10vh,2.5rem)] h-[min(10vh,2.5rem)] rounded-full bg-rose-950 flex items-center justify-center text-rose-500">
+                  <Palette size={20} strokeWidth={1.5} />
+                </div>
               </div>
               
               <motion.h2 
