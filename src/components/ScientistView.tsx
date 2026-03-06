@@ -188,6 +188,10 @@ const collaborators = [
   { name: "Technical University of Munich", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/TU_M%C3%BCnchen_Logo.svg/1200px-TU_M%C3%BCnchen_Logo.svg.png" },
   { name: "MegaSense Oy", logo: "https://megasense.fi/wp-content/uploads/2020/06/megasense_logo_web.png" },
   { name: "Jacobs", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Jacobs_Engineering_Group_logo.svg/1200px-Jacobs_Engineering_Group_logo.svg.png" },
+  { name: "Aalto University", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Aalto_University_logo.svg/1200px-Aalto_University_logo.svg.png" },
+  { name: "Finnish Meteorological Institute", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Ilmatieteen_laitos_logo.svg/1200px-Ilmatieteen_laitos_logo.svg.png" },
+  { name: "City of Helsinki", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Helsingin_kaupunki_logo.svg/1200px-Helsingin_kaupunki_logo.svg.png" },
+  { name: "Vaisala", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Vaisala_logo.svg/1200px-Vaisala_logo.svg.png" },
 ];
 
 export default function ScientistView() {
@@ -223,14 +227,17 @@ export default function ScientistView() {
         },
         body: JSON.stringify(data),
       });
+      const result = await response.json();
 
-      if (!response.ok) throw new Error('Failed to send message');
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
 
       setIsSubmitted(true);
       (e.target as HTMLFormElement).reset();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Contact error:', error);
-      alert('Sorry, there was an error sending your message. Please try again later.');
+      alert(error.message || 'Sorry, there was an error sending your message. Please try again later.');
     } finally {
       setIsSubmitting(false);
       setTimeout(() => setIsSubmitted(false), 5000);
@@ -524,25 +531,38 @@ export default function ScientistView() {
       <BlogOverlay 
         post={selectedPost} 
         onClose={() => setSelectedPost(null)} 
-        theme={selectedPost?.category === 'both' ? 'both' : 'science'} 
+        view="scientist"
       />
 
       {/* Collaborators Section */}
-      <section id="collaborators" className="max-w-7xl mx-auto py-32 border-t border-slate-200 mt-20 scroll-mt-32">
+      <section id="collaborators" className="max-w-7xl mx-auto py-32 border-t border-slate-200 mt-20 scroll-mt-32 overflow-hidden">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-sans font-bold tracking-tight text-slate-900 mb-4">Collaborators & Partners</h2>
           <p className="text-slate-500 font-mono text-xs tracking-widest uppercase">Institutions I've worked with</p>
         </div>
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-50 grayscale hover:grayscale-0 transition-all">
-          {collaborators.map((collab) => (
-            <img 
-              key={collab.name} 
-              src={collab.logo} 
-              alt={collab.name} 
-              className="h-8 md:h-12 w-auto"
-              referrerPolicy="no-referrer"
-            />
-          ))}
+        
+        <div className="relative flex overflow-x-hidden">
+          <motion.div 
+            className="flex gap-24 items-center whitespace-nowrap"
+            animate={{ x: [0, -1920] }}
+            transition={{ 
+              duration: 30, 
+              repeat: Infinity, 
+              ease: "linear" 
+            }}
+          >
+            {[...collaborators, ...collaborators].map((collab, idx) => (
+              <div key={idx} className="flex flex-col items-center gap-4 w-48 shrink-0 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+                <img 
+                  src={collab.logo} 
+                  alt={collab.name} 
+                  className="h-12 w-auto object-contain"
+                  referrerPolicy="no-referrer"
+                />
+                <span className="text-[10px] font-mono text-slate-400 text-center">{collab.name}</span>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
 

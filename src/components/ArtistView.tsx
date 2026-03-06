@@ -6,21 +6,27 @@ import BlogOverlay from './BlogOverlay';
 
 const artworks: Artwork[] = [
   {
-    title: "Atmospheric Data Play",
+    title: "Inner Complexity",
+    year: "2025",
+    vimeoId: "1170295236",
+    description: "A live art performance exploring human and non-human interactions involving personal issues and the planetary crisis. The performance uses data-driven visuals and physical movement to bridge the gap between individual experience and global environmental change."
+  },
+  {
+    title: "My Planetary Boundary",
     year: "2024",
-    vimeoId: "123456789", // Placeholder
-    description: "A theater performance where the stage lighting and soundscape are driven by real-time air quality data."
+    vimeoId: "1067876496",
+    description: "A documented art performance that investigates the boundaries of human impact on the planet. Through a series of ritualistic movements and data sonification, the work reflects on our interconnectedness with the Earth's systems."
   },
   {
     title: "The Latent Self",
     year: "2023",
-    vimeoId: "987654321", // Placeholder
+    vimeoId: "987654321",
     description: "A series of generative portraits created using custom-trained GANs, reflecting on identity in the age of AI."
   },
   {
     title: "Kinetic Entropy",
     year: "2022",
-    vimeoId: "456789123", // Placeholder
+    vimeoId: "456789123",
     description: "A physical kinetic sculpture that responds to real-time environmental data, creating a dance of controlled chaos."
   }
 ];
@@ -112,10 +118,16 @@ const collaborators = [
   { name: "Barbican Centre", logo: "https://picsum.photos/seed/barbican/200/100?grayscale" },
   { name: "ZKM Center", logo: "https://picsum.photos/seed/zkm/200/100?grayscale" },
   { name: "V&A Museum", logo: "https://picsum.photos/seed/va/200/100?grayscale" },
+  { name: "Centre Pompidou", logo: "https://picsum.photos/seed/pompidou/200/100?grayscale" },
+  { name: "MoMA", logo: "https://picsum.photos/seed/moma/200/100?grayscale" },
+  { name: "Serpentine Galleries", logo: "https://picsum.photos/seed/serpentine/200/100?grayscale" },
+  { name: "Hayward Gallery", logo: "https://picsum.photos/seed/hayward/200/100?grayscale" },
+  { name: "Palais de Tokyo", logo: "https://picsum.photos/seed/tokyo/200/100?grayscale" },
 ];
 
 export default function ArtistView() {
   const [showAllOutreach, setShowAllOutreach] = useState(false);
+  const [showAllArtworks, setShowAllArtworks] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -142,13 +154,17 @@ export default function ArtistView() {
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) throw new Error('Failed to send message');
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
 
       setIsSubmitted(true);
       (e.target as HTMLFormElement).reset();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Contact error:', error);
-      alert('Sorry, there was an error sending your message. Please try again later.');
+      alert(error.message || 'Sorry, there was an error sending your message. Please try again later.');
     } finally {
       setIsSubmitting(false);
       setTimeout(() => setIsSubmitted(false), 5000);
@@ -156,6 +172,7 @@ export default function ArtistView() {
   };
 
   const displayedOutreach = showAllOutreach ? outreach : outreach.slice(0, 4);
+  const displayedArtworks = showAllArtworks ? artworks : artworks.slice(0, 2);
 
   const heroImages = [
     "https://images.unsplash.com/photo-1503095396549-807039045349?auto=format&fit=crop&q=80&w=900&h=450",
@@ -261,40 +278,59 @@ export default function ArtistView() {
             <Video className="text-rose-500" size={32} />
             <h2 className="text-4xl font-serif italic">Selected Works</h2>
           </div>
-          <div className="grid grid-cols-1 gap-12">
-            {artworks.map((art, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="group relative"
-              >
-                <div className="aspect-video bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 group-hover:border-rose-500/50 transition-colors flex items-center justify-center relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
-                  <img 
-                    src={`https://picsum.photos/seed/art${idx}/800/450`} 
-                    alt={art.title}
-                    className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="z-20 text-center">
-                    <div className="w-16 h-16 rounded-full bg-rose-500 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform shadow-lg shadow-rose-500/20">
-                      <Video size={24} fill="white" />
+          <div className="max-w-3xl mx-auto space-y-16">
+            <AnimatePresence mode="popLayout">
+              {displayedArtworks.map((art, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="space-y-6"
+                >
+                  <div className="aspect-video rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl group relative">
+                    <iframe 
+                      src={`https://player.vimeo.com/video/${art.vimeoId}?background=1&autoplay=0&loop=1&byline=0&title=0`}
+                      className="w-full h-full"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <a 
+                        href={`https://vimeo.com/${art.vimeoId}`}
+                        target="_blank"
+                        className="p-4 bg-white rounded-full text-black hover:scale-110 transition-transform"
+                      >
+                        <ExternalLink size={24} />
+                      </a>
                     </div>
-                    <p className="text-xs font-mono tracking-widest text-rose-500">WATCH FILM</p>
                   </div>
-                </div>
-                <div className="mt-6">
-                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-2xl font-serif italic group-hover:text-rose-500 transition-colors">{art.title}</h3>
-                    <span className="text-sm font-mono text-zinc-500">{art.year}</span>
+                  <div className="px-8">
+                    <div className="flex justify-between items-baseline mb-2">
+                      <h3 className="text-2xl font-serif italic text-white">{art.title}</h3>
+                      <span className="text-sm font-mono text-zinc-500">{art.year}</span>
+                    </div>
+                    <p className="text-zinc-400 font-light leading-relaxed mb-4">{art.description}</p>
+                    <a 
+                      href={`https://vimeo.com/${art.vimeoId}`}
+                      target="_blank"
+                      className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-rose-500 hover:text-white transition-colors"
+                    >
+                      WATCH ON VIMEO <ExternalLink size={12} />
+                    </a>
                   </div>
-                  <p className="text-zinc-400 font-light leading-relaxed">{art.description}</p>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
+          
+          {!showAllArtworks && artworks.length > 2 && (
+            <button 
+              onClick={() => setShowAllArtworks(true)}
+              className="w-full mt-12 py-4 border border-dashed border-zinc-800 rounded-3xl text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 hover:border-rose-500 hover:bg-rose-500/5 transition-all flex items-center justify-center gap-2"
+            >
+              <Plus size={14} /> SEE MORE WORKS
+            </button>
+          )}
         </section>
 
         {/* Outreach Section */}
@@ -374,24 +410,38 @@ export default function ArtistView() {
       <BlogOverlay 
         post={selectedPost} 
         onClose={() => setSelectedPost(null)} 
-        theme={selectedPost?.category === 'both' ? 'both' : 'art'} 
+        view="artist"
       />
-        {/* Collaborators Section */}
-        <section id="collaborators" className="py-32 border-t border-zinc-800 scroll-mt-32">
+
+      {/* Collaborators Section */}
+        <section id="collaborators" className="py-32 border-t border-zinc-800 scroll-mt-32 overflow-hidden">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif italic mb-4 text-white">Collaborators</h2>
-            <p className="text-zinc-500 font-mono text-xs tracking-widest uppercase">Galleries & Institutions</p>
+            <p className="text-zinc-500 font-mono text-xs tracking-widest uppercase">Institutions & Partners</p>
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all">
-            {collaborators.map((collab) => (
-              <img 
-                key={collab.name} 
-                src={collab.logo} 
-                alt={collab.name} 
-                className="h-8 md:h-12 w-auto invert"
-                referrerPolicy="no-referrer"
-              />
-            ))}
+          
+          <div className="relative flex overflow-x-hidden">
+            <motion.div 
+              className="flex gap-24 items-center whitespace-nowrap"
+              animate={{ x: [0, -1920] }}
+              transition={{ 
+                duration: 40, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+            >
+              {[...collaborators, ...collaborators].map((collab, idx) => (
+                <div key={idx} className="flex flex-col items-center gap-4 w-48 shrink-0 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+                  <img 
+                    src={collab.logo} 
+                    alt={collab.name} 
+                    className="h-12 w-auto object-contain invert"
+                    referrerPolicy="no-referrer"
+                  />
+                  <span className="text-[10px] font-mono text-zinc-500 text-center">{collab.name}</span>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </section>
 

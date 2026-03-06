@@ -19,21 +19,24 @@ async function startServer() {
   app.post("/api/contact", async (req, res) => {
     const { name, email, message, view } = req.body;
 
+    console.log(`Contact form submission received from ${view} view`);
+
     if (!process.env.RESEND_API_KEY) {
-      console.error("RESEND_API_KEY is missing");
+      console.error("RESEND_API_KEY is missing in environment variables");
       return res.status(503).json({ 
-        error: "Email service not configured. Please add RESEND_API_KEY to environment variables." 
+        error: "Email service not configured. Please ensure RESEND_API_KEY is added to the environment variables." 
       });
     }
-    
+
     if (!name || !email || !message) {
-      return res.status(400).json({ error: "Missing required fields" });
+      return res.status(400).json({ error: "Missing required fields: name, email, and message are all required." });
     }
 
     try {
+      console.log(`Attempting to send email via Resend to pleakley9@gmail.com...`);
       const { data, error } = await resend.emails.send({
         from: "Portfolio Contact <onboarding@resend.dev>",
-        to: "pleakley9@gmail.com", // User's email from context
+        to: "pleakley9@gmail.com",
         subject: `New Contact from ${view} View: ${name}`,
         replyTo: email,
         html: `
@@ -47,14 +50,18 @@ async function startServer() {
       });
 
       if (error) {
-        console.error("Resend Error:", error);
-        return res.status(500).json({ error: error.message });
+        console.error("Resend API Error:", error);
+        return res.status(500).json({ 
+          error: `Resend API Error: ${error.message}. Please check if your Resend account is active and the API key is valid.` 
+        });
       }
 
+      console.log("Email sent successfully:", data?.id);
       res.status(200).json({ success: true, data });
-    } catch (err) {
-      console.error("Server Error:", err);
-      res.status(500).json({ error: "Internal server error" });
+    } catch (err: any) {
+      console.error("Unexpected Server Error:", err);
+      res.status(500).json({ error: `Internal server error: ${err.message || 'Unknown error'}` });
+
     }
   });
 

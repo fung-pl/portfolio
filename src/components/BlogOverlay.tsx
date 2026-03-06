@@ -5,21 +5,19 @@ import { BlogPost } from '../types';
 interface BlogOverlayProps {
   post: BlogPost | null;
   onClose: () => void;
-  theme: 'science' | 'art' | 'both';
+  view: 'scientist' | 'artist';
 }
 
-export default function BlogOverlay({ post, onClose, theme }: BlogOverlayProps) {
+export default function BlogOverlay({ post, onClose, view }: BlogOverlayProps) {
   if (!post) return null;
 
   const bgClass = 
-    theme === 'science' ? 'bg-white text-slate-900' : 
-    theme === 'art' ? 'bg-black text-white' : 
-    'bg-zinc-100 text-slate-900';
+    view === 'scientist' ? 'bg-white text-slate-900' : 
+    'bg-black text-white';
 
   const accentClass = 
-    theme === 'science' ? 'text-emerald-600' : 
-    theme === 'art' ? 'text-rose-500' : 
-    'text-zinc-600';
+    view === 'scientist' ? 'text-emerald-600' : 
+    'text-rose-500';
 
   return (
     <AnimatePresence>
