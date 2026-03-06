@@ -39,7 +39,7 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
             <div className="w-[min(15vh,4.5rem)] h-[min(15vh,4.5rem)] rounded-full overflow-hidden border-2 border-zinc-500 shadow-xl">
               <img 
                 src={profilePic} 
-                alt="Dr. Fung" 
+                alt="Dr. P. L. Fung" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -62,9 +62,11 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="hidden md:flex mb-6 p-4 rounded-full bg-emerald-100 text-emerald-600 group-hover:scale-110 transition-transform"
+              className="hidden md:flex mb-6 group-hover:scale-110 transition-transform"
             >
-              <Beaker size={48} strokeWidth={1.5} />
+              <div className="p-4 rounded-full bg-emerald-100 text-emerald-600">
+                <Beaker size={48} strokeWidth={1.5} />
+              </div>
             </motion.div>
             
             <div className="flex items-center justify-center gap-4 md:gap-6">
@@ -79,8 +81,10 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
               </motion.h2>
               
               {/* Graphic Logo next to word (Mobile only) */}
-              <div className="w-[min(10vh,2.5rem)] h-[min(10vh,2.5rem)] rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                <Beaker size={20} strokeWidth={1.5} />
+              <div className="md:hidden">
+                <div className="w-[min(10vh,2.5rem)] h-[min(10vh,2.5rem)] rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                  <Beaker size={20} strokeWidth={1.5} />
+                </div>
               </div>
             </div>
             
@@ -127,14 +131,16 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="hidden md:flex mb-6 p-4 rounded-full bg-rose-950 text-rose-500 group-hover:scale-110 transition-transform"
+              className="hidden md:flex mb-6 group-hover:scale-110 transition-transform"
             >
-              <Palette size={48} strokeWidth={1.5} />
+              <div className="p-4 rounded-full bg-rose-950 text-rose-500">
+                <Palette size={48} strokeWidth={1.5} />
+              </div>
             </motion.div>
             
             <div className="flex items-center justify-center gap-4 md:gap-6">
               {/* Graphic Logo next to word (Mobile only) */}
-
+              <div className="md:hidden">
                 <div className="w-[min(10vh,2.5rem)] h-[min(10vh,2.5rem)] rounded-full bg-rose-950 flex items-center justify-center text-rose-500">
                   <Palette size={20} strokeWidth={1.5} />
                 </div>
