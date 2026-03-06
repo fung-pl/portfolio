@@ -32,14 +32,14 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
           className="max-w-7xl mx-auto w-full flex justify-between items-center gap-8"
         >
           <div className="flex-1">
-            <h1 className="text-[min(11vh,3rem)] md:text-5xl font-sans font-bold tracking-tight text-white mb-1 md:mb-2 leading-none">DR. P. L. FUNG</h1>
+            <h1 className="text-[min(11vh,3rem)] md:text-5xl font-sans font-bold tracking-tight text-white mb-1 md:mb-2 leading-none">Dr. Fung</h1>
             <p className="text-xs md:text-sm font-mono tracking-widest text-zinc-300 uppercase">Sustainability Scientist & Data Artist</p>
           </div>
           <div className="flex-shrink-0">
             <div className="w-[min(15vh,4.5rem)] h-[min(15vh,4.5rem)] rounded-full overflow-hidden border-2 border-zinc-500 shadow-xl">
               <img 
                 src={profilePic} 
-                alt="Dr. P. L. Fung" 
+                alt="Dr. Fung" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />

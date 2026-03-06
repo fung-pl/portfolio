@@ -64,7 +64,7 @@ export default function App() {
             </main>
             
             <footer className={`py-12 px-[10%] text-center text-sm ${view === 'artist' ? 'bg-black text-zinc-500' : 'bg-slate-50 text-slate-400'}`}>
-              <p>© {new Date().getFullYear()} — Dr. P. L. Fung. Built with precision and passion.</p>
+              <p>© {new Date().getFullYear()} — Dr. Fung. Built with precision and passion.</p>
             </footer>
           </motion.div>
         )}
@@ -97,7 +97,7 @@ export default function App() {
                   <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-zinc-600 shadow-xl bg-zinc-800 flex items-center justify-center">
                     <img 
                       src="https://picsum.photos/seed/drfung/400/400" 
-                      alt="Dr. P. L. Fung" 
+                      alt="Dr. Fung" 
                       className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                       referrerPolicy="no-referrer"
                     />
@@ -105,9 +105,9 @@ export default function App() {
                 </div>
                 <div className="flex-1 space-y-8">
                   <div>
-                    <h2 className="text-rose-500 font-mono text-xs tracking-[0.4em] uppercase mb-4">In a Nutshell</h2>
+                    <h2 className="text-rose-500 font-mono text-xs tracking-[0.4em] uppercase mb-4">info</h2>
                     <h3 className="text-3xl font-serif italic text-white mb-2">Scientist & Artist</h3>
-                    <p className="text-zinc-400 font-mono text-[10px] tracking-widest uppercase">Dr. P. L. Fung</p>
+                    <p className="text-zinc-400 font-mono text-[10px] tracking-widest uppercase">Dr. Fung</p>
                   </div>
 
                   <div className="space-y-6 text-zinc-200 leading-relaxed text-sm md:text-base">

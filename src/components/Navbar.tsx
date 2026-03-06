@@ -46,21 +46,21 @@ export default function Navbar({ currentView, setView, onOpenNutshell }: NavbarP
       <nav className={`w-full backdrop-blur-md border-b transition-colors duration-500 ${
         isArtist ? 'bg-black border-zinc-800 text-white' : 'bg-white/80 border-slate-200 text-slate-900'
       }`}>
-        <div className="max-w-7xl mx-auto px-[10%] h-16 flex items-center justify-between">
-          <div className="flex items-center gap-6">
+        <div className="max-w-7xl mx-auto px-[5%] sm:px-[10%] h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-6">
             <button 
               onClick={() => setView('landing')}
-              className="group flex items-center gap-2 text-xs font-mono tracking-tighter hover:opacity-70 transition-opacity"
+              className="group flex items-center gap-1 sm:gap-2 text-[10px] sm:text-xs font-mono tracking-tighter hover:opacity-70 transition-opacity"
             >
-              <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+              <ArrowLeft size={12} className="sm:w-[14px] group-hover:-translate-x-1 transition-transform" />
               BACK
             </button>
             
             <div className="h-4 w-px bg-slate-200" />
             
             <div className="flex items-center gap-2">
-              <span className={`text-sm font-sans font-bold tracking-tight ${isArtist ? 'text-white' : 'text-slate-900'}`}>
-                DR. P. L. FUNG
+              <span className={`text-sm font-sans font-bold tracking-tight whitespace-nowrap ${isArtist ? 'text-white' : 'text-slate-900'}`}>
+                Dr. Fung
               </span>
             </div>
           </div>
@@ -87,6 +87,7 @@ export default function Navbar({ currentView, setView, onOpenNutshell }: NavbarP
             >
               <Beaker size={12} />
               <span className="hidden sm:inline">Scientist</span>
+              <span className="sm:hidden">Sci</span>
             </button>
 
             <button 
@@ -99,6 +100,7 @@ export default function Navbar({ currentView, setView, onOpenNutshell }: NavbarP
             >
               <Palette size={12} />
               <span className="hidden sm:inline">Artist</span>
+              <span className="sm:hidden">Art</span>
             </button>
           </div>
         </div>
