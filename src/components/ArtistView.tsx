@@ -39,14 +39,16 @@ const outreach: Outreach[] = [
     date: "2025 - Present",
     description: [
       "Joined the group as an advisor to support the development of bridging art and technology.",
-      <span>Link to the organisation: <a href="https://www.westcoastculturallab.com" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">West Coast Cultural Lab</a></span>
+      "Acted as a guest columnist on climate issues for the lab's publication Vancouver On Ink.",
+      <span>Link to the organisation: <a href="https://wcculturallab.ca/" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">West Coast Cultural Lab</a></span>,
+      <span>Link to Vancouver On Ink: <a href="https://recherche-collection-search.bac-lac.gc.ca/eng/Home/Preservica?IdNumber=1535654463&pId=4dfeab2b-a0db-4384-a42c-2e6301e2d1f0&app=laccat&resource=listserial" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Vancouver On Ink</a></span>
     ]
   },
   {
     title: "One-Day Stand No.4",
-    role: "Exhibitor",
+    role: "Performer",
     date: "2025",
-    thumbnail: "https://picsum.photos/seed/ods4/400/300",
+    thumbnail: "https://assets.zyrosite.com/A8526V7xnpu7WGDB/ods4-credit-aman-askarizad-106-of-112-m7VboqQJj3ILJaR5.jpg",
     description: [
       "Curated and conducted a live art performance 'Inner Complexity' at theotherside, Vantaa, Finland. Performance explored human and non-human interactions involving personal issues and the planetary crisis.",
       <span>Link to the exhibition: <a href="https://www.theothersidepap.com/ods4" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">theotherside Vantaa</a> | Link to the video: <a href="https://vimeo.com/1170295236" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Inner Complexity</a></span>
@@ -149,8 +151,8 @@ const collaborators = [
   { name: "Centre Pompidou", logo: "https://picsum.photos/seed/pompidou/200/100?grayscale" },
   { name: "MoMA", logo: "https://picsum.photos/seed/moma/200/100?grayscale" },
   { name: "Serpentine Galleries", logo: "https://picsum.photos/seed/serpentine/200/100?grayscale" },
-  { name: "Hayward Gallery", logo: "https://picsum.photos/seed/hayward/200/100?grayscale" },
-  { name: "Palais de Tokyo", logo: "https://picsum.photos/seed/tokyo/200/100?grayscale" },
+  { name: "West Coast Cultural Lab", logo: "https://wcculturallab.ca/wp-content/uploads/2025/07/1-a86299.svg" },
+  { name: "theotherside", logo: "https://assets.zyrosite.com/A8526V7xnpu7WGDB/b-w-red-background-A8548oE97yc4Zp1n.png" },
 ];
 
 export default function ArtistView() {
@@ -493,16 +495,16 @@ export default function ArtistView() {
           
           <div className="relative flex overflow-x-hidden">
             <motion.div 
-              className="flex gap-24 items-center whitespace-nowrap"
-              animate={{ x: [0, -1920] }}
+              className="flex gap-12 items-center whitespace-nowrap"
+              animate={{ x: ["0%", "-50%"] }}
               transition={{ 
-                duration: 40, 
+                duration: 30, 
                 repeat: Infinity, 
                 ease: "linear" 
               }}
             >
               {[...collaborators, ...collaborators].map((collab, idx) => (
-                <div key={idx} className="flex flex-col items-center gap-4 w-48 shrink-0 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+                <div key={idx} className="flex flex-col items-center gap-4 w-40 shrink-0 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
                   <img 
                     src={collab.logo} 
                     alt={collab.name} 

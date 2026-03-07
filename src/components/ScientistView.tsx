@@ -597,8 +597,8 @@ export default function ScientistView() {
         
         <div className="relative flex overflow-x-hidden">
           <motion.div 
-            className="flex gap-24 items-center whitespace-nowrap"
-            animate={{ x: [0, -1920] }}
+            className="flex gap-12 items-center whitespace-nowrap"
+            animate={{ x: ["0%", "-50%"] }}
             transition={{ 
               duration: 30, 
               repeat: Infinity, 
@@ -606,7 +606,7 @@ export default function ScientistView() {
             }}
           >
             {[...collaborators, ...collaborators].map((collab, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-4 w-48 shrink-0 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+              <div key={idx} className="flex flex-col items-center gap-4 w-40 shrink-0 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
                 <img 
                   src={collab.logo} 
                   alt={collab.name} 
