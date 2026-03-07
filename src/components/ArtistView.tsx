@@ -36,7 +36,7 @@ const outreach: Outreach[] = [
   {
     title: "Advisor for West Coast Cultural Lab",
     role: "Advisor",
-    date: "August 2025 - Present",
+    date: "2025 - Present",
     description: [
       "Joined the group as an advisor to support the development of bridging art and technology.",
       <span>Link to the organisation: <a href="https://www.westcoastculturallab.com" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">West Coast Cultural Lab</a></span>
@@ -46,15 +46,17 @@ const outreach: Outreach[] = [
     title: "One-Day Stand No.4",
     role: "Exhibitor",
     date: "2025",
+    thumbnail: "https://picsum.photos/seed/ods4/400/300",
     description: [
       "Curated and conducted a live art performance 'Inner Complexity' at theotherside, Vantaa, Finland. Performance explored human and non-human interactions involving personal issues and the planetary crisis.",
-      <span>Link to the workshop: <a href="https://www.theothersidevantaa.com/1st-ed-2024" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">theotherside Vantaa</a> | Link to the video: <a href="https://vimeo.com/1170295236" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Inner Complexity</a></span>
+      <span>Link to the exhibition: <a href="https://www.theothersidepap.com/ods4" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">theotherside Vantaa</a> | Link to the video: <a href="https://vimeo.com/1170295236" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Inner Complexity</a></span>
     ]
   },
   {
     title: "Information is Beautiful Awards",
     role: "Volunteer",
     date: "2025",
+    thumbnail: "https://picsum.photos/seed/iib/400/300",
     description: [
       "Assisted submissions pruning process for the Awards with Data Visualization Society.",
       <span>Link to the awards: <a href="https://iibawards.herokuapp.com/news/676-thank-you-to-our-incredible-volunteers" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Information is Beautiful Awards</a></span>
@@ -64,6 +66,7 @@ const outreach: Outreach[] = [
     title: "SideWalk 1st Ed.",
     role: "Participant and Exhibitor",
     date: "2024",
+    thumbnail: "https://picsum.photos/seed/sidewalk/400/300",
     description: [
       "Curated and exhibited documented art performance 'My Planetary Boundary' through the workshop at theotherside, Vantaa, Finland. Performance explored human and non-human interactions.",
       <span>Link to the workshop: <a href="https://www.theothersidevantaa.com/1st-ed-2024" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">theotherside Vantaa</a> | Link to the video: <a href="https://vimeo.com/1067876496" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">My planetary boundary</a></span>
@@ -75,7 +78,7 @@ const outreach: Outreach[] = [
     date: "2022",
     description: [
       "Co-authored artwork 'The echo from the Earth: The melting city' accepted to the conference at University of Graz and the City University of Hong Kong. Performance converted sea level data into soundscapes.",
-      <span>Link to the proceedings: <a href="https://daca.uni-graz.at/en/proceedings/" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Proceedings | Catalogue of the 2022 Conference on Data Art for Climate Action (DACA)</a></span>
+      <span>Link to the proceedings: <a href="https://www.researchgate.net/profile/Permagnus-Lindborg-2/publication/372548787_ProceedingsCatalogue_of_the_2022_Conference_on_Data_Art_for_Climate_Action_DACA/links/64be12c195bbbe0c6e5a4235/ProceedingsCatalogue-of-the-2022-Conference-on-Data-Art-for-Climate-Action-DACA.pdf?origin=publicationDetail&_sg%5B0%5D=4hKHXh0qm7OxWvWCMURIZyo9_LhLrwuGYhVWWmXxyyq-dBjwAlFakQXyxMYtXwPFkUjPss0zJRv1lDDfikXMbA.zbd_LtBtNcyJRpw_hDroXvmi2R7T-HEsABO4rzx1EkuI6NJ6qtWALxeplmY_0Ygwz1nMPsBNxYI5yYdjFDz5Ug&_sg%5B1%5D=3suaarjxjoiR6ps04dXVBSjRDUeDj4iJiJ2jgGBcHgk3AxLiJE8MdSNV-piVx31uLr_d0xtBxMdLaD8hhGxXE5raxnAKi4uG8giJwYZ0Kt_9.zbd_LtBtNcyJRpw_hDroXvmi2R7T-HEsABO4rzx1EkuI6NJ6qtWALxeplmY_0Ygwz1nMPsBNxYI5yYdjFDz5Ug&_sg%5B2%5D=pNSASmFxfVH5gs8uvroE_uBkfOgfioWtA1qH6jG72GOTgR5VFMc1O-YVRJH4wrBb653lzuMyz-nlMMs.FF0DPnMT-nL22owGVCKBQ9ehIyGJD0jAWjrV8HBpcJ2Ag1MI9ToSqptDeXF014sqqFNvS73PmpE9XqeMwfq7Kw&_iepl=&_rtd=eyJjb250ZW50SW50ZW50IjoibWFpbkl0ZW0ifQ%3D%3D&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6InB1YmxpY2F0aW9uIiwicGFnZSI6InB1YmxpY2F0aW9uIiwicG9zaXRpb24iOiJwYWdlSGVhZGVyIn19" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Proceedings | Catalogue of the 2022 Conference on Data Art for Climate Action (DACA)</a></span>
     ]
   },
   {
@@ -84,7 +87,7 @@ const outreach: Outreach[] = [
     date: "2022",
     description: [
       "Investigated electricity as a medium for communication and environmental connections at Institutio Media, Vilnius, Lithuania. Exhibited self-made headwear on the last day of the workshop.",
-      <span>Link to the workshop: <a href="https://m-cult.org/events/you-and-i-you-and-me" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Workshop: You and I, You and Me</a></span>
+      <span>Link to the workshop: <a href="https://www.o-o.lt/workshop-you-and-i-you-and-me/" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Workshop: You and I, You and Me</a></span>
     ]
   },
   {
@@ -93,14 +96,17 @@ const outreach: Outreach[] = [
     date: "2015",
     description: [
       "Performed in an A capella group with Yat Po Singers, Hong Kong.",
-      <span>Link to the performance: <a href="https://www.taikooplace.com/en/whatson/events/a-cappella-la-la-double-bill-one" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Taikoo Place - a cappella-la-la : Double Bill One</a></span>
+      <span>Link to the performance: <a href="https://www.facebook.com/TAIKOOPLACEHK/posts/10153016401714291/" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Taikoo Place - a cappella-la-la : Double Bill One</a></span>
     ]
   },
   {
     title: "Black Box Theatre Performances",
     role: "Performer",
     date: "2011 - 2015",
-    description: "Several black box theatre performances in Hong Kong."
+    description: [
+      "Several black box theatre performances in Hong Kong.",
+      <span>Link to the performer’s profile in Hong Kong: <a href="https://www.artmate.net/doc/8272"  target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">ArtMate Profile</a></span>
+    ]
   }
 ];
 
@@ -378,20 +384,34 @@ export default function ArtistView() {
                   viewport={{ once: true }}
                   className="art-border border-zinc-800 p-8 bg-zinc-900/50 rounded-3xl"
                 >
-                  <div className="flex justify-between items-baseline mb-2">
-                    <h3 className="text-xl font-medium text-white">{item.title}</h3>
-                    <span className="text-xs font-mono text-zinc-500">{item.date}</span>
-                  </div>
-                  <p className="text-rose-500 text-sm mb-4 font-medium">{item.role}</p>
-                  {Array.isArray(item.description) ? (
-                    <div className="space-y-2">
-                      {item.description.map((line, i) => (
-                        <p key={i} className="text-zinc-400 font-light text-sm leading-relaxed">{line}</p>
-                      ))}
+                  <div className="flex flex-col md:flex-row gap-8">
+                    {item.thumbnail && (
+                      <div className="w-full md:w-48 h-32 flex-shrink-0 rounded-2xl overflow-hidden border border-zinc-800">
+                        <img 
+                          src={item.thumbnail} 
+                          alt={item.title} 
+                          className="w-full h-full object-cover"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                    )}
+                    <div className="flex-1">
+                      <div className="flex justify-between items-baseline mb-2">
+                        <h3 className="text-xl font-medium text-white">{item.title}</h3>
+                        <span className="text-xs font-mono text-zinc-500">{item.date}</span>
+                      </div>
+                      <p className="text-rose-500 text-sm mb-4 font-medium">{item.role}</p>
+                      {Array.isArray(item.description) ? (
+                        <div className="space-y-2">
+                          {item.description.map((line, i) => (
+                            <p key={i} className="text-zinc-400 font-light text-sm leading-relaxed">{line}</p>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-zinc-400 font-light text-sm leading-relaxed">{item.description}</p>
+                      )}
                     </div>
-                  ) : (
-                    <p className="text-zinc-400 font-light text-sm leading-relaxed">{item.description}</p>
-                  )}
+                  </div>
                 </motion.div>
               ))}
             </AnimatePresence>

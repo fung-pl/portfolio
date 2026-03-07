@@ -48,4 +48,5 @@ export interface Outreach {
   role: string;
   description: ReactNode | ReactNode[];
   date: string;
+  thumbnail?: string;
 }
