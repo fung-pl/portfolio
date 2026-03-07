@@ -1,7 +1,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Education, WorkExperience, ResearchOutput, BlogPost } from '../types';
-import { GraduationCap, Briefcase, FileText, ExternalLink, Mail, Linkedin, Twitter, Github, Download, Calendar, BookOpen, Newspaper, Plus, X } from 'lucide-react';
+import { GraduationCap, Briefcase, FileText, ExternalLink, Mail, Linkedin, Github, Download, Calendar, BookOpen, Newspaper, Plus, X } from 'lucide-react';
 import BlogOverlay from './BlogOverlay';
 import StatsWidget from './StatsWidget';
 
@@ -58,7 +58,7 @@ const work: WorkExperience[] = [
     description: [
       "Conducted spatial analysis and modelling of urban traffic emission",
       "Investigated impacts of autonomous driving on traffic emission",
-      "2-month work exchange at Technical University of Munich (TUM) for improving emission inventory"
+      "Two-month work exchange at Technical University of Munich (TUM) for improving emission inventory"
     ]
   },
   {
@@ -92,12 +92,21 @@ const work: WorkExperience[] = [
 
 const research: ResearchOutput[] = [
   {
+    title: "A robust black carbon prediction model derived from observational datasets in the Yangtze River Delta region, China",
+    authors: "Duan, L., Fung, P. L., Fu, Q., Chen, J., Huo, J., Huang, K., Wang, G., Zaidan, M. A., Guo, Z., & Hussein, T.",
+    journal: "Environmental Pollution",
+    year: "2025",
+    thumbnail: "https://ars.els-cdn.com/content/image/1-s2.0-S0269749125X00117-cov200h.gif",
+    link: "https://doi.org/10.1016/j.envpol.2025.126361",
+    summary: "This study explores the machine learning (ML) models, including IAP, LASSO, RF, and SNN, to develop a robust BC prediction model for the YRD, based on BC behavior at the Dianshan Lake (DSL) site in Yangtsz River Delta, China."
+  },
+  {
     title: "A geospatial approach for dynamic on-road emission through open-access floating car data",
     authors: "Fung, P. L., Al-Jaghbeer, O., Chen, J., Ville-Veikko P., Vosough, S., Roncoli, C., & Järvi, L.",
     journal: "Environmental Research Letters",
     year: "2025",
-    thumbnail: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.1088/1748-9326/ad9f1a",
+    thumbnail: "https://content.cld.iop.org/journals/1748-9326/20/1/014033/revision4/erlad984df5_hr.jpg",
+    link: "https://doi.org/10.1088/1748-9326/ad984d",
     summary: "This study develops a novel framework for estimating dynamic on-road emissions using open-access floating car data. By integrating high-resolution traffic information with emission models, it provides a more accurate representation of urban air quality. The findings highlight the potential of using real-time data for sustainable urban planning."
   },
   {
@@ -105,7 +114,7 @@ const research: ResearchOutput[] = [
     authors: "Fung, P. L., Savadkoohi, M., Zaidan, M. A., Niemi, J. V., Timonen, H., Pandolfi, M., Alastuey, A, Querol, X., Hussein, T., & Petäjä, T.",
     journal: "Environment International",
     year: "2024",
-    thumbnail: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=200&h=150",
+    thumbnail: "https://ars.els-cdn.com/content/image/X01604120.jpg",
     link: "https://doi.org/10.1016/j.envint.2024.108449",
     summary: "The research explores the development of machine learning models for estimating black carbon concentrations that are both transferable and interpretable. By utilizing multi-pollutant datasets from various urban environments, the study achieves high predictive accuracy. It emphasizes the importance of model transparency in environmental monitoring."
   },
@@ -221,10 +230,6 @@ export default function ScientistView() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
     
     const formData = new FormData(e.target as HTMLFormElement);
     const data = {
@@ -307,10 +312,10 @@ export default function ScientistView() {
               environmental impacts in urban road networks.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="#contact" className="bg-slate-900 text-white px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-emerald-600 transition-colors flex items-center gap-2">
+              <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="bg-slate-900 text-white px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-emerald-600 transition-colors flex items-center gap-2">
                 <Calendar size={14} /> BOOK A MEETING
               </a>
-              <a href="/cv-scientist-fung.pdf" download className="border border-slate-200 text-slate-900 px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-slate-100 transition-colors flex items-center gap-2">
+              <a href="/cv-scientist.pdf" download className="border border-slate-200 text-slate-900 px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-slate-100 transition-colors flex items-center gap-2">
                 <Download size={14} /> DOWNLOAD CV
               </a>
             </div>
@@ -319,13 +324,13 @@ export default function ScientistView() {
               <a href="https://orcid.org/0000-0003-3493-1383" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
                 <BookOpen size={14} /> ORCID
               </a>
-              <a href="#" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
+              <a href="https://scholar.google.com/citations?user=AGbCZG4AAAAJ&hl=en" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
                 <BookOpen size={14} /> GOOGLE SCHOLAR
               </a>
-              <a href="#" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
+              <a href="https://www.linkedin.com/in/alan-pak-lun-fung/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
                 <Linkedin size={14} /> LINKEDIN
               </a>
-              <a href="#" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
+              <a href="https://github.com/fung-pl" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
                 <Github size={14} /> GITHUB
               </a>
             </div>
@@ -407,7 +412,8 @@ export default function ScientistView() {
                   </ul>
                 ) : (
                   <p className="text-slate-600 text-sm leading-relaxed">{edu.description}</p>
-                )}              </motion.div>
+                )}
+              </motion.div>
             ))}
           </div>
           {!showAllEducation && education.length > 3 && (
@@ -539,29 +545,29 @@ export default function ScientistView() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-lg transition-all group"
-            >
-              <div className="h-48 overflow-hidden">
-                <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
-              </div>
-              <div className="p-6">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-[10px] font-mono text-emerald-600 uppercase tracking-widest">{post.category}</span>
-                  <span className="text-[10px] font-mono text-slate-400">{post.date}</span>
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-lg transition-all group"
+              >
+                <div className="h-48 overflow-hidden">
+                  <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">{post.title}</h3>
-                <p className="text-sm text-slate-500 mb-4">{post.excerpt}</p>
-                <button 
-                  onClick={() => setSelectedPost(post)}
-                  className="text-xs font-mono font-bold text-slate-900 hover:text-emerald-600 transition-colors flex items-center gap-2"
-                >
-                  READ MORE <ExternalLink size={12} />
-                </button>
-              </div>
-            </motion.div>
-          ))}
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-[10px] font-mono text-emerald-600 uppercase tracking-widest">{post.category}</span>
+                    <span className="text-[10px] font-mono text-slate-400">{post.date}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">{post.title}</h3>
+                  <p className="text-sm text-slate-500 mb-4">{post.excerpt}</p>
+                  <button 
+                    onClick={() => setSelectedPost(post)}
+                    className="text-xs font-mono font-bold text-slate-900 hover:text-emerald-600 transition-colors flex items-center gap-2"
+                  >
+                    READ MORE <ExternalLink size={12} />
+                  </button>
+                </div>
+              </motion.div>
+            ))}
           </AnimatePresence>
         </div>
         
@@ -574,7 +580,7 @@ export default function ScientistView() {
           </button>
         )}
       </section>
-      
+
       {/* Blog Overlay */}
       <BlogOverlay 
         post={selectedPost} 
@@ -631,19 +637,12 @@ export default function ScientistView() {
                   </div>
                   <span className="font-mono text-sm tracking-widest uppercase">pleakley9@gmail.com</span>
                 </a>
-                <a href="https://calendar.google.com" target="_blank" className="flex items-center gap-4 text-slate-900 hover:text-emerald-600 transition-colors">
+                <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="flex items-center gap-4 text-slate-900 hover:text-emerald-600 transition-colors">
                   <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
                     <Calendar size={20} />
                   </div>
                   <span className="font-mono text-sm tracking-widest">BOOK A TIME (GOOGLE CALENDAR)</span>
                 </a>
-                <div className="flex gap-4">
-                  {[Linkedin, Twitter, Github].map((Icon, i) => (
-                    <a key={i} href="#" className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 transition-all">
-                      <Icon size={20} />
-                    </a>
-                  ))}
-                </div>
               </div>
             </div>
             <form onSubmit={handleSubmit} className="space-y-6">

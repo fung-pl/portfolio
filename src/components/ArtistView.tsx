@@ -1,7 +1,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Artwork, Outreach, BlogPost } from '../types';
-import { Sparkles, Video, Globe, GraduationCap, Mail, Instagram, Twitter, ExternalLink, Download, Calendar, Theater, Newspaper, Plus, X } from 'lucide-react';
+import { Sparkles, Video, Globe, GraduationCap, Mail, Instagram, ExternalLink, Download, Calendar, Theater, Newspaper, Plus, X, Linkedin } from 'lucide-react';
 import BlogOverlay from './BlogOverlay';
 import StatsWidget from './StatsWidget';
 
@@ -110,7 +110,7 @@ const blogPosts: BlogPost[] = [
     title: "The Intersection of Data and Aesthetics",
     date: "March 2024",
     excerpt: "How visualizing air quality data can change public perception of climate change.",
-    content: "...",
+    content: "In the realm of environmental science, data is often perceived as cold, hard, and purely objective. However, when we translate these complex datasets into visual narratives, we bridge the gap between scientific understanding and public engagement. \n\nAir quality data, specifically, carries a weight that numbers alone cannot convey. By using aesthetics to represent pollutant concentrations, we can create an emotional resonance that motivates action. This blog post explores the techniques used to transform nitrogen dioxide and black carbon measurements into compelling visual art that speaks to the urgency of our planetary boundaries.",
     category: 'both',
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800&h=400"
   },
@@ -241,10 +241,10 @@ export default function ArtistView() {
               theatrical experiences.
             </p>
             <div className="flex flex-wrap gap-6">
-              <a href="https://calendar.google.com" target="_blank" className="bg-rose-500 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-rose-600 transition-colors flex items-center gap-2">
+              <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="bg-rose-500 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-rose-600 transition-colors flex items-center gap-2">
                 <Calendar size={14} /> BOOK A MEETING
               </a>
-              <a href="/cv-artist-fung.pdf" download className="border border-zinc-800 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-zinc-900 transition-colors flex items-center gap-2">
+              <a href="/cv-artist.pdf" download className="border border-zinc-800 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-zinc-900 transition-colors flex items-center gap-2">
                 <Download size={14} /> DOWNLOAD CV
               </a>
             </div>
@@ -253,8 +253,11 @@ export default function ArtistView() {
               <a href="https://www.art-mate.net/doc/8272" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
                 <ExternalLink size={14} /> ART MATE
               </a>
-              <a href="#" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
+              <a href="https://www.instagram.com/alan_fung_pl/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
                 <Instagram size={14} /> INSTAGRAM
+              </a>
+              <a href="https://www.linkedin.com/in/alan-pak-lun-fung/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
+                <Linkedin size={14} /> LINKEDIN
               </a>
             </div>
           </motion.div>
@@ -321,7 +324,7 @@ export default function ArtistView() {
                   className="space-y-6"
                 >
                   <div className="aspect-video rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl group relative">
-                    <iframe   
+                    <iframe 
                       src={`https://player.vimeo.com/video/${art.vimeoId}?autoplay=0&loop=0&byline=0&title=0&portrait=0`}
                       className="w-full h-full"
                       allow="autoplay; fullscreen; picture-in-picture"
@@ -418,26 +421,29 @@ export default function ArtistView() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-rose-500 transition-all group"
-              >
-                <div className="h-64 overflow-hidden">
-                  <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
-                </div>
-                <div className="p-8">
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="text-[10px] font-mono text-rose-500 uppercase tracking-[0.2em]">{post.category}</span>
-                    <span className="text-[10px] font-mono text-zinc-500">{post.date}</span>
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-rose-500 transition-all group"
+                >
+                  <div className="h-64 overflow-hidden">
+                    <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
                   </div>
-                  <h3 className="text-2xl font-serif italic mb-4 group-hover:text-rose-500 transition-colors text-white">{post.title}</h3>
-                  <p className="text-zinc-400 font-light text-sm leading-relaxed mb-6">{post.excerpt}</p>
-                  <button className="text-xs font-mono font-bold text-white hover:text-rose-500 transition-colors flex items-center gap-2">
-                    READ MORE <ExternalLink size={12} />
-                  </button>
-                </div>
-              </motion.div>
-            ))}
+                  <div className="p-8">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-[10px] font-mono text-rose-500 uppercase tracking-[0.2em]">{post.category}</span>
+                      <span className="text-[10px] font-mono text-zinc-500">{post.date}</span>
+                    </div>
+                    <h3 className="text-2xl font-serif italic mb-4 group-hover:text-rose-500 transition-colors text-white">{post.title}</h3>
+                    <p className="text-zinc-400 font-light text-sm leading-relaxed mb-6">{post.excerpt}</p>
+                    <button 
+                      onClick={() => setSelectedPost(post)}
+                      className="text-xs font-mono font-bold text-white hover:text-rose-500 transition-colors flex items-center gap-2"
+                    >
+                      READ MORE <ExternalLink size={12} />
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
             </AnimatePresence>
           </div>
           
@@ -506,19 +512,12 @@ export default function ArtistView() {
                   </div>
                   <span className="font-mono text-sm tracking-widest uppercase text-white">pleakley9@gmail.com</span>
                 </a>
-                <a href="https://calendar.google.com" target="_blank" className="flex items-center gap-4 text-white hover:text-rose-500 transition-colors">
+                <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="flex items-center gap-4 text-white hover:text-rose-500 transition-colors">
                   <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
                     <Calendar size={20} />
                   </div>
                   <span className="font-mono text-sm tracking-widest text-white">BOOK A TIME (GOOGLE CALENDAR)</span>
                 </a>
-                <div className="flex gap-4">
-                  {[Instagram, Twitter, ExternalLink].map((Icon, i) => (
-                    <a key={i} href="#" className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center hover:bg-rose-500 transition-all">
-                      <Icon size={20} />
-                    </a>
-                  ))}
-                </div>
               </div>
             </div>
             <form onSubmit={handleSubmit} className="space-y-6">
