@@ -5,33 +5,34 @@ import cors from "cors";
 import dotenv from "dotenv";
 import Database from "better-sqlite3";
 import path from "path";
-import { kv } from "@vercel/kv";
-import Redis from "ioredis";
+import { neon } from "@neondatabase/serverless";
 
 dotenv.config();
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Unified Redis Client Setup
-let redisClient: any = null;
-let redisType: 'vercel-kv' | 'ioredis' | 'none' = 'none';
+// Neon Database Setup
+const sql = process.env.DATABASE_URL ? neon(process.env.DATABASE_URL) : null;
 
-if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
-  redisClient = kv;
-  redisType = 'vercel-kv';
-  console.log("Using Vercel KV (REST API) for persistence.");
-} else if (process.env.KV_URL || process.env.KV_REDIS_URL) {
-  try {
-    redisClient = new Redis(process.env.KV_URL || process.env.KV_REDIS_URL || "");
-    redisType = 'ioredis';
-    console.log("Using standard Redis (ioredis) for persistence via single URL.");
-  } catch (err) {
-    console.error("Failed to initialize ioredis:", err);
-  }
-}
-
-if (redisType === 'none') {
-  console.log("No Redis configuration found. Falling back to local SQLite.");
+if (sql) {
+  console.log("Neon PostgreSQL persistence is ENABLED.");
+  // Initialize table
+  (async () => {
+    try {
+      await sql`
+        CREATE TABLE IF NOT EXISTS stats (
+          key TEXT PRIMARY KEY,
+          value INTEGER DEFAULT 0,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+      `;
+      await sql`INSERT INTO stats (key, value) VALUES ('view_count', 0) ON CONFLICT (key) DO NOTHING`;
+    } catch (err) {
+      console.error("Failed to initialize Neon table:", err);
+    }
+  })();
+} else {
+  console.log("DATABASE_URL not found. Falling back to local SQLite.");
 }
 
 // Initialize SQLite Database (Fallback for local dev)
@@ -106,9 +107,13 @@ async function startServer() {
   // View Counter increment
   app.post("/api/increment-views", async (req, res) => {
     try {
-      if (redisType !== 'none') {
-        const views = await redisClient.incr("view_count");
-        res.json({ views });
+      if (sql) {
+        const result = await sql`
+          INSERT INTO stats (key, value) VALUES ('view_count', 1)
+          ON CONFLICT (key) DO UPDATE SET value = stats.value + 1
+          RETURNING value
+        `;
+        res.json({ views: result[0].value });
       } else {
         const update = db.prepare('UPDATE stats SET value = value + 1 WHERE key = ?');
         update.run('view_count');
@@ -126,24 +131,28 @@ async function startServer() {
   app.get("/api/stats", async (req, res) => {
     try {
       let views = 0;
-      if (redisType !== 'none') {
-        const val = await redisClient.get("view_count");
-        views = parseInt(val?.toString() || "0");
+      if (sql) {
+        const result = await sql`SELECT value FROM stats WHERE key = 'view_count'`;
+        views = result[0]?.value || 0;
       } else {
         const get = db.prepare('SELECT value FROM stats WHERE key = ?');
         const row = get.get('view_count') as { value: number };
         views = row.value;
       }
       
-      // Fetch Google Scholar Citations (with caching if Redis is enabled)
+      // Fetch Google Scholar Citations (with caching if Neon is enabled)
       let citations = 0;
       const CACHE_KEY = "citations_count";
-      const CACHE_TTL = 3600 * 24; // 24 hours
+      const CACHE_TTL_HOURS = 24;
 
-      if (redisType !== 'none') {
-        const cached = await redisClient.get(CACHE_KEY);
-        if (cached !== null) {
-          citations = parseInt(cached.toString());
+      if (sql) {
+        const result = await sql`
+          SELECT value, updated_at FROM stats 
+          WHERE key = ${CACHE_KEY} 
+          AND updated_at > NOW() - INTERVAL '24 hours'
+        `;
+        if (result.length > 0) {
+          citations = result[0].value;
         }
       }
 
@@ -161,12 +170,12 @@ async function startServer() {
             citations = parseInt(match[1]);
             
             // Cache the result
-            if (redisType !== 'none') {
-              if (redisType === 'vercel-kv') {
-                await redisClient.set(CACHE_KEY, citations, { ex: CACHE_TTL });
-              } else {
-                await redisClient.set(CACHE_KEY, citations, "EX", CACHE_TTL);
-              }
+            if (sql) {
+              await sql`
+                INSERT INTO stats (key, value, updated_at) 
+                VALUES (${CACHE_KEY}, ${citations}, NOW())
+                ON CONFLICT (key) DO UPDATE SET value = ${citations}, updated_at = NOW()
+              `;
             }
           }
         } catch (e) {
