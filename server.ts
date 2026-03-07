@@ -5,12 +5,16 @@ import cors from "cors";
 import dotenv from "dotenv";
 import Database from "better-sqlite3";
 import path from "path";
+import { kv } from "@vercel/kv";
 
 dotenv.config();
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Initialize Database
+// Check if Vercel KV is configured
+const isVercelKVEnabled = !!process.env.KV_REST_API_URL;
+
+// Initialize SQLite Database (Fallback for local dev)
 const db = new Database("portfolio.db");
 db.exec(`
   CREATE TABLE IF NOT EXISTS stats (
@@ -19,7 +23,7 @@ db.exec(`
   )
 `);
 
-// Ensure view_count exists
+// Ensure view_count exists in SQLite
 const insert = db.prepare('INSERT OR IGNORE INTO stats (key, value) VALUES (?, ?)');
 insert.run('view_count', 0);
 
@@ -79,16 +83,21 @@ async function startServer() {
     }
   });
 
-
   // View Counter increment
-  app.post("/api/increment-views", (req, res) => {
+  app.post("/api/increment-views", async (req, res) => {
     try {
-      const update = db.prepare('UPDATE stats SET value = value + 1 WHERE key = ?');
-      update.run('view_count');
-      const get = db.prepare('SELECT value FROM stats WHERE key = ?');
-      const row = get.get('view_count') as { value: number };
-      res.json({ views: row.value });
+      if (isVercelKVEnabled) {
+        const views = await kv.incr("view_count");
+        res.json({ views });
+      } else {
+        const update = db.prepare('UPDATE stats SET value = value + 1 WHERE key = ?');
+        update.run('view_count');
+        const get = db.prepare('SELECT value FROM stats WHERE key = ?');
+        const row = get.get('view_count') as { value: number };
+        res.json({ views: row.value });
+      }
     } catch (err) {
+      console.error("Failed to increment views:", err);
       res.status(500).json({ error: "Failed to increment views" });
     }
   });
@@ -96,34 +105,56 @@ async function startServer() {
   // Get Stats (Views + Citations)
   app.get("/api/stats", async (req, res) => {
     try {
-      const get = db.prepare('SELECT value FROM stats WHERE key = ?');
-      const row = get.get('view_count') as { value: number };
+      let views = 0;
+      if (isVercelKVEnabled) {
+        views = await kv.get<number>("view_count") || 0;
+      } else {
+        const get = db.prepare('SELECT value FROM stats WHERE key = ?');
+        const row = get.get('view_count') as { value: number };
+        views = row.value;
+      }
       
-      // Fetch Google Scholar Citations
+      // Fetch Google Scholar Citations (with caching if KV is enabled)
       let citations = 0;
-      try {
-        const scholarUrl = "https://scholar.google.com/citations?user=AGbCZG4AAAAJ&hl=en";
-        const response = await fetch(scholarUrl, {
-          headers: {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-          }
-        });
-        const html = await response.text();
-        // Regex to find citation count in the table
-        // Usually: <td class="gsc_rsb_std">123</td>
-        const match = html.match(/<td class="gsc_rsb_std">(\d+)<\/td>/);
-        if (match && match[1]) {
-          citations = parseInt(match[1]);
+      const CACHE_KEY = "citations_count";
+      const CACHE_TTL = 3600 * 24; // 24 hours
+
+      if (isVercelKVEnabled) {
+        const cached = await kv.get<number>(CACHE_KEY);
+        if (cached !== null) {
+          citations = cached;
         }
-      } catch (e) {
-        console.error("Failed to fetch scholar citations:", e);
+      }
+
+      if (citations === 0) {
+        try {
+          const scholarUrl = "https://scholar.google.com/citations?user=AGbCZG4AAAAJ&hl=en";
+          const response = await fetch(scholarUrl, {
+            headers: {
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+            }
+          });
+          const html = await response.text();
+          const match = html.match(/<td class="gsc_rsb_std">(\d+)<\/td>/);
+          if (match && match[1]) {
+            citations = parseInt(match[1]);
+            
+            // Cache the result
+            if (isVercelKVEnabled) {
+              await kv.set(CACHE_KEY, citations, { ex: CACHE_TTL });
+            }
+          }
+        } catch (e) {
+          console.error("Failed to fetch scholar citations:", e);
+        }
       }
 
       res.json({ 
-        views: row.value,
-        citations: citations
+        views,
+        citations
       });
     } catch (err) {
+      console.error("Failed to fetch stats:", err);
       res.status(500).json({ error: "Failed to fetch stats" });
     }
   });
