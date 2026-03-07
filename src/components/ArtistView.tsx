@@ -52,7 +52,7 @@ const outreach: Outreach[] = [
     ]
   },
   {
-    title: "Information is Beautiful Awards Volunteer Program",
+    title: "Information is Beautiful Awards",
     role: "Volunteer",
     date: "2025",
     description: [
@@ -253,7 +253,7 @@ export default function ArtistView() {
               <a href="https://www.art-mate.net/doc/8272" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
                 <ExternalLink size={14} /> ART MATE
               </a>
-              <a href="https://www.instagram.com/alan_fung_pl/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
+              <a href="https://www.instagram.com/fpl.hki/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
                 <Instagram size={14} /> INSTAGRAM
               </a>
               <a href="https://www.linkedin.com/in/alan-pak-lun-fung/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
