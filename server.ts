@@ -3,7 +3,6 @@ import { createServer as createViteServer } from "vite";
 import { Resend } from "resend";
 import cors from "cors";
 import dotenv from "dotenv";
-import Database from "better-sqlite3";
 import path from "path";
 import { neon } from "@neondatabase/serverless";
 
@@ -32,21 +31,8 @@ if (sql) {
     }
   })();
 } else {
-  console.log("DATABASE_URL not found. Falling back to local SQLite.");
+  console.warn("DATABASE_URL not found. Persistence features (views/citations) will not work.");
 }
-
-// Initialize SQLite Database (Fallback for local dev)
-const db = new Database("portfolio.db");
-db.exec(`
-  CREATE TABLE IF NOT EXISTS stats (
-    key TEXT PRIMARY KEY,
-    value INTEGER DEFAULT 0
-  )
-`);
-
-// Ensure view_count exists in SQLite
-const insert = db.prepare('INSERT OR IGNORE INTO stats (key, value) VALUES (?, ?)');
-insert.run('view_count', 0);
 
 async function startServer() {
   const app = express();
@@ -107,20 +93,15 @@ async function startServer() {
   // View Counter increment
   app.post("/api/increment-views", async (req, res) => {
     try {
-      if (sql) {
-        const result = await sql`
-          INSERT INTO stats (key, value) VALUES ('view_count', 1)
-          ON CONFLICT (key) DO UPDATE SET value = stats.value + 1
-          RETURNING value
-        `;
-        res.json({ views: result[0].value });
-      } else {
-        const update = db.prepare('UPDATE stats SET value = value + 1 WHERE key = ?');
-        update.run('view_count');
-        const get = db.prepare('SELECT value FROM stats WHERE key = ?');
-        const row = get.get('view_count') as { value: number };
-        res.json({ views: row.value });
+      if (!sql) {
+        return res.status(503).json({ error: "Database not configured" });
       }
+      const result = await sql`
+        INSERT INTO stats (key, value) VALUES ('view_count', 1)
+        ON CONFLICT (key) DO UPDATE SET value = stats.value + 1
+        RETURNING value
+      `;
+      res.json({ views: result[0].value });
     } catch (err) {
       console.error("Failed to increment views:", err);
       res.status(500).json({ error: "Failed to increment views" });
@@ -130,30 +111,24 @@ async function startServer() {
   // Get Stats (Views + Citations)
   app.get("/api/stats", async (req, res) => {
     try {
-      let views = 0;
-      if (sql) {
-        const result = await sql`SELECT value FROM stats WHERE key = 'view_count'`;
-        views = result[0]?.value || 0;
-      } else {
-        const get = db.prepare('SELECT value FROM stats WHERE key = ?');
-        const row = get.get('view_count') as { value: number };
-        views = row.value;
+      if (!sql) {
+        return res.status(503).json({ error: "Database not configured" });
       }
+      
+      const result = await sql`SELECT value FROM stats WHERE key = 'view_count'`;
+      const views = result[0]?.value || 0;
       
       // Fetch Google Scholar Citations (with caching if Neon is enabled)
       let citations = 0;
       const CACHE_KEY = "citations_count";
-      const CACHE_TTL_HOURS = 24;
 
-      if (sql) {
-        const result = await sql`
-          SELECT value, updated_at FROM stats 
-          WHERE key = ${CACHE_KEY} 
-          AND updated_at > NOW() - INTERVAL '24 hours'
-        `;
-        if (result.length > 0) {
-          citations = result[0].value;
-        }
+      const cacheResult = await sql`
+        SELECT value, updated_at FROM stats 
+        WHERE key = ${CACHE_KEY} 
+        AND updated_at > NOW() - INTERVAL '24 hours'
+      `;
+      if (cacheResult.length > 0) {
+        citations = cacheResult[0].value;
       }
 
       if (citations === 0) {
@@ -170,13 +145,11 @@ async function startServer() {
             citations = parseInt(match[1]);
             
             // Cache the result
-            if (sql) {
-              await sql`
-                INSERT INTO stats (key, value, updated_at) 
-                VALUES (${CACHE_KEY}, ${citations}, NOW())
-                ON CONFLICT (key) DO UPDATE SET value = ${citations}, updated_at = NOW()
-              `;
-            }
+            await sql`
+              INSERT INTO stats (key, value, updated_at) 
+              VALUES (${CACHE_KEY}, ${citations}, NOW())
+              ON CONFLICT (key) DO UPDATE SET value = ${citations}, updated_at = NOW()
+            `;
           }
         } catch (e) {
           console.error("Failed to fetch scholar citations:", e);
