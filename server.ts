@@ -6,13 +6,33 @@ import dotenv from "dotenv";
 import Database from "better-sqlite3";
 import path from "path";
 import { kv } from "@vercel/kv";
+import Redis from "ioredis";
 
 dotenv.config();
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Check if Vercel KV is configured
-const isVercelKVEnabled = !!process.env.KV_REST_API_URL;
+// Unified Redis Client Setup
+let redisClient: any = null;
+let redisType: 'vercel-kv' | 'ioredis' | 'none' = 'none';
+
+if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
+  redisClient = kv;
+  redisType = 'vercel-kv';
+  console.log("Using Vercel KV (REST API) for persistence.");
+} else if (process.env.KV_URL || process.env.KV_REDIS_URL) {
+  try {
+    redisClient = new Redis(process.env.KV_URL || process.env.KV_REDIS_URL || "");
+    redisType = 'ioredis';
+    console.log("Using standard Redis (ioredis) for persistence via single URL.");
+  } catch (err) {
+    console.error("Failed to initialize ioredis:", err);
+  }
+}
+
+if (redisType === 'none') {
+  console.log("No Redis configuration found. Falling back to local SQLite.");
+}
 
 // Initialize SQLite Database (Fallback for local dev)
 const db = new Database("portfolio.db");
@@ -86,8 +106,8 @@ async function startServer() {
   // View Counter increment
   app.post("/api/increment-views", async (req, res) => {
     try {
-      if (isVercelKVEnabled) {
-        const views = await kv.incr("view_count");
+      if (redisType !== 'none') {
+        const views = await redisClient.incr("view_count");
         res.json({ views });
       } else {
         const update = db.prepare('UPDATE stats SET value = value + 1 WHERE key = ?');
@@ -106,23 +126,24 @@ async function startServer() {
   app.get("/api/stats", async (req, res) => {
     try {
       let views = 0;
-      if (isVercelKVEnabled) {
-        views = await kv.get<number>("view_count") || 0;
+      if (redisType !== 'none') {
+        const val = await redisClient.get("view_count");
+        views = parseInt(val?.toString() || "0");
       } else {
         const get = db.prepare('SELECT value FROM stats WHERE key = ?');
         const row = get.get('view_count') as { value: number };
         views = row.value;
       }
       
-      // Fetch Google Scholar Citations (with caching if KV is enabled)
+      // Fetch Google Scholar Citations (with caching if Redis is enabled)
       let citations = 0;
       const CACHE_KEY = "citations_count";
       const CACHE_TTL = 3600 * 24; // 24 hours
 
-      if (isVercelKVEnabled) {
-        const cached = await kv.get<number>(CACHE_KEY);
+      if (redisType !== 'none') {
+        const cached = await redisClient.get(CACHE_KEY);
         if (cached !== null) {
-          citations = cached;
+          citations = parseInt(cached.toString());
         }
       }
 
@@ -140,8 +161,12 @@ async function startServer() {
             citations = parseInt(match[1]);
             
             // Cache the result
-            if (isVercelKVEnabled) {
-              await kv.set(CACHE_KEY, citations, { ex: CACHE_TTL });
+            if (redisType !== 'none') {
+              if (redisType === 'vercel-kv') {
+                await redisClient.set(CACHE_KEY, citations, { ex: CACHE_TTL });
+              } else {
+                await redisClient.set(CACHE_KEY, citations, "EX", CACHE_TTL);
+              }
             }
           }
         } catch (e) {
