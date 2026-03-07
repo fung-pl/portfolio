@@ -46,6 +46,6 @@ export interface Artwork {
 export interface Outreach {
   title: string;
   role: string;
-  description: string;
+  description: ReactNode | ReactNode[];
   date: string;
 }

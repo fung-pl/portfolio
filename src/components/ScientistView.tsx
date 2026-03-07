@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Education, WorkExperience, ResearchOutput, BlogPost } from '../types';
 import { GraduationCap, Briefcase, FileText, ExternalLink, Mail, Linkedin, Twitter, Github, Download, Calendar, BookOpen, Newspaper, Plus, X } from 'lucide-react';
 import BlogOverlay from './BlogOverlay';
+import StatsWidget from './StatsWidget';
 
 const education: Education[] = [
   {
@@ -666,6 +667,7 @@ export default function ScientistView() {
           </div>
         </section>
       </div>
+      <StatsWidget view="scientist" />
     </div>
   );
 }

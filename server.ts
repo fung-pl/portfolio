@@ -3,10 +3,25 @@ import { createServer as createViteServer } from "vite";
 import { Resend } from "resend";
 import cors from "cors";
 import dotenv from "dotenv";
+import Database from "better-sqlite3";
+import path from "path";
 
 dotenv.config();
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Initialize Database
+const db = new Database("portfolio.db");
+db.exec(`
+  CREATE TABLE IF NOT EXISTS stats (
+    key TEXT PRIMARY KEY,
+    value INTEGER DEFAULT 0
+  )
+`);
+
+// Ensure view_count exists
+const insert = db.prepare('INSERT OR IGNORE INTO stats (key, value) VALUES (?, ?)');
+insert.run('view_count', 0);
 
 async function startServer() {
   const app = express();
@@ -61,6 +76,55 @@ async function startServer() {
     } catch (err: any) {
       console.error("Unexpected Server Error:", err);
       res.status(500).json({ error: `Internal server error: ${err.message || 'Unknown error'}` });
+    }
+  });
+
+
+  // View Counter increment
+  app.post("/api/increment-views", (req, res) => {
+    try {
+      const update = db.prepare('UPDATE stats SET value = value + 1 WHERE key = ?');
+      update.run('view_count');
+      const get = db.prepare('SELECT value FROM stats WHERE key = ?');
+      const row = get.get('view_count') as { value: number };
+      res.json({ views: row.value });
+    } catch (err) {
+      res.status(500).json({ error: "Failed to increment views" });
+    }
+  });
+
+  // Get Stats (Views + Citations)
+  app.get("/api/stats", async (req, res) => {
+    try {
+      const get = db.prepare('SELECT value FROM stats WHERE key = ?');
+      const row = get.get('view_count') as { value: number };
+      
+      // Fetch Google Scholar Citations
+      let citations = 0;
+      try {
+        const scholarUrl = "https://scholar.google.com/citations?user=AGbCZG4AAAAJ&hl=en";
+        const response = await fetch(scholarUrl, {
+          headers: {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+          }
+        });
+        const html = await response.text();
+        // Regex to find citation count in the table
+        // Usually: <td class="gsc_rsb_std">123</td>
+        const match = html.match(/<td class="gsc_rsb_std">(\d+)<\/td>/);
+        if (match && match[1]) {
+          citations = parseInt(match[1]);
+        }
+      } catch (e) {
+        console.error("Failed to fetch scholar citations:", e);
+      }
+
+      res.json({ 
+        views: row.value,
+        citations: citations
+      });
+    } catch (err) {
+      res.status(500).json({ error: "Failed to fetch stats" });
     }
   });
 

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Artwork, Outreach, BlogPost } from '../types';
 import { Sparkles, Video, Globe, GraduationCap, Mail, Instagram, Twitter, ExternalLink, Download, Calendar, Theater, Newspaper, Plus, X } from 'lucide-react';
 import BlogOverlay from './BlogOverlay';
+import StatsWidget from './StatsWidget';
 
 const artworks: Artwork[] = [
   {
@@ -36,43 +37,64 @@ const outreach: Outreach[] = [
     title: "Advisor for West Coast Cultural Lab",
     role: "Advisor",
     date: "August 2025 - Present",
-    description: "Joined the group as an advisor to support the development of bridging art and technology. Link to the organisation: West Coast Cultural Lab"
+    description: [
+      "Joined the group as an advisor to support the development of bridging art and technology.",
+      <span>Link to the organisation: <a href="https://www.westcoastculturallab.com" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">West Coast Cultural Lab</a></span>
+    ]
   },
   {
     title: "One-Day Stand No.4",
     role: "Exhibitor",
     date: "2025",
-    description: "Curated and conducted a live art performance 'Inner Complexity' at theotherside, Vantaa, Finland. Performance explored human and non-human interactions involving personal issues and the planetary crisis. Link to the workshop: https://www.theothersidevantaa.com/1st-ed-2024 | Link to the video: Inner Complexity"
+    description: [
+      "Curated and conducted a live art performance 'Inner Complexity' at theotherside, Vantaa, Finland. Performance explored human and non-human interactions involving personal issues and the planetary crisis.",
+      <span>Link to the workshop: <a href="https://www.theothersidevantaa.com/1st-ed-2024" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">theotherside Vantaa</a> | Link to the video: <a href="https://vimeo.com/1170295236" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Inner Complexity</a></span>
+    ]
   },
   {
     title: "Information is Beautiful Awards Volunteer Program",
     role: "Volunteer",
     date: "2025",
-    description: "Assisted submissions pruning process for the Awards with Data Visualization Society. Link to the awards: https://iibawards.herokuapp.com/news/676-thank-you-to-our-incredible-volunteers"
+    description: [
+      "Assisted submissions pruning process for the Awards with Data Visualization Society.",
+      <span>Link to the awards: <a href="https://iibawards.herokuapp.com/news/676-thank-you-to-our-incredible-volunteers" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Information is Beautiful Awards</a></span>
+    ]
   },
   {
     title: "SideWalk 1st Ed.",
     role: "Participant and Exhibitor",
     date: "2024",
-    description: "Curated and exhibited documented art performance 'My Planetary Boundary' through the workshop at theotherside, Vantaa, Finland. Performance explored human and non-human interactions. Link to the workshop: https://www.theothersidevantaa.com/1st-ed-2024 | Link to the video: My planetary boundary"
+    description: [
+      "Curated and exhibited documented art performance 'My Planetary Boundary' through the workshop at theotherside, Vantaa, Finland. Performance explored human and non-human interactions.",
+      <span>Link to the workshop: <a href="https://www.theothersidevantaa.com/1st-ed-2024" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">theotherside Vantaa</a> | Link to the video: <a href="https://vimeo.com/1067876496" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">My planetary boundary</a></span>
+    ]
   },
   {
     title: "Data Art for Climate Action Conference (DACA)",
     role: "Attendee",
     date: "2022",
-    description: "Co-authored artwork 'The echo from the Earth: The melting city' accepted to the conference at University of Graz and the City University of Hong Kong. Performance converted sea level data into soundscapes. Link to the proceedings: Proceedings|Catalogue of the 2022 Conference on Data Art for Climate Action (DACA)"
+    description: [
+      "Co-authored artwork 'The echo from the Earth: The melting city' accepted to the conference at University of Graz and the City University of Hong Kong. Performance converted sea level data into soundscapes.",
+      <span>Link to the proceedings: <a href="https://daca.uni-graz.at/en/proceedings/" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Proceedings | Catalogue of the 2022 Conference on Data Art for Climate Action (DACA)</a></span>
+    ]
   },
   {
     title: "You and I, You and Me Workshop",
     role: "Participant",
     date: "2022",
-    description: "Investigated electricity as a medium for communication and environmental connections at Institutio Media, Vilnius, Lithuania. Exhibited self-made headwear on the last day of the workshop. Link to the workshop: Workshop: You and I, You and Me"
+    description: [
+      "Investigated electricity as a medium for communication and environmental connections at Institutio Media, Vilnius, Lithuania. Exhibited self-made headwear on the last day of the workshop.",
+      <span>Link to the workshop: <a href="https://m-cult.org/events/you-and-i-you-and-me" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Workshop: You and I, You and Me</a></span>
+    ]
   },
   {
     title: "Double Bill One",
     role: "Performer",
     date: "2015",
-    description: "Performed in an A capella group with Yat Po Singers, Hong Kong. Link to the performance: Taikoo Place - a cappella-la-la : Double Bill One"
+    description: [
+      "Performed in an A capella group with Yat Po Singers, Hong Kong.",
+      <span>Link to the performance: <a href="https://www.taikooplace.com/en/whatson/events/a-cappella-la-la-double-bill-one" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Taikoo Place - a cappella-la-la : Double Bill One</a></span>
+    ]
   },
   {
     title: "Black Box Theatre Performances",
@@ -358,7 +380,15 @@ export default function ArtistView() {
                     <span className="text-xs font-mono text-zinc-500">{item.date}</span>
                   </div>
                   <p className="text-rose-500 text-sm mb-4 font-medium">{item.role}</p>
-                  <p className="text-zinc-400 font-light text-sm leading-relaxed">{item.description}</p>
+                  {Array.isArray(item.description) ? (
+                    <div className="space-y-2">
+                      {item.description.map((line, i) => (
+                        <p key={i} className="text-zinc-400 font-light text-sm leading-relaxed">{line}</p>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-zinc-400 font-light text-sm leading-relaxed">{item.description}</p>
+                  )}
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -512,6 +542,7 @@ export default function ArtistView() {
           </div>
         </section>
       </div>
+      <StatsWidget view="artist" />
     </div>
   );
 }
