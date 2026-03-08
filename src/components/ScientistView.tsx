@@ -1,177 +1,115 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Education, WorkExperience, ResearchOutput, BlogPost } from '../types';
-import { GraduationCap, Briefcase, FileText, ExternalLink, Mail, Linkedin, Github, Download, Calendar, BookOpen, Newspaper, Plus, X } from 'lucide-react';
+import { Artwork, Outreach, BlogPost } from '../types';
+import { Sparkles, Video, Globe, GraduationCap, Mail, Instagram, ExternalLink, Download, Calendar, Theater, Newspaper, Plus, X, Linkedin } from 'lucide-react';
 import BlogOverlay from './BlogOverlay';
 import StatsWidget from './StatsWidget';
 import { SupportSection } from './SupportSection';
 
-const education: Education[] = [
+const artworks: Artwork[] = [
   {
-    degree: "Doctor of Philosophy (Atmospheric Science)",
-    institution: "University of Helsinki",
-    year: "3/2019 − 2/2022",
-    description: [
-      <span>Doctoral dissertation (Pass with distinction): <a href="http://hdl.handle.net/10138/338035" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Derivation of Black Carbon Proxies in an Integrated Urban Air Quality Monitoring Network.</a></span>, 
-      "Fields: Urban aerosols, air pollutant proxy, air quality."
-      ]
-  },
-  {
-    degree: "Master of Business Administration",
-    institution: "Lapland University of Applied Science",
-    year: "9/2023 − 12/2025",
-    description: [
-      "Specialized in Managing Sustainability and Systems Change.",
-      <span>Master thesis: <a href="https://urn.fi/URN:NBN:fi:amk-2025121034323" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Challenges and Insights from Pioneer Higher Education Institutions Utilising Carbon Roadmap.</a></span>
-    ]
-  },
-  {
-    degree: "Master of Science (Atmospheric Science)",
-    institution: "University of Helsinki",
-    year: "8/2015 − 8/2018",
-    description: [
-      <span>Master thesis: <a href="http://hdl.handle.net/10138/273491" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Ozone deposition over a boreal lake by the eddy covariance method.</a></span>,
-      "Exchange Study (Earth and Ecosystem Science) at Lund University (1/2016 − 6/2016) with Satellite Remote Sensing (Pass with distinction)."
-    ]
-  },
-  {
-    degree: "Bachelor of Science (Earth Sciences)",
-    institution: "University of Hong Kong",
-    year: "9/2008 − 6/2011",
-    description: "Minor in Geography."
-  }
-];
-
-const work: WorkExperience[] = [
-  {
-    role: "Air Quality Expert/Data Analyst",
-    company: "MegaSense Oy",
-    period: "4/2025 − Present",
-    description: [
-      "Data analytics of urban traffic and air quality modeling to support the implementation of green navigation application by using multiple sources of geospatial data",
-      "Develped novel digital solutions to high spatio-temporal emission model for anthropogenic pollution sources"
-    ]
-  },
-  {
-    role: "Post-doctoral researcher",
-    company: "University of Helsinki",
-    period: "3/2022 − 12/2024",
-    description: [
-      "Conducted spatial analysis and modelling of urban traffic emission",
-      "Investigated impacts of autonomous driving on traffic emission",
-      "Two-month work exchange at Technical University of Munich (TUM) for improving emission inventory"
-    ]
-  },
-  {
-    role: "Doctoral researcher",
-    company: "University of Helsinki",
-    period: "3/2019 − 2/2022",
-    description: [
-      "Developed machine learning solutions to urban air quality problems",
-      "Developed an improved Air Quality Index for Helsinki"
-    ]
-  },
-  {
-    role: "Research Assistant",
-    company: "University of Helsinki",
-    period: "5/2018 − 2/2019",
-    description: [
-      "Carried out low-cost sensor measurements",
-      "Performed PM2.5 calibration and data analysis of multilevel measurements"
-    ]
-  },
-  {
-    role: "Assistant geologist",
-    company: "Jacobs China Limited",
-    period: "12/2011 − 1/2015",
-    description: [
-      "Geological assessment and site investigation",
-      "One-year secondment to Gammon Construction Limited for rock logging"
-    ]
-  }
-];
-
-const research: ResearchOutput[] = [
-  {
-    title: "A robust black carbon prediction model derived from observational datasets in the Yangtze River Delta region, China",
-    authors: "Duan, L., Fung, P. L., Fu, Q., Chen, J., Huo, J., Huang, K., Wang, G., Zaidan, M. A., Guo, Z., & Hussein, T.",
-    journal: "Environmental Pollution",
+    title: "Inner Complexity",
     year: "2025",
-    thumbnail: "https://ars.els-cdn.com/content/image/1-s2.0-S0269749125X00117-cov200h.gif",
-    link: "https://doi.org/10.1016/j.envpol.2025.126361",
-    summary: "This study explores the machine learning (ML) models, including IAP, LASSO, RF, and SNN, to develop a robust BC prediction model for the YRD, based on BC behavior at the Dianshan Lake (DSL) site in Yangtsz River Delta, China."
+    vimeoId: "1170295236",
+    description: "A live art performance exploring human and non-human interactions involving personal issues and the planetary crisis. The performance uses data-driven visuals and physical movement to bridge the gap between individual experience and global environmental change."
   },
   {
-    title: "A geospatial approach for dynamic on-road emission through open-access floating car data",
-    authors: "Fung, P. L., Al-Jaghbeer, O., Chen, J., Ville-Veikko P., Vosough, S., Roncoli, C., & Järvi, L.",
-    journal: "Environmental Research Letters",
-    year: "2025",
-    thumbnail: "https://content.cld.iop.org/journals/1748-9326/20/1/014033/revision4/erlad984df5_hr.jpg",
-    link: "https://doi.org/10.1088/1748-9326/ad984d",
-    summary: "This study develops a novel framework for estimating dynamic on-road emissions using open-access floating car data. By integrating high-resolution traffic information with emission models, it provides a more accurate representation of urban air quality. The findings highlight the potential of using real-time data for sustainable urban planning."
-  },
-  {
-    title: "Constructing transferable and interpretable machine learning models for black carbon concentrations",
-    authors: "Fung, P. L., Savadkoohi, M., Zaidan, M. A., Niemi, J. V., Timonen, H., Pandolfi, M., Alastuey, A, Querol, X., Hussein, T., & Petäjä, T.",
-    journal: "Environment International",
+    title: "My Planetary Boundary",
     year: "2024",
-    thumbnail: "https://ars.els-cdn.com/content/image/X01604120.jpg",
-    link: "https://doi.org/10.1016/j.envint.2024.108449",
-    summary: "The research explores the development of machine learning models for estimating black carbon concentrations that are both transferable and interpretable. By utilizing multi-pollutant datasets from various urban environments, the study achieves high predictive accuracy. It emphasizes the importance of model transparency in environmental monitoring."
+    vimeoId: "1067876496",
+    description: "A documented art performance that investigates the boundaries of human impact on the planet. Through a series of ritualistic movements and data sonification, the work reflects on our interconnectedness with the Earth's systems."
   },
   {
-    title: "Ozone Fluxes Over a Boreal Lake Exhibit Higher Deposition at Nights",
-    authors: "Fung, P. L., Rannik, Ü., Mammarella, I., & Vesala T.",
-    journal: "Geophysical Research Letters",
+    title: "The Latent Self",
     year: "2023",
-    thumbnail: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.1029/2023GL104354",
-    summary: "This paper investigates ozone deposition over a boreal lake, revealing significantly higher deposition rates during the night. The study utilizes eddy covariance measurements to quantify the exchange of ozone between the atmosphere and the water surface. These insights are critical for improving regional air quality models."
+    vimeoId: "987654321",
+    description: "A series of generative portraits created using custom-trained GANs, reflecting on identity in the age of AI."
   },
   {
-    title: "Exploring the discrepancy between top-down and bottom-up approaches of fine spatio-temporal vehicular CO2 emission in an urban road network",
-    authors: "Fung, P. L., Al-Jaghbeer, O., Pirjola, L., Aaltonen, H., & Järvi, L.",
-    journal: "Science of The Total Environment",
-    year: "2023",
-    thumbnail: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.1016/j.scitotenv.2023.165827",
-    summary: "The study compares top-down and bottom-up approaches for estimating vehicular CO2 emissions in an urban road network. It identifies key discrepancies between the two methods and suggests ways to reconcile them for better emission inventories. The results support more effective climate mitigation strategies in cities."
-  },
-  {
-    title: "Improving the current air quality index with new particulate indicators using a robust statistical approach",
-    authors: "Fung, P. L., Sillanpää, S., Niemi, J. V., Kousa, A., Timonen, H., Zaidan, M. A., Saukko, E., Kulmala, M., Petäjä, T., & Hussein, T.",
-    journal: "Science of The Total Environment",
+    title: "Kinetic Entropy",
     year: "2022",
-    thumbnail: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.1016/j.scitotenv.2022.157099",
-    summary: "This research proposes an enhanced air quality index that incorporates new particulate indicators using a robust statistical approach. By including a wider range of pollutants, the new index provides a more comprehensive assessment of health risks. It offers a valuable tool for public health communication."
+    vimeoId: "456789123",
+    description: "A physical kinetic sculpture that responds to real-time environmental data, creating a dance of controlled chaos."
+  }
+];
+
+const outreach: Outreach[] = [
+  {
+    title: "Advisor for West Coast Cultural Lab",
+    role: "Advisor",
+    date: "2025 - Present",
+    description: [
+      "Joined the group as an advisor to support the development of bridging art and technology.",
+      "Acted as a guest columnist on climate issues for the lab's publication Vancouver On Ink.",
+      <span>Link to the organisation: <a href="https://wcculturallab.ca/" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">West Coast Cultural Lab</a></span>,
+      <span>Link to Vancouver On Ink: <a href="https://recherche-collection-search.bac-lac.gc.ca/eng/Home/Preservica?IdNumber=1535654463&pId=4dfeab2b-a0db-4384-a42c-2e6301e2d1f0&app=laccat&resource=listserial" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Vancouver On Ink</a></span>
+    ]
   },
   {
-    title: "Input-adaptive linear mixed-effects model for estimating alveolar lung-deposited surface area (LDSA) using multipollutant datasets",
-    authors: "Fung, P. L., Zaidan, M. A., Niemi, J. V., Saukko, E., Timonen, H., Kousa, A., Kuula, J., Rönkkö, T., Karppinen, A., Tarkoma, S., Kulmala, M., Petäjä, T., & Hussein, T.",
-    journal: "Atmospheric Chemistry and Physics",
-    year: "2022",
-    thumbnail: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.5194/acp-22-1861-2022",
-    summary: "The paper presents an input-adaptive model for estimating lung-deposited surface area (LDSA) of particles using multi-pollutant datasets. The model adapts to different input configurations, making it versatile for various monitoring networks. It contributes to a better understanding of the health impacts of aerosol exposure."
+    title: "One-Day Stand No.4",
+    role: "Performer",
+    date: "2025",
+    thumbnail: "https://assets.zyrosite.com/A8526V7xnpu7WGDB/ods4-credit-aman-askarizad-106-of-112-m7VboqQJj3ILJaR5.jpg",
+    description: [
+      "Curated and conducted a live art performance 'Inner Complexity' at theotherside, Vantaa, Finland. Performance explored human and non-human interactions involving personal issues and the planetary crisis.",
+      <span>Link to the exhibition: <a href="https://www.theothersidepap.com/ods4" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">theotherside Vantaa</a> | Link to the video: <a href="https://vimeo.com/1170295236" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Inner Complexity</a></span>
+    ]
   },
   {
-    title: "Data imputation in in situ-measured particle size distributions by means of neural networks",
-    authors: "Fung, P. L., Zaidan, M. A., Surakhi, O., Tarkoma, S., Petäjä, T., & Hussein, T.",
-    journal: "Atmospheric Measurement Technique",
-    year: "2021",
-    thumbnail: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.5194/amt-14-5535-2021",
-    summary: "This study utilizes neural networks for imputing missing data in in-situ measured particle size distributions. The proposed method effectively reconstructs missing values, ensuring the continuity of long-term environmental datasets. It demonstrates the power of deep learning in atmospheric data processing."
+    title: "Information is Beautiful Awards",
+    role: "Volunteer",
+    date: "2025",
+    thumbnail: "https://iibawards-prod.s3.amazonaws.com/posts/main_images/000/000/676/page.png?1752210877",
+    description: [
+      "Assisted submissions pruning process for the Awards with Data Visualization Society.",
+      <span>Link to the awards: <a href="https://iibawards.herokuapp.com/news/676-thank-you-to-our-incredible-volunteers" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Information is Beautiful Awards</a></span>
+    ]
   },
   {
-    title: "Evaluation of white-box versus black-box machine learning models in estimating ambient black carbon concentration",
-    authors: "Fung, P. L., Zaidan, M. A., Timonen, H., Niemi, J. V., Kousa, A., Kuula, J., ... & Hussein, T.",
-    journal: "Journal of Aerosol Science",
-    year: "2021",
-    thumbnail: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=200&h=150",
-    link: "https://doi.org/10.1016/j.jaerosci.2021.105694",
-    summary: "The research evaluates the performance of white-box and black-box machine learning models in estimating ambient black carbon concentrations. It compares the accuracy and interpretability of different algorithms, providing guidance for selecting appropriate models. The study highlights the trade-offs between complexity and transparency."
+    title: "SideWalk 1st Ed.",
+    role: "Participant and Exhibitor",
+    date: "2024",
+    thumbnail: "/images/AlanPLFung_MyPlanetaryBoundary_1.JPG",
+    description: [
+      "Curated and exhibited documented art performance 'My Planetary Boundary' through the workshop at theotherside, Vantaa, Finland. Performance explored human and non-human interactions.",
+      <span>Link to the workshop: <a href="https://www.theothersidevantaa.com/1st-ed-2024" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">theotherside Vantaa</a> | Link to the video: <a href="https://vimeo.com/1067876496" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">My planetary boundary</a></span>
+    ]
+  },
+  {
+    title: "Data Art for Climate Action Conference (DACA)",
+    role: "Attendee",
+    date: "2022",
+    description: [
+      "Co-authored artwork 'The echo from the Earth: The melting city' accepted to the conference at University of Graz and the City University of Hong Kong. Performance converted sea level data into soundscapes.",
+      <span>Link to the proceedings: <a href="https://www.researchgate.net/profile/Permagnus-Lindborg-2/publication/372548787_ProceedingsCatalogue_of_the_2022_Conference_on_Data_Art_for_Climate_Action_DACA/links/64be12c195bbbe0c6e5a4235/ProceedingsCatalogue-of-the-2022-Conference-on-Data-Art-for-Climate-Action-DACA.pdf?origin=publicationDetail&_sg%5B0%5D=4hKHXh0qm7OxWvWCMURIZyo9_LhLrwuGYhVWWmXxyyq-dBjwAlFakQXyxMYtXwPFkUjPss0zJRv1lDDfikXMbA.zbd_LtBtNcyJRpw_hDroXvmi2R7T-HEsABO4rzx1EkuI6NJ6qtWALxeplmY_0Ygwz1nMPsBNxYI5yYdjFDz5Ug&_sg%5B1%5D=3suaarjxjoiR6ps04dXVBSjRDUeDj4iJiJ2jgGBcHgk3AxLiJE8MdSNV-piVx31uLr_d0xtBxMdLaD8hhGxXE5raxnAKi4uG8giJwYZ0Kt_9.zbd_LtBtNcyJRpw_hDroXvmi2R7T-HEsABO4rzx1EkuI6NJ6qtWALxeplmY_0Ygwz1nMPsBNxYI5yYdjFDz5Ug&_sg%5B2%5D=pNSASmFxfVH5gs8uvroE_uBkfOgfioWtA1qH6jG72GOTgR5VFMc1O-YVRJH4wrBb653lzuMyz-nlMMs.FF0DPnMT-nL22owGVCKBQ9ehIyGJD0jAWjrV8HBpcJ2Ag1MI9ToSqptDeXF014sqqFNvS73PmpE9XqeMwfq7Kw&_iepl=&_rtd=eyJjb250ZW50SW50ZW50IjoibWFpbkl0ZW0ifQ%3D%3D&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6InB1YmxpY2F0aW9uIiwicGFnZSI6InB1YmxpY2F0aW9uIiwicG9zaXRpb24iOiJwYWdlSGVhZGVyIn19" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Proceedings | Catalogue of the 2022 Conference on Data Art for Climate Action (DACA)</a></span>
+    ]
+  },
+  {
+    title: "You and I, You and Me Workshop",
+    role: "Participant",
+    date: "2022",
+    description: [
+      "Investigated electricity as a medium for communication and environmental connections at Institutio Media, Vilnius, Lithuania. Exhibited self-made headwear on the last day of the workshop.",
+      <span>Link to the workshop: <a href="https://www.o-o.lt/workshop-you-and-i-you-and-me/" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Workshop: You and I, You and Me</a></span>
+    ]
+  },
+  {
+    title: "Double Bill One",
+    role: "Performer",
+    date: "2015",
+    description: [
+      "Performed in an A capella group with Yat Po Singers, Hong Kong.",
+      <span>Link to the performance: <a href="https://www.facebook.com/TAIKOOPLACEHK/posts/10153016401714291/" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Taikoo Place - a cappella-la-la : Double Bill One</a></span>
+    ]
+  },
+  {
+    title: "Black Box Theatre Performances",
+    role: "Performer",
+    date: "2011 - 2015",
+    description: [
+      "Several black box theatre performances in Hong Kong.",
+      <span>Link to the performer’s profile in Hong Kong: <a href="https://www.artmate.net/doc/8272"  target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">ArtMate Profile</a></span>
+    ]
   }
 ];
 
@@ -186,48 +124,44 @@ const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800&h=400"
   },
   {
-    id: '2',
-    title: "Modelling Traffic in the Post-Pandemic Era",
-    date: "January 2024",
-    excerpt: "New trends in urban mobility and their impact on nitrogen dioxide levels.",
-    content: "The COVID-19 pandemic served as a global experiment in urban mobility. As cities ground to a halt, we witnessed unprecedented drops in air pollution. However, as we transition into a post-pandemic world, traffic patterns have shifted in unexpected ways. \n\nOur recent modelling work in Helsinki reveals that while overall volume may have stabilized, the temporal distribution of traffic has changed. This has significant implications for nitrogen dioxide (NO2) hotspots. By utilizing open-access floating car data, we can now model these emissions with higher spatio-temporal resolution than ever before, allowing for more targeted urban planning and public health interventions.",
-    category: 'science',
-    image: "https://images.unsplash.com/photo-1545143333-11ad2b04f147?auto=format&fit=crop&q=80&w=800&h=400"
+    id: '3',
+    title: "Neural Networks as a Creative Medium",
+    date: "February 2024",
+    excerpt: "Exploring the aesthetic potential of latent spaces in generative performance art.",
+    content: "Generative Adversarial Networks (GANs) offer a unique window into the 'subconscious' of machine learning models. By navigating the latent space of custom-trained networks, we can uncover visual forms that are both alien and strangely familiar. \n\nThis post delves into the process of using neural networks as a collaborative partner in performance art. We discuss how the unpredictability of AI output can be harnessed to create visceral theatrical experiences that reflect on identity, memory, and the evolving relationship between humans and technology.",
+    category: 'art',
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800&h=400"
   },
   {
-    id: '4',
-    title: "Machine Learning for Urban Air Quality",
-    date: "November 2023",
-    excerpt: "Developing interpretable models for black carbon concentration estimation.",
-    content: "Machine learning has revolutionized how we approach environmental monitoring. However, the 'black box' nature of many algorithms can be a hurdle for policy-making. Our research focuses on developing 'white-box' or interpretable models that not only predict concentrations but also explain the underlying drivers. \n\nBy integrating multi-pollutant datasets from integrated monitoring networks, we've developed proxies for black carbon that are both accurate and transferable across different urban environments. This transparency is crucial for building trust in data-driven environmental solutions.",
-    category: 'science',
-    image: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&q=80&w=800&h=400"
+    id: '5',
+    title: "The Sound of Sea Level Rise",
+    date: "December 2023",
+    excerpt: "Sonifying climate data for immersive theatrical experiences.",
+    content: "Data sonification transforms numbers into sound, offering a different sensory path to understanding complex phenomena. In our project 'The echo from the Earth', we converted decades of sea level rise data into a multi-layered soundscape. \n\nBy assigning different frequencies and timbres to various environmental parameters, we created an immersive auditory experience that allows the audience to 'hear' the melting of glaciers and the rising of the oceans. This approach moves beyond visual charts, creating a more visceral and emotional connection to the data of climate change.",
+    category: 'art',
+    image: "https://images.unsplash.com/photo-1503095396549-807039045349?auto=format&fit=crop&q=80&w=800&h=450"
   }
 ];
 
 const collaborators = [
-  { name: "University of Helsinki", logo: "https://mrvian.com/wp-content/uploads/2023/06/university-of-helsinki-LOGO.png" },
-  { name: "Lund University", logo: "https://researchtweet.com/wp-content/uploads/2025/04/Lund-University.png" },
-  { name: "University of Hong Kong", logo: "https://academicminute.org/wp-content/uploads/2014/07/hku_logo_1d.png" },
-  { name: "Technical University of Munich", logo: "https://www.jeduka.com/storage/school_image/2/technical-university-of-munich.gif" },
-  { name: "MegaSense Oy", logo: "https://media.licdn.com/dms/image/v2/D4D0BAQE6drGi9EEHKA/company-logo_200_200/B4DZk47wjqHsAI-/0/1757596814179/megasense_logo?e=1774483200&v=beta&t=jrkwyQf-T6HxeAOROZSKJhy99lMz9SxfDoxQO_MuDT0" },
-  { name: "Jacobs China Limited", logo: "https://commons.erau.edu/assets/md5images/aaa14d0d72e875282b549f0f9510fab2.jpg" },
-  { name: "Aalto University", logo: "https://aaltologo.fi/dl.php?type=png&file=logo-86628-1.png" },
-  { name: "Finnish Meteorological Institute", logo: "https://www.clipartmax.com/png/middle/141-1412934_finnish-meteorological-institute.png" },
-  { name: "Helsinki Environmental Services HSY", logo: "https://cdn.cookielaw.org/logos/d07a63b1-b324-490f-a6d1-c702846003d1/effbf2a3-a002-49ca-be49-799d83d67b94/7b1b496c-1518-465f-bf0a-807fc097261f/hsy-logo_600px.jpg" },
-  { name: "Gammons Construction Limited", logo: "https://static.wikia.nocookie.net/logopedia/images/9/96/Gammon.jpg/revision/latest/scale-to-width-down/1200?cb=20191107063654" },
+  { name: "Vantaa Art Museum Artsi", logo: "https://images.squarespace-cdn.com/content/v1/56a0a95c25981d9326cb7e40/904d6b70-45b7-49b6-a0e6-5b01eb6583a3/ARTSI-logo-fi-RGB.png?format=500w" },
+  { name: "Institutio Media", logo: "https://picsum.photos/seed/va/200/100?grayscale" },
+  { name: "FM THEATRE POWER", logo: "https://cdn.art-mate.net/uploads/artmate/201609/thumbnail/20160910_130142_9mHJYdXGXV_p_300_0.jpg" },
+  { name: "Yat Po Singers", logo: "https://tse1.mm.bing.net/th/id/OIP.ne0-eNrhE21VTicOtURQewHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" },
+  { name: "Data Visualisation Society", logo: "https://images.squarespace-cdn.com/content/v1/5c6055b5fb18206d45d6b27e/1562601203642-ZHLHUGGYNWOIZHZK46U9/Data+Visualization+Society+logo+2019-05-transparent.png?format=1500w" },
+  { name: "West Coast Cultural Lab", logo: "https://wcculturallab.ca/wp-content/uploads/2025/07/1-a86299.svg" },
+  { name: "theotherside", logo: "https://assets.zyrosite.com/A8526V7xnpu7WGDB/b-w-red-background-A8548oE97yc4Zp1n.png" },
 ];
 
-export default function ScientistView() {
-  const [showAllPublications, setShowAllPublications] = useState(false);
-  const [showAllEducation, setShowAllEducation] = useState(false);
-  const [showAllExperience, setShowAllExperience] = useState(false);
+export default function ArtistView() {
+  const [showAllOutreach, setShowAllOutreach] = useState(false);
+  const [showAllArtworks, setShowAllArtworks] = useState(false);
   const [showAllBlogPosts, setShowAllBlogPosts] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
-  
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -237,7 +171,7 @@ export default function ScientistView() {
       name: formData.get('name'),
       email: formData.get('email'),
       message: formData.get('message'),
-      view: 'Scientist'
+      view: 'Artist'
     };
 
     try {
@@ -273,17 +207,17 @@ export default function ScientistView() {
       setTimeout(() => setIsSubmitted(false), 5000);
     }
   };
-  const displayedPublications = showAllPublications ? research : research.slice(0, 3);
-  const displayedEducation = showAllEducation ? education : education.slice(0, 3);
-  const displayedExperience = showAllExperience ? work : work.slice(0, 3);
+
+  const displayedOutreach = showAllOutreach ? outreach : outreach.slice(0, 4);
+  const displayedArtworks = showAllArtworks ? artworks : artworks.slice(0, 2);
   const displayedBlogPosts = showAllBlogPosts ? blogPosts : blogPosts.slice(0, 2);
 
   const heroImages = [
-    "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800&h=400",
-    "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800&h=400",
-    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800&h=400",
-    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800&h=400",
-    "https://images.unsplash.com/photo-1545143333-11ad2b04f147?auto=format&fit=crop&q=80&w=800&h=400"
+    "https://images.unsplash.com/photo-1503095396549-807039045349?auto=format&fit=crop&q=80&w=900&h=450",
+    "https://images.unsplash.com/photo-1514525253361-bee8718a340b?auto=format&fit=crop&q=80&w=900&h=450",
+    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=900&h=450",
+    "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80&w=900&h=450",
+    "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=900&h=450"
   ];
 
   useEffect(() => {
@@ -294,45 +228,42 @@ export default function ScientistView() {
   }, []);
 
   return (
-    <div className="bg-slate-50 min-h-screen scientific-grid pb-20 px-[10%]">
+    <div className="bg-black min-h-screen text-white artistic-gradient pb-20 px-[10%]">
       {/* Hero Section */}
-      <section id="about" className="max-w-7xl mx-auto pt-24 pb-16 scroll-mt-32">
+      <section id="about" className="max-w-7xl mx-auto pt-32 pb-24 scroll-mt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <span className="text-emerald-600 font-mono text-sm tracking-widest uppercase mb-4 block">Air Quality & Climate Research</span>
-            <h1 className="text-6xl font-sans font-light tracking-tighter text-slate-900 mb-8 leading-tight">
-              Modelling a <span className="font-medium text-emerald-600">Sustainable</span> Future.
+            <span className="text-rose-500 font-sans text-sm tracking-[0.4em] uppercase mb-6 block">Data Art & Performance</span>
+            <h1 className="text-5xl md:text-6xl font-serif italic mb-8 leading-tight">
+              Where <span className="text-rose-500">Data</span> Meets the Stage.
             </h1>
-            <p className="text-xl text-slate-600 leading-relaxed mb-8">
-              Specializing in air quality modelling, climate change, sustainability, and traffic emissions. 
-              My work focuses on developing machine learning solutions and spatial analysis to quantify 
-              environmental impacts in urban road networks.
+            <p className="max-w-2xl text-xl text-zinc-400 font-light leading-relaxed mb-10">
+              Specializing in data art, science editorial, and performance art. 
+              My work bridges the gap between complex environmental data and visceral 
+              theatrical experiences.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="bg-slate-900 text-white px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-emerald-600 transition-colors flex items-center gap-2">
+            <div className="flex flex-wrap gap-6">
+              <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="bg-rose-500 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-rose-600 transition-colors flex items-center gap-2">
                 <Calendar size={14} /> BOOK A MEETING
               </a>
-              <a href="/cv-scientist.pdf" download className="border border-slate-200 text-slate-900 px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-slate-100 transition-colors flex items-center gap-2">
+              <a href="/cv-artist.pdf" download className="border border-zinc-800 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-zinc-900 transition-colors flex items-center gap-2">
                 <Download size={14} /> DOWNLOAD CV
               </a>
             </div>
             
             <div className="mt-12 flex items-center gap-6">
-              <a href="https://orcid.org/0000-0003-3493-1383" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
-                <BookOpen size={14} /> ORCID
+              <a href="https://www.art-mate.net/doc/8272" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
+                <ExternalLink size={14} /> ART MATE
               </a>
-              <a href="https://scholar.google.com/citations?user=AGbCZG4AAAAJ&hl=en" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
-                <BookOpen size={14} /> GOOGLE SCHOLAR
+              <a href="https://www.instagram.com/fpl.hki/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
+                <Instagram size={14} /> INSTAGRAM
               </a>
-              <a href="https://www.linkedin.com/in/alan-pak-lun-fung/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
+              <a href="https://www.linkedin.com/in/alan-pak-lun-fung/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
                 <Linkedin size={14} /> LINKEDIN
-              </a>
-              <a href="https://github.com/fung-pl" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
-                <Github size={14} /> GITHUB
               </a>
             </div>
           </motion.div>
@@ -341,12 +272,12 @@ export default function ScientistView() {
             animate={{ opacity: 1, scale: 1 }}
             className="space-y-8"
           >
-            <div className="aspect-[2/1] rounded-2xl overflow-hidden border-8 border-white shadow-2xl relative">
+            <div className="aspect-[2/1] rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl shadow-rose-500/10 relative">
               <AnimatePresence mode="wait">
                 <motion.img 
                   key={currentImageIndex}
                   src={heroImages[currentImageIndex]} 
-                  alt="Environmental Research" 
+                  alt="Performance Art" 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -356,24 +287,24 @@ export default function ScientistView() {
                 />
               </AnimatePresence>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
-              <p className="text-[10px] font-mono tracking-widest text-emerald-600 uppercase mb-3">Research Area</p>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-bold text-slate-900">
+            <div className="bg-zinc-900/90 backdrop-blur-md p-8 rounded-2xl border border-rose-500/30 shadow-xl">
+              <p className="text-[10px] font-mono tracking-widest text-rose-500 uppercase mb-3">Current Projects</p>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-serif italic text-white">
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  Air Quality & Traffic Emissions
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                  Atmospheric Data Play
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  Machine Learning Solutions
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                  Inner Complexity Performance
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  Sustainability & Systems Change
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                  My Planetary Boundary
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  Urban Geospatial Analysis
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                  Generative Latent Portraits
                 </li>
               </ul>
             </div>
@@ -381,139 +312,43 @@ export default function ScientistView() {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto space-y-24">
-        {/* Education */}
-        <section id="education" className="scroll-mt-32">
-          <div className="flex items-center gap-3 mb-8">
-            <GraduationCap className="text-emerald-600" size={24} />
-            <h2 className="text-2xl font-sans font-semibold tracking-tight">Education</h2>
+      <div className="max-w-7xl mx-auto space-y-32">
+        {/* Artwork Section */}
+        <section id="works" className="scroll-mt-32">
+          <div className="flex items-center gap-4 mb-12">
+            <Video className="text-rose-500" size={32} />
+            <h2 className="text-4xl font-serif italic">Selected Works</h2>
           </div>
-          <div className="space-y-12">
-            {displayedEducation.map((edu, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="science-border border-emerald-200"
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-lg font-bold text-slate-900">{edu.degree}</h3>
-                  <span className="text-sm font-mono text-slate-400">{edu.year}</span>
-                </div>
-                <p className="text-emerald-600 font-medium mb-2">{edu.institution}</p>
-                {Array.isArray(edu.description) ? (
-                  <ul className="space-y-2 mt-2">
-                    {edu.description.map((item, i) => (
-                      <li key={i} className="text-slate-600 text-sm flex gap-2">
-                        <span className="text-emerald-300">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-slate-600 text-sm leading-relaxed">{edu.description}</p>
-                )}
-              </motion.div>
-            ))}
-          </div>
-          {!showAllEducation && education.length > 3 && (
-            <button 
-              onClick={() => setShowAllEducation(true)}
-              className="w-full mt-8 py-3 border border-dashed border-slate-300 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 hover:border-emerald-600 hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
-            >
-              <Plus size={14} /> SEE MORE EDUCATION
-            </button>
-          )}
-        </section>
-
-        {/* Work Experience */}
-        <section id="experience" className="scroll-mt-32">
-          <div className="flex items-center gap-3 mb-8">
-            <Briefcase className="text-emerald-600" size={24} />
-            <h2 className="text-2xl font-sans font-semibold tracking-tight">Professional Experience</h2>
-          </div>
-          <div className="space-y-12">
-            {displayedExperience.map((job, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="science-border border-emerald-200"
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-lg font-bold text-slate-900">{job.role}</h3>
-                  <span className="text-sm font-mono text-slate-400">{job.period}</span>
-                </div>
-                <p className="text-emerald-600 font-medium mb-4">{job.company}</p>
-                <ul className="space-y-2">
-                  {job.description.map((item, i) => (
-                    <li key={i} className="text-slate-600 text-sm flex gap-2">
-                      <span className="text-emerald-300">•</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-          {!showAllExperience && work.length > 3 && (
-            <button 
-              onClick={() => setShowAllExperience(true)}
-              className="w-full mt-8 py-3 border border-dashed border-slate-300 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 hover:border-emerald-600 hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
-            >
-              <Plus size={14} /> SEE MORE EXPERIENCE
-            </button>
-          )}
-        </section>
-
-        {/* Research Outputs */}
-        <section id="research" className="scroll-mt-32">
-          <div className="flex items-center gap-3 mb-8">
-            <FileText className="text-emerald-600" size={24} />
-            <h2 className="text-2xl font-sans font-semibold tracking-tight">Selected Publications</h2>
-          </div>
-          <div className="space-y-8">
+          <div className="max-w-3xl mx-auto space-y-16">
             <AnimatePresence mode="popLayout">
-              {displayedPublications.map((pub, idx) => (
+              {displayedArtworks.map((art, idx) => (
                 <motion.div 
                   key={idx}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl hover:shadow-emerald-500/5 transition-all flex flex-col md:flex-row gap-6 p-6"
+                  className="space-y-6"
                 >
-                  <div className="w-full md:w-48 h-32 flex-shrink-0 overflow-hidden rounded-lg">
-                    <img 
-                      src={pub.thumbnail} 
-                      alt={pub.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      referrerPolicy="no-referrer"
+                  <div className="aspect-video rounded-3xl overflow-hidden bg-zinc-900 border border-zinc-800 shadow-2xl group relative">
+                    <iframe 
+                      src={`https://player.vimeo.com/video/${art.vimeoId}?autoplay=0&loop=0&byline=0&title=0&portrait=0`}
+                      className="w-full h-full"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
                     />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-[10px] font-mono tracking-widest text-emerald-600 uppercase bg-emerald-50 px-2 py-1 rounded">
-                        {pub.journal}
-                      </span>
-                      <span className="text-xs font-mono text-slate-400">{pub.year}</span>
+                  <div className="px-8">
+                    <div className="flex justify-between items-baseline mb-2">
+                      <h3 className="text-2xl font-serif italic text-white">{art.title}</h3>
+                      <span className="text-sm font-mono text-zinc-500">{art.year}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors leading-tight">
-                      {pub.title}
-                    </h3>
-                    <p className="text-xs text-slate-500 mb-3 italic">{pub.authors}</p>
-                    <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                      {pub.summary}
-                    </p>
+                    <p className="text-zinc-400 font-light leading-relaxed mb-4">{art.description}</p>
                     <a 
-                      href={pub.link}
+                      href={`https://vimeo.com/${art.vimeoId}`}
                       target="_blank"
-                      className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-slate-400 hover:text-slate-900 transition-colors"
+                      className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-rose-500 hover:text-white transition-colors"
                     >
-                      VIEW PUBLICATION <ExternalLink size={12} />
+                      WATCH ON VIMEO <ExternalLink size={12} />
                     </a>
                   </div>
                 </motion.div>
@@ -521,147 +356,206 @@ export default function ScientistView() {
             </AnimatePresence>
           </div>
           
-          {!showAllPublications && research.length > 3 && (
+          {!showAllArtworks && artworks.length > 2 && (
             <button 
-              onClick={() => setShowAllPublications(true)}
-              className="w-full mt-8 py-3 border border-dashed border-slate-300 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 hover:border-emerald-600 hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
+              onClick={() => setShowAllArtworks(true)}
+              className="w-full mt-12 py-4 border border-dashed border-zinc-800 rounded-3xl text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 hover:border-rose-500 hover:bg-rose-500/5 transition-all flex items-center justify-center gap-2"
             >
-              <Plus size={14} /> SEE MORE PUBLICATIONS
+              <Plus size={14} /> SEE MORE WORKS
             </button>
           )}
         </section>
-      </div>
 
-      {/* Blog Section */}
-      <section id="blog" className="max-w-7xl mx-auto py-32 border-t border-slate-200 mt-20 scroll-mt-32">
-        <div className="flex items-center gap-3 mb-12">
-          <Newspaper className="text-emerald-600" size={24} />
-          <h2 className="text-2xl font-sans font-semibold tracking-tight">Science & Art Blog</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <AnimatePresence mode="popLayout">
-            {displayedBlogPosts.map((post) => (
-              <motion.div 
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-lg transition-all group"
-              >
-                <div className="h-48 overflow-hidden">
-                  <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-[10px] font-mono text-emerald-600 uppercase tracking-widest">{post.category}</span>
-                    <span className="text-[10px] font-mono text-slate-400">{post.date}</span>
+        {/* Outreach Section */}
+        <section id="outreach" className="scroll-mt-32">
+          <div className="flex items-center gap-4 mb-12">
+            <Globe className="text-rose-500" size={32} />
+            <h2 className="text-4xl font-serif italic">Outreach & Exhibitions</h2>
+          </div>
+          <div className="max-w-3xl mx-auto space-y-8">
+            <AnimatePresence mode="popLayout">
+              {displayedOutreach.map((item, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="art-border border-zinc-800 p-8 bg-zinc-900/50 rounded-3xl"
+                >
+                  <div className="flex flex-col md:flex-row gap-8">
+                    {item.thumbnail && (
+                      <div className="w-full md:w-48 h-32 flex-shrink-0 rounded-2xl overflow-hidden border border-zinc-800">
+                        <img 
+                          src={item.thumbnail} 
+                          alt={item.title} 
+                          className="w-full h-full object-cover"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                    )}
+                    <div className="flex-1">
+                      <div className="flex justify-between items-baseline mb-2">
+                        <h3 className="text-xl font-medium text-white">{item.title}</h3>
+                        <span className="text-xs font-mono text-zinc-500">{item.date}</span>
+                      </div>
+                      <p className="text-rose-500 text-sm mb-4 font-medium">{item.role}</p>
+                      {Array.isArray(item.description) ? (
+                        <div className="space-y-2">
+                          {item.description.map((line, i) => (
+                            <p key={i} className="text-zinc-400 font-light text-sm leading-relaxed">{line}</p>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-zinc-400 font-light text-sm leading-relaxed">{item.description}</p>
+                      )}
+                    </div>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">{post.title}</h3>
-                  <p className="text-sm text-slate-500 mb-4">{post.excerpt}</p>
-                  <button 
-                    onClick={() => setSelectedPost(post)}
-                    className="text-xs font-mono font-bold text-slate-900 hover:text-emerald-600 transition-colors flex items-center gap-2"
-                  >
-                    READ MORE <ExternalLink size={12} />
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-        
-        {!showAllBlogPosts && blogPosts.length > 2 && (
-          <button 
-            onClick={() => setShowAllBlogPosts(true)}
-            className="w-full mt-12 py-4 border border-dashed border-slate-300 rounded-2xl text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 hover:border-emerald-600 hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
-          >
-            <Plus size={14} /> SEE MORE POSTS
-          </button>
-        )}
-      </section>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+          
+          {!showAllOutreach && outreach.length > 4 && (
+            <button 
+              onClick={() => setShowAllOutreach(true)}
+              className="w-full mt-12 py-4 border border-dashed border-zinc-800 rounded-3xl text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 hover:border-rose-500 hover:bg-rose-500/5 transition-all flex items-center justify-center gap-2"
+            >
+              <Plus size={14} /> SEE MORE OUTREACH
+            </button>
+          )}
+        </section>
 
-      {/* Blog Overlay */}
+        {/* Blog Section */}
+        <section id="blog" className="scroll-mt-32">
+          <div className="flex items-center gap-4 mb-12">
+            <Newspaper className="text-rose-500" size={32} />
+            <h2 className="text-4xl font-serif italic">Science & Art Blog</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <AnimatePresence mode="popLayout">
+              {displayedBlogPosts.map((post) => (
+                <motion.div 
+                  key={post.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-rose-500 transition-all group"
+                >
+                  <div className="h-64 overflow-hidden">
+                    <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
+                  </div>
+                  <div className="p-8">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-[10px] font-mono text-rose-500 uppercase tracking-[0.2em]">{post.category}</span>
+                      <span className="text-[10px] font-mono text-zinc-500">{post.date}</span>
+                    </div>
+                    <h3 className="text-2xl font-serif italic mb-4 group-hover:text-rose-500 transition-colors text-white">{post.title}</h3>
+                    <p className="text-zinc-400 font-light text-sm leading-relaxed mb-6">{post.excerpt}</p>
+                    <button 
+                      onClick={() => setSelectedPost(post)}
+                      className="text-xs font-mono font-bold text-white hover:text-rose-500 transition-colors flex items-center gap-2"
+                    >
+                      READ MORE <ExternalLink size={12} />
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+          
+          {!showAllBlogPosts && blogPosts.length > 2 && (
+            <button 
+              onClick={() => setShowAllBlogPosts(true)}
+              className="w-full mt-12 py-4 border border-dashed border-zinc-800 rounded-3xl text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 hover:border-rose-500 hover:bg-rose-500/5 transition-all flex items-center justify-center gap-2"
+            >
+              <Plus size={14} /> SEE MORE POSTS
+            </button>
+          )}
+        </section>
+
+        {/* Blog Overlay */}
       <BlogOverlay 
         post={selectedPost} 
         onClose={() => setSelectedPost(null)} 
-        view="scientist"
+        view="artist"
       />
 
       {/* Collaborators Section */}
-      <section id="collaborators" className="max-w-7xl mx-auto py-32 border-t border-slate-200 mt-20 scroll-mt-32 overflow-hidden">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-sans font-bold tracking-tight text-slate-900 mb-4">Collaborators & Partners</h2>
-          <p className="text-slate-500 font-mono text-xs tracking-widest uppercase">Institutions I've worked with</p>
-        </div>
-        
-        <div className="relative flex overflow-x-hidden">
-          <motion.div 
-            className="flex gap-12 items-center whitespace-nowrap"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ 
-              duration: 30, 
-              repeat: Infinity, 
-              ease: "linear" 
-            }}
-          >
-            {[...collaborators, ...collaborators].map((collab, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-4 w-40 shrink-0 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
-                <img 
-                  src={collab.logo} 
-                  alt={collab.name} 
-                  className="h-12 w-auto object-contain"
-                  referrerPolicy="no-referrer"
-                />
-                <span className="text-[10px] font-mono text-slate-400 text-center">{collab.name}</span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+        <section id="collaborators" className="py-32 border-t border-zinc-800 scroll-mt-32 overflow-hidden">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-serif italic mb-4 text-white">Collaborators</h2>
+            <p className="text-zinc-500 font-mono text-xs tracking-widest uppercase">Institutions & Partners</p>
+          </div>
+          
+          <div className="relative flex overflow-x-hidden">
+            <motion.div 
+              className="flex gap-12 items-center whitespace-nowrap"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ 
+                duration: 30, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+            >
+              {[...collaborators, ...collaborators].map((collab, idx) => (
+                <div key={idx} className="flex flex-col items-center gap-4 w-40 shrink-0 opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+                  <img 
+                    src={collab.logo} 
+                    alt={collab.name} 
+                    className="h-12 w-auto object-contain invert"
+                    referrerPolicy="no-referrer"
+                  />
+                  <span className="text-[10px] font-mono text-zinc-500 text-center">{collab.name}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
 
-      <SupportSection variant="scientist" />
+        <SupportSection variant="artist" />
 
-      {/* Contact Section */}
-      <div className="max-w-7xl mx-auto">
-        <section id="contact" className="py-32 bg-white rounded-3xl border border-slate-200 shadow-sm px-12 scroll-mt-32">
+        {/* Contact Section */}
+        <section id="contact" className="py-32 bg-zinc-900/50 rounded-[3rem] border border-zinc-800 px-12 scroll-mt-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
-              <h2 className="text-4xl font-sans font-bold tracking-tight text-slate-900 mb-6">Let's Collaborate.</h2>
-              <p className="text-lg text-slate-600 mb-12">
-                Interested in my research or looking to discuss potential collaborations in sustainability and climate modelling? 
-                I'm always open to new ideas and partnerships.
+              <h2 className="text-5xl font-serif italic mb-8 text-white">Get in Touch.</h2>
+              <p className="text-xl text-zinc-400 font-light leading-relaxed mb-12">
+                For exhibition inquiries, theater commissions, or creative collaborations, 
+                please reach out via the form or my social channels.
               </p>
               <div className="space-y-6">
-                <a href="mailto:pleakley9@gmail.com" className="flex items-center gap-4 text-slate-900 hover:text-emerald-600 transition-colors">
-                  <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
+                <a href="mailto:pleakley9@gmail.com" className="flex items-center gap-4 text-white hover:text-rose-500 transition-colors">
+                  <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
                     <Mail size={20} />
                   </div>
-                  <span className="font-mono text-sm tracking-widest uppercase">pleakley9@gmail.com</span>
+                  <span className="font-mono text-sm tracking-widest uppercase text-white">pleakley9@gmail.com</span>
                 </a>
-                <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="flex items-center gap-4 text-slate-900 hover:text-emerald-600 transition-colors">
-                  <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
+                <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="flex items-center gap-4 text-white hover:text-rose-500 transition-colors">
+                  <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
                     <Calendar size={20} />
                   </div>
-                  <span className="font-mono text-sm tracking-widest">BOOK A TIME (GOOGLE CALENDAR)</span>
+                  <span className="font-mono text-sm tracking-widest text-white">BOOK A TIME (GOOGLE CALENDAR)</span>
                 </a>
               </div>
             </div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input required name="name" type="text" placeholder="NAME" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-emerald-600 transition-colors" />
-                <input required name="email" type="email" placeholder="EMAIL" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-emerald-600 transition-colors" />
+                <input required name="name" type="text" placeholder="NAME" className="w-full bg-black border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-rose-500 transition-colors" />
+                <input required name="email" type="email" placeholder="EMAIL" className="w-full bg-black border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-rose-500 transition-colors" />
               </div>
-              <textarea required name="message" placeholder="MESSAGE" rows={5} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-emerald-600 transition-colors" />
+              <textarea required name="message" placeholder="MESSAGE" rows={5} className="w-full bg-black border border-zinc-800 rounded-2xl px-6 py-4 font-mono text-xs tracking-widest focus:outline-none focus:border-rose-500 transition-colors" />
               <button 
                 disabled={isSubmitting || isSubmitted}
-                className="w-full bg-slate-900 text-white py-4 rounded-xl font-mono text-xs font-bold tracking-[0.2em] hover:bg-emerald-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-rose-500 text-white py-4 rounded-2xl font-mono text-xs font-bold tracking-[0.2em] hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'SENDING...' : isSubmitted ? 'MESSAGE SENT!' : 'SEND MESSAGE'}
               </button>
               {isSubmitted && (
-                <p className="text-emerald-600 font-mono text-[10px] text-center uppercase tracking-widest mt-2">
+                <p className="text-rose-500 font-mono text-[10px] text-center uppercase tracking-widest mt-2">
                   Thank you! I'll get back to you soon.
                 </p>
               )}
@@ -669,7 +563,7 @@ export default function ScientistView() {
           </div>
         </section>
       </div>
-      <StatsWidget view="scientist" />
+      <StatsWidget view="artist" />
     </div>
   );
 }

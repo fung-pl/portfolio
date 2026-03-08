@@ -4,7 +4,6 @@ import { Artwork, Outreach, BlogPost } from '../types';
 import { Sparkles, Video, Globe, GraduationCap, Mail, Instagram, ExternalLink, Download, Calendar, Theater, Newspaper, Plus, X, Linkedin } from 'lucide-react';
 import BlogOverlay from './BlogOverlay';
 import StatsWidget from './StatsWidget';
-import { SupportSection } from './SupportSection';
 
 const artworks: Artwork[] = [
   {
@@ -515,8 +514,6 @@ export default function ArtistView() {
             </motion.div>
           </div>
         </section>
-
-        <SupportSection variant="artist" />
 
         {/* Contact Section */}
         <section id="contact" className="py-32 bg-zinc-900/50 rounded-[3rem] border border-zinc-800 px-12 scroll-mt-32">
