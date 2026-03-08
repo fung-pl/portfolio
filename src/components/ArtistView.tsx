@@ -68,7 +68,7 @@ const outreach: Outreach[] = [
     title: "SideWalk 1st Ed.",
     role: "Participant and Exhibitor",
     date: "2024",
-    thumbnail: "/images/AlanPLFung_MyPlanetaryBoundary_1.JPG",
+    thumbnail: `${import.meta.env.BASE_URL}images/planetary-boundary.jpg`.replace('//', '/'),
     description: [
       "Curated and exhibited documented art performance 'My Planetary Boundary' through the workshop at theotherside, Vantaa, Finland. Performance explored human and non-human interactions.",
       <span>Link to the workshop: <a href="https://www.theothersidevantaa.com/1st-ed-2024" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">theotherside Vantaa</a> | Link to the video: <a href="https://vimeo.com/1067876496" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">My planetary boundary</a></span>
