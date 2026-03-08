@@ -4,6 +4,7 @@ import { Education, WorkExperience, ResearchOutput, BlogPost } from '../types';
 import { GraduationCap, Briefcase, FileText, ExternalLink, Mail, Linkedin, Github, Download, Calendar, BookOpen, Newspaper, Plus, X } from 'lucide-react';
 import BlogOverlay from './BlogOverlay';
 import StatsWidget from './StatsWidget';
+import { SupportSection } from './SupportSection';
 
 const education: Education[] = [
   {
@@ -205,16 +206,16 @@ const blogPosts: BlogPost[] = [
 ];
 
 const collaborators = [
-  { name: "University of Helsinki", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/University_of_Helsinki_logo.svg/1200px-University_of_Helsinki_logo.svg.png" },
-  { name: "Lund University", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Lund_University_logo.svg/1200px-Lund_University_logo.svg.png" },
-  { name: "University of Hong Kong", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/3/34/University_of_Hong_Kong_logo.svg/1200px-University_of_Hong_Kong_logo.svg.png" },
-  { name: "Technical University of Munich", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/TU_M%C3%BCnchen_Logo.svg/1200px-TU_M%C3%BCnchen_Logo.svg.png" },
-  { name: "MegaSense Oy", logo: "https://megasense.fi/wp-content/uploads/2020/06/megasense_logo_web.png" },
-  { name: "Jacobs", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Jacobs_Engineering_Group_logo.svg/1200px-Jacobs_Engineering_Group_logo.svg.png" },
-  { name: "Aalto University", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Aalto_University_logo.svg/1200px-Aalto_University_logo.svg.png" },
-  { name: "Finnish Meteorological Institute", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Ilmatieteen_laitos_logo.svg/1200px-Ilmatieteen_laitos_logo.svg.png" },
-  { name: "City of Helsinki", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Helsingin_kaupunki_logo.svg/1200px-Helsingin_kaupunki_logo.svg.png" },
-  { name: "Vaisala", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Vaisala_logo.svg/1200px-Vaisala_logo.svg.png" },
+  { name: "University of Helsinki", logo: "https://mrvian.com/wp-content/uploads/2023/06/university-of-helsinki-LOGO.png" },
+  { name: "Lund University", logo: "https://researchtweet.com/wp-content/uploads/2025/04/Lund-University.png" },
+  { name: "University of Hong Kong", logo: "https://academicminute.org/wp-content/uploads/2014/07/hku_logo_1d.png" },
+  { name: "Technical University of Munich", logo: "https://www.jeduka.com/storage/school_image/2/technical-university-of-munich.gif" },
+  { name: "MegaSense Oy", logo: "https://media.licdn.com/dms/image/v2/D4D0BAQE6drGi9EEHKA/company-logo_200_200/B4DZk47wjqHsAI-/0/1757596814179/megasense_logo?e=1774483200&v=beta&t=jrkwyQf-T6HxeAOROZSKJhy99lMz9SxfDoxQO_MuDT0" },
+  { name: "Jacobs China Limited", logo: "https://commons.erau.edu/assets/md5images/aaa14d0d72e875282b549f0f9510fab2.jpg" },
+  { name: "Aalto University", logo: "https://aaltologo.fi/dl.php?type=png&file=logo-86628-1.png" },
+  { name: "Finnish Meteorological Institute", logo: "https://www.clipartmax.com/png/middle/141-1412934_finnish-meteorological-institute.png" },
+  { name: "Helsinki Environmental Services HSY", logo: "https://cdn.cookielaw.org/logos/d07a63b1-b324-490f-a6d1-c702846003d1/effbf2a3-a002-49ca-be49-799d83d67b94/7b1b496c-1518-465f-bf0a-807fc097261f/hsy-logo_600px.jpg" },
+  { name: "Gammons Construction Limited", logo: "https://static.wikia.nocookie.net/logopedia/images/9/96/Gammon.jpg/revision/latest/scale-to-width-down/1200?cb=20191107063654" },
 ];
 
 export default function ScientistView() {
@@ -619,6 +620,8 @@ export default function ScientistView() {
           </motion.div>
         </div>
       </section>
+
+      <SupportSection variant="scientist" />
 
       {/* Contact Section */}
       <div className="max-w-7xl mx-auto">

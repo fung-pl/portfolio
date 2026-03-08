@@ -4,6 +4,7 @@ import { Artwork, Outreach, BlogPost } from '../types';
 import { Sparkles, Video, Globe, GraduationCap, Mail, Instagram, ExternalLink, Download, Calendar, Theater, Newspaper, Plus, X, Linkedin } from 'lucide-react';
 import BlogOverlay from './BlogOverlay';
 import StatsWidget from './StatsWidget';
+import { SupportSection } from './SupportSection';
 
 const artworks: Artwork[] = [
   {
@@ -58,7 +59,7 @@ const outreach: Outreach[] = [
     title: "Information is Beautiful Awards",
     role: "Volunteer",
     date: "2025",
-    thumbnail: "https://picsum.photos/seed/iib/400/300",
+    thumbnail: "https://iibawards-prod.s3.amazonaws.com/posts/main_images/000/000/676/page.png?1752210877",
     description: [
       "Assisted submissions pruning process for the Awards with Data Visualization Society.",
       <span>Link to the awards: <a href="https://iibawards.herokuapp.com/news/676-thank-you-to-our-incredible-volunteers" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Information is Beautiful Awards</a></span>
@@ -68,7 +69,7 @@ const outreach: Outreach[] = [
     title: "SideWalk 1st Ed.",
     role: "Participant and Exhibitor",
     date: "2024",
-    thumbnail: "https://picsum.photos/seed/sidewalk/400/300",
+    thumbnail: "/images/AlanPLFung_MyPlanetaryBoundary_1.JPG",
     description: [
       "Curated and exhibited documented art performance 'My Planetary Boundary' through the workshop at theotherside, Vantaa, Finland. Performance explored human and non-human interactions.",
       <span>Link to the workshop: <a href="https://www.theothersidevantaa.com/1st-ed-2024" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">theotherside Vantaa</a> | Link to the video: <a href="https://vimeo.com/1067876496" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">My planetary boundary</a></span>
@@ -143,14 +144,11 @@ const blogPosts: BlogPost[] = [
 ];
 
 const collaborators = [
-  { name: "Tate Modern", logo: "https://picsum.photos/seed/tate/200/100?grayscale" },
-  { name: "Ars Electronica", logo: "https://picsum.photos/seed/ars/200/100?grayscale" },
-  { name: "Barbican Centre", logo: "https://picsum.photos/seed/barbican/200/100?grayscale" },
-  { name: "ZKM Center", logo: "https://picsum.photos/seed/zkm/200/100?grayscale" },
-  { name: "V&A Museum", logo: "https://picsum.photos/seed/va/200/100?grayscale" },
-  { name: "Centre Pompidou", logo: "https://picsum.photos/seed/pompidou/200/100?grayscale" },
-  { name: "MoMA", logo: "https://picsum.photos/seed/moma/200/100?grayscale" },
-  { name: "Serpentine Galleries", logo: "https://picsum.photos/seed/serpentine/200/100?grayscale" },
+  { name: "Vantaa Art Museum Artsi", logo: "https://images.squarespace-cdn.com/content/v1/56a0a95c25981d9326cb7e40/904d6b70-45b7-49b6-a0e6-5b01eb6583a3/ARTSI-logo-fi-RGB.png?format=500w" },
+  { name: "Institutio Media", logo: "https://picsum.photos/seed/va/200/100?grayscale" },
+  { name: "FM THEATRE POWER", logo: "https://cdn.art-mate.net/uploads/artmate/201609/thumbnail/20160910_130142_9mHJYdXGXV_p_300_0.jpg" },
+  { name: "Yat Po Singers", logo: "https://tse1.mm.bing.net/th/id/OIP.ne0-eNrhE21VTicOtURQewHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" },
+  { name: "Data Visualisation Society", logo: "https://images.squarespace-cdn.com/content/v1/5c6055b5fb18206d45d6b27e/1562601203642-ZHLHUGGYNWOIZHZK46U9/Data+Visualization+Society+logo+2019-05-transparent.png?format=1500w" },
   { name: "West Coast Cultural Lab", logo: "https://wcculturallab.ca/wp-content/uploads/2025/07/1-a86299.svg" },
   { name: "theotherside", logo: "https://assets.zyrosite.com/A8526V7xnpu7WGDB/b-w-red-background-A8548oE97yc4Zp1n.png" },
 ];
@@ -517,6 +515,8 @@ export default function ArtistView() {
             </motion.div>
           </div>
         </section>
+
+        <SupportSection variant="artist" />
 
         {/* Contact Section */}
         <section id="contact" className="py-32 bg-zinc-900/50 rounded-[3rem] border border-zinc-800 px-12 scroll-mt-32">
