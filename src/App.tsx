@@ -9,11 +9,35 @@ import { ViewMode } from './types';
 import LandingPage from './components/LandingPage';
 import ScientistView from './components/ScientistView';
 import ArtistView from './components/ArtistView';
+import BusinessView from './components/BusinessView';
 import Navbar from './components/Navbar';
+import { CheckCircle2, XCircle } from 'lucide-react';
 
 export default function App() {
   const [view, setView] = useState<ViewMode>('landing');
   const [showNutshell, setShowNutshell] = useState(false);
+  const [notification, setNotification] = useState<{ type: 'success' | 'error', message: string } | null>(null);
+
+  // Handle Stripe redirect params
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('success')) {
+      setNotification({ type: 'success', message: 'Thank you for your generous support!' });
+      // Clean up URL
+      window.history.replaceState({}, '', window.location.pathname);
+    } else if (params.get('canceled')) {
+      setNotification({ type: 'error', message: 'Payment was canceled.' });
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, []);
+
+  // Auto-hide notification
+  useEffect(() => {
+    if (notification) {
+      const timer = setTimeout(() => setNotification(null), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [notification]);
 
   // Scroll to top when view changes
   useEffect(() => {
@@ -61,11 +85,43 @@ export default function App() {
             <main>
               {view === 'scientist' && <ScientistView key="scientist" />}
               {view === 'artist' && <ArtistView key="artist" />}
+              {view === 'business' && <BusinessView key="business" />}
             </main>
             
-            <footer className={`py-12 px-[10%] text-center text-sm ${view === 'artist' ? 'bg-black text-zinc-500' : 'bg-slate-50 text-slate-400'}`}>
+            <footer className={`py-12 px-[10%] text-center text-sm ${view === 'artist' ? 'bg-black text-zinc-500' : view === 'business' ? 'bg-amber-50 text-amber-900/40' : 'bg-slate-50 text-slate-400'}`}>
               <p>© {new Date().getFullYear()} — Dr. Fung. Built with precision and passion.</p>
             </footer>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Notifications */}
+      <AnimatePresence>
+        {notification && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, x: '-50%' }}
+            exit={{ opacity: 0, y: 20, x: '-50%' }}
+            className="fixed bottom-8 left-1/2 z-[200]"
+          >
+            <div className={`flex items-center gap-3 px-6 py-4 rounded-2xl shadow-2xl border ${
+              notification.type === 'success' 
+                ? 'bg-emerald-50 border-emerald-100 text-emerald-800' 
+                : 'bg-rose-50 border-rose-100 text-rose-800'
+            }`}>
+              {notification.type === 'success' ? (
+                <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+              ) : (
+                <XCircle className="w-5 h-5 text-rose-500" />
+              )}
+              <span className="font-medium">{notification.message}</span>
+              <button 
+                onClick={() => setNotification(null)}
+                className="ml-2 opacity-50 hover:opacity-100 transition-opacity"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -96,7 +152,7 @@ export default function App() {
                 <div className="flex-shrink-0 mx-auto md:mx-0">
                   <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-zinc-600 shadow-xl bg-zinc-800 flex items-center justify-center">
                     <img 
-                      src={`${import.meta.env.BASE_URL}images/profile.gif`.replace('//', '/')}
+                      src={`${import.meta.env.BASE_URL}images/profile.gif`.replace('//', '/')} 
                       alt="Dr. Fung" 
                       className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
                       referrerPolicy="no-referrer"

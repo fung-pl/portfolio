@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type ViewMode = 'landing' | 'scientist' | 'artist';
+export type ViewMode = 'landing' | 'scientist' | 'artist' | 'business';
 
 export interface Education {
   degree: string;
