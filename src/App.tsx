@@ -173,6 +173,9 @@ export default function App() {
                     <p>
                       As an <span className="text-rose-400 font-medium">artist</span>, I translate these complex environmental datasets into <span className="text-rose-400 font-medium">visceral</span>, <span className="text-rose-400 font-medium">theatrical experiences</span>. My work explores the intersection of <span className="text-rose-400 font-medium">data and aesthetics</span>, using <span className="text-rose-400 font-medium">performance art</span> and <span className="text-rose-400 font-medium">kinetic sculpture</span> to make the invisible visible.
                     </p>
+                    <p>
+                      In <span className="text-amber-400 font-medium">business</span>, I create sustainable value through <span className="text-amber-400 font-medium">ESG integration</span> and <span className="text-amber-400 font-medium">double materiality assessments</span>. I specialize in <span className="text-amber-400 font-medium">ESRS reporting</span> and <span className="text-amber-400 font-medium">due diligence</span>, helping organizations align with <span className="text-amber-400 font-medium">global megatrends</span> and navigate the transition to a <span className="text-amber-400 font-medium">low-carbon economy</span>.
+                    </p>
                   </div>
                 </div>
               </div>

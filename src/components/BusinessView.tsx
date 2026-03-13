@@ -13,25 +13,26 @@ export default function BusinessView() {
         >
           <span className="text-amber-600 font-mono text-sm tracking-widest uppercase mb-6 block">Business & Sustainability Strategy</span>
           <h1 className="text-5xl md:text-6xl font-sans font-bold text-slate-900 mb-8 leading-tight">
-            Driving <span className="text-amber-600">Impact</span> through Systems Change.
+            Driving <span className="text-amber-600">Sustainable Value</span> through ESG Integration.
           </h1>
           <p className="max-w-2xl text-xl text-slate-600 leading-relaxed mb-10">
             Bridging the gap between scientific insight and corporate sustainability. 
-            Helping organizations navigate complex environmental challenges with data-driven strategies.
+            I analyze ESG adjustments to help companies create long-term value aligned with global megatrends, 
+            leveraging deep proficiency in ESRS reporting, disclosure style, and double materiality assessments.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-amber-100">
-              <h3 className="text-lg font-bold mb-4">Sustainability Consulting</h3>
-              <p className="text-sm text-slate-500">Strategic guidance on carbon roadmaps and environmental compliance.</p>
+              <h3 className="text-lg font-bold mb-4">ESG Integration & Reporting</h3>
+              <p className="text-sm text-slate-500">Expertise in ESRS disclosure and sustainability reporting frameworks to drive transparency.</p>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-amber-100">
-              <h3 className="text-lg font-bold mb-4">Data-Driven Insights</h3>
-              <p className="text-sm text-slate-500">Leveraging air quality and traffic data for smarter urban solutions.</p>
+              <h3 className="text-lg font-bold mb-4">Double Materiality</h3>
+              <p className="text-sm text-slate-500">Conducting rigorous due diligence analysis to identify critical impact and financial materiality.</p>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-amber-100">
-              <h3 className="text-lg font-bold mb-4">Systems Thinking</h3>
-              <p className="text-sm text-slate-500">Applying holistic approaches to solve complex organizational challenges.</p>
+              <h3 className="text-lg font-bold mb-4">Megatrend Alignment</h3>
+              <p className="text-sm text-slate-500">Strategic ESG adjustments to ensure business models remain resilient against future environmental shifts.</p>
             </div>
           </div>
 
