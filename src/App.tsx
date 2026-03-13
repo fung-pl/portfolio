@@ -18,6 +18,15 @@ export default function App() {
   const [showNutshell, setShowNutshell] = useState(false);
   const [notification, setNotification] = useState<{ type: 'success' | 'error', message: string } | null>(null);
 
+  // Initialize view from URL
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const initialView = params.get('view') as ViewMode;
+    if (initialView && ['scientist', 'artist', 'business'].includes(initialView)) {
+      setView(initialView);
+    }
+  }, []);
+
   // Handle Stripe redirect params
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -46,17 +55,27 @@ export default function App() {
 
   // Handle back button/navigation
   useEffect(() => {
-    const handlePopState = () => {
-      setView('landing');
+    const handlePopState = (event: PopStateEvent) => {
+      if (event.state && event.state.view) {
+        setView(event.state.view);
+      } else {
+        const params = new URLSearchParams(window.location.search);
+        const urlView = params.get('view') as ViewMode;
+        setView(urlView || 'landing');
+      }
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const handleSetView = (newView: ViewMode) => {
-    if (newView !== 'landing') {
-      window.history.pushState({ view: newView }, '');
+    const url = new URL(window.location.href);
+    if (newView === 'landing') {
+      url.searchParams.delete('view');
+    } else {
+      url.searchParams.set('view', newView);
     }
+    window.history.pushState({ view: newView }, '', url.toString());
     setView(newView);
   };
 
