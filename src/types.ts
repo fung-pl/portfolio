@@ -32,7 +32,7 @@ export interface BlogPost {
   date: string;
   excerpt: string;
   content: string;
-  category: 'science' | 'art' | 'both';
+  category: 'science' | 'art' | 'both' | 'business';
   image: string;
 }
 

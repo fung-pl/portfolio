@@ -5,7 +5,7 @@ import { BlogPost } from '../types';
 interface BlogOverlayProps {
   post: BlogPost | null;
   onClose: () => void;
-  view: 'scientist' | 'artist';
+  view: 'scientist' | 'artist' | 'business';
 }
 
 export default function BlogOverlay({ post, onClose, view }: BlogOverlayProps) {
@@ -13,10 +13,12 @@ export default function BlogOverlay({ post, onClose, view }: BlogOverlayProps) {
 
   const bgClass = 
     view === 'scientist' ? 'bg-white text-slate-900' : 
+    view === 'business' ? 'bg-amber-50 text-slate-900' :
     'bg-black text-white';
 
   const accentClass = 
     view === 'scientist' ? 'text-emerald-600' : 
+    view === 'business' ? 'text-amber-600' :
     'text-rose-500';
 
   return (

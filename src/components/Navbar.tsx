@@ -33,9 +33,10 @@ export default function Navbar({ currentView, setView, onOpenNutshell }: NavbarP
   ];
 
   const businessLinks = [
-    { name: 'Strategy', href: '#strategy' },
-    { name: 'Consulting', href: '#consulting' },
-    { name: 'Impact', href: '#impact' },
+    { name: 'About', href: '#about' },
+    { name: 'Education', href: '#education' },
+    { name: 'Certification', href: '#certification' },
+    { name: 'Blog', href: '#blog' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -78,7 +79,7 @@ export default function Navbar({ currentView, setView, onOpenNutshell }: NavbarP
           <div className="flex items-center gap-4">
             <button 
               onClick={onOpenNutshell}
-              className={`text-[10px] font-mono tracking-widest uppercase px-3 py-1.5 rounded-full border transition-all ${
+              className={`hidden sm:block text-[10px] font-mono tracking-widest uppercase px-3 py-1.5 rounded-full border transition-all ${
                 isArtist 
                   ? 'border-zinc-800 text-zinc-400 hover:border-rose-500 hover:text-rose-500' 
                   : isBusiness
@@ -86,8 +87,7 @@ export default function Navbar({ currentView, setView, onOpenNutshell }: NavbarP
                   : 'border-slate-200 text-slate-500 hover:border-emerald-600 hover:text-emerald-600'
               }`}
             >
-              <span className="hidden sm:inline">In a nutshell</span>
-              <span className="sm:hidden">Info</span>
+              In a nutshell
             </button>
 
             <button 
