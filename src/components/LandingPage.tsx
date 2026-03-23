@@ -35,7 +35,7 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
     },
     {
       id: 'business' as ViewMode,
-      name: 'Business',
+      name: 'Business\nAnalyst',
       color: 'bg-amber-400',
       textColor: 'text-amber-400',
       borderColor: 'border-amber-400',
@@ -98,7 +98,7 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
                 className={`absolute ${view.labelPosition} flex flex-col items-center text-white pointer-events-none w-full text-center`}
               >
                 <view.icon size={36} className="mb-1 opacity-70 mx-auto" />
-                <span className="font-mono text-[min(3.15vw,21px)] font-bold tracking-[0.2em] uppercase">{view.name}</span>
+                <span className="font-mono text-[min(3.15vw,21px)] font-bold tracking-[0.2em] uppercase whitespace-pre-line leading-tight">{view.name}</span>
               </motion.div>
             </motion.div>
           ))}

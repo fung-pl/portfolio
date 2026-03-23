@@ -69,27 +69,17 @@ export default function Navbar({ currentView, setView, onOpenNutshell }: NavbarP
             
             <div className={`h-4 w-px ${isArtist ? 'bg-zinc-800' : isBusiness ? 'bg-amber-200' : 'bg-slate-200'}`} />
             
-            <div className="flex items-center gap-2">
-              <span className={`text-sm font-sans font-bold tracking-tight whitespace-nowrap ${isArtist ? 'text-white' : isBusiness ? 'text-amber-900' : 'text-slate-900'}`}>
-                Dr. Fung
-              </span>
-            </div>
+            <button 
+              onClick={onOpenNutshell}
+              className={`text-sm font-sans font-bold tracking-tight whitespace-nowrap text-left focus:outline-none transition-opacity hover:opacity-70 active:opacity-50 ${
+                isArtist ? 'text-white' : isBusiness ? 'text-amber-900' : 'text-slate-900'
+              }`}
+            >
+              Dr. Fung
+            </button>
           </div>
 
           <div className="flex items-center gap-4">
-            <button 
-              onClick={onOpenNutshell}
-              className={`hidden sm:block text-[10px] font-mono tracking-widest uppercase px-3 py-1.5 rounded-full border transition-all ${
-                isArtist 
-                  ? 'border-zinc-800 text-zinc-400 hover:border-rose-500 hover:text-rose-500' 
-                  : isBusiness
-                  ? 'border-amber-200 text-amber-600 hover:border-amber-600 hover:text-amber-700'
-                  : 'border-slate-200 text-slate-500 hover:border-emerald-600 hover:text-emerald-600'
-              }`}
-            >
-              In a nutshell
-            </button>
-
             <button 
               onClick={() => setView('scientist')}
               className={`flex items-center gap-2 text-[10px] font-mono tracking-widest uppercase px-3 py-1.5 rounded-full transition-all ${
