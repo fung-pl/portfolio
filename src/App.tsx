@@ -5,6 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Analytics } from '@vercel/analytics/react';
 import { ViewMode } from './types';
 import LandingPage from './components/LandingPage';
 import ScientistView from './components/ScientistView';
@@ -81,6 +82,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen font-sans">
+      <Analytics />
       <AnimatePresence mode="wait">
         {view === 'landing' ? (
           <motion.div
