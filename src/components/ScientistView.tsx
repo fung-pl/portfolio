@@ -176,32 +176,39 @@ const research: ResearchOutput[] = [
 
 const blogPosts: BlogPost[] = [
   {
-    id: '1',
-    title: "The Intersection of Data and Aesthetics",
-    date: "March 2024",
-    excerpt: "How visualizing air quality data can change public perception of climate change.",
-    content: "In the realm of environmental science, data is often perceived as cold, hard, and purely objective. However, when we translate these complex datasets into visual narratives, we bridge the gap between scientific understanding and public engagement. \n\nAir quality data, specifically, carries a weight that numbers alone cannot convey. By using aesthetics to represent pollutant concentrations, we can create an emotional resonance that motivates action. This blog post explores the techniques used to transform nitrogen dioxide and black carbon measurements into compelling visual art that speaks to the urgency of our planetary boundaries.",
-    category: 'both',
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800&h=400"
+    id: '7',
+    title: "Celebrating Dr. Omar Al‑Jaghbeer’s Successful PhD Defence",
+    date: "April 2026",
+    excerpt: "Warm congratulations to Dr. Omar Al‑Jaghbeer on his doctoral dissertation at the University of Helsinki.",
+    content: "Warm congratulations to Dr. Omar Al‑Jaghbeer, who successfully defended his doctoral dissertation at the University of Helsinki. I had the pleasure of co‑supervising Omar over the past 3.5 years, during which he carried out impressive work on CO₂ traffic emission modelling across microscopic, mesoscopic, and macroscopic scales in a northern European city.\n\nOmar’s research brought several methodological advances. He developed a land‑use–based modelling framework using the Local Climate Zone (LCZ) classification to improve traffic emission estimates, and introduced a practical look‑up table concept for emission modelling. His dissertation also clarified why top‑down and bottom‑up estimates diverge at mesoscopic scales, showing the role of meteorological factors, while demonstrating that such factors do not significantly enhance existing microscopic models. It has been inspiring to see his ideas evolve from early concepts into a coherent and impactful body of work.\n\nThe defence, opened by Prof. Leena Järvi at 12:15, featured a thoughtful and engaging discussion between Omar and opponent Prof. Adam Kristensson from Lund University. The session concluded at 13:30, followed by a warm celebration with cakes and drinks.\n\nOmar is now continuing his academic path as a postdoctoral researcher at the University of Helsinki, focusing on aerosol measurement techniques. I’m excited to see where his curiosity and dedication take him next.",
+    category: 'science',
+    image: "https://media.licdn.com/dms/image/v2/D4D22AQHa6eM18YwrsA/feedshare-shrink_800/B4DZ1SwYlOKUAc-/0/1775209908911?e=1776902400&v=beta&t=J2kOqa2pQ8vcc_N7i44LoNilJ1LkZlEkNMQ449IpDV4"
   },
   {
-    id: '2',
-    title: "Modelling Traffic in the Post-Pandemic Era",
-    date: "January 2024",
-    excerpt: "New trends in urban mobility and their impact on nitrogen dioxide levels.",
-    content: "The COVID-19 pandemic served as a global experiment in urban mobility. As cities ground to a halt, we witnessed unprecedented drops in air pollution. However, as we transition into a post-pandemic world, traffic patterns have shifted in unexpected ways. \n\nOur recent modelling work in Helsinki reveals that while overall volume may have stabilized, the temporal distribution of traffic has changed. This has significant implications for nitrogen dioxide (NO2) hotspots. By utilizing open-access floating car data, we can now model these emissions with higher spatio-temporal resolution than ever before, allowing for more targeted urban planning and public health interventions.",
+    id: '12',
+    title: "Representing MegaSense at the Riyadh Construction Expo 2025",
+    date: "September 2025",
+    excerpt: "In September 2025, I had the opportunity to attend a major construction expo in Riyadh, Saudi Arabia, representing MegaSense as an air‑quality expert.",
+    content: "In September 2025, I had the opportunity to attend a major construction expo in Riyadh, Saudi Arabia, representing MegaSense as an air‑quality expert. As a startup that has been developing low‑cost air‑quality sensors since 2019, this was an exciting moment to showcase how our technology can support cleaner, safer construction environments.\n\nOver the three‑day event, we introduced our latest sensor solutions designed specifically for real‑time air‑quality monitoring on construction sites. These compact, affordable devices help contractors track pollution levels as work unfolds—an essential step toward protecting workers and improving environmental compliance. We also highlighted our new fixed indoor sensor, developed in partnership with Loopshore, and shared how we are expanding our capabilities to measure a broader range of pollutants.\n\nAlongside the hardware, we demonstrated our growing suite of digital tools, including real‑time air‑quality modelling and excavation‑risk analysis. With laptops and tablets at the booth, visitors could explore our pilot camera‑based detection system, which identifies construction vehicles on site. The response was overwhelmingly positive—many attendees were excited by the potential of integrating sensor data, modelling, and computer vision into a unified monitoring ecosystem.\n\nThe expo was a clear success. We received encouraging feedback, sparked conversations with industry leaders, and opened doors to both business and scientific collaborations. It’s inspiring to see how much interest there is in practical, scalable air‑quality solutions, and we’re looking forward to building on the momentum.\n\nMore updates soon—this is just the beginning.",
     category: 'science',
-    image: "https://images.unsplash.com/photo-1545143333-11ad2b04f147?auto=format&fit=crop&q=80&w=800&h=400"
+    image: "https://megasense.com/_astro/assets.08fe3bf4_Z1JUpMt.webp"
   },
   {
-    id: '4',
-    title: "Machine Learning for Urban Air Quality",
-    date: "November 2023",
-    excerpt: "Developing interpretable models for black carbon concentration estimation.",
-    content: "Machine learning has revolutionized how we approach environmental monitoring. However, the 'black box' nature of many algorithms can be a hurdle for policy-making. Our research focuses on developing 'white-box' or interpretable models that not only predict concentrations but also explain the underlying drivers. \n\nBy integrating multi-pollutant datasets from integrated monitoring networks, we've developed proxies for black carbon that are both accurate and transferable across different urban environments. This transparency is crucial for building trust in data-driven environmental solutions.",
+    id: '11',
+    title: "Attending EGU25 in Vienna as an Independent Researcher",
+    date: "April 2025",
+    excerpt: "This April, I had the privilege of attending the European Geosciences Union (EGU) General Assembly 2025 in Vienna—an experience that felt especially meaningful as an independent researcher.",
+    content: "This April, I had the privilege of attending the European Geosciences Union (EGU) General Assembly 2025 in Vienna—an experience that felt especially meaningful as an independent researcher. Opportunities like this are rare when you’re between positions and without institutional funding, so I’m deeply grateful for the sponsorship that made it possible. The welcoming session set a warm tone for the week ahead, and it was energising to meet researchers from so many different fields, each bringing their own questions, methods, and stories.\n\nOne of the highlights of the week was presenting my poster, “Capturing and translating the dynamics of traffic emissions using a congestion‑based framework.” Working with colleagues from Helsinki, Munich, and Utrecht, we developed a geospatial approach that uses traffic counters, floating‑car data, road classifications, and meteorological information to model dynamic emissions of CO₂, CO, and NOₓ. Applied in Helsinki and Munich, the framework captured traffic density patterns well (R² = 0.78–0.88) and revealed where local emission inventories align—or diverge—from our estimates. We also tested how well calibration parameters transfer between cities, finding that some road classes behave similarly across regions while others differ. These early results point toward the potential, and the challenges, of scaling the framework to larger multi‑city networks.\n\nSharing this work at EGU25 reminded me why gatherings like this matter. They create space for exchange, curiosity, and connection—things that can be hard to access when working independently. I’m looking forward to seeing how the rest of the week unfolds, and I’m carrying a lot of gratitude with me: for the support that made this trip possible, for the conversations that sparked new ideas, and for the chance to stand among a global community of geoscientists once again.\n\nRead the abstract here: http://doi.org/10.5194/egusphere-egu25-1198",
     category: 'science',
-    image: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&q=80&w=800&h=400"
+    image: "https://media.licdn.com/dms/image/v2/D4D22AQEP0srahlNdWQ/feedshare-shrink_800/B4DZZ464qdHIAk-/0/1745785434198?e=1776902400&v=beta&t=SEKT_OsqD8cwhY2fbo_wfzZ2pO8JWZqvGGfog1swaiY"
   }
+];
+
+const heroImages = [
+  { url: "https://media.licdn.com/dms/image/v2/D4D22AQHa6eM18YwrsA/feedshare-shrink_800/B4DZ1SwYlOKUAc-/0/1775209908911?e=1776902400&v=beta&t=J2kOqa2pQ8vcc_N7i44LoNilJ1LkZlEkNMQ449IpDV4", caption: "Celebrating Dr. Omar Al‑Jaghbeer’s Successful PhD Defence" },
+  { url: "https://megasense.com/_astro/assets.08fe3bf4_Z1JUpMt.webp", caption: "Representing MegaSense at the Riyadh Construction Expo 2025" },
+  { url: "https://media.licdn.com/dms/image/v2/D4D22AQEP0srahlNdWQ/feedshare-shrink_800/B4DZZ464qdHIAk-/0/1745785434198?e=1776902400&v=beta&t=SEKT_OsqD8cwhY2fbo_wfzZ2pO8JWZqvGGfog1swaiY", caption: "Attending EGU25 in Vienna as an Independent Researcher" },
+  { url: "https://megasense.com/_astro/staff.61802cc7_VElfp.webp", caption: "MegaSense Team" }
 ];
 
 const collaborators = [
@@ -209,7 +216,7 @@ const collaborators = [
   { name: "Lund University", logo: "https://researchtweet.com/wp-content/uploads/2025/04/Lund-University.png" },
   { name: "University of Hong Kong", logo: "https://academicminute.org/wp-content/uploads/2014/07/hku_logo_1d.png" },
   { name: "Technical University of Munich", logo: "https://www.jeduka.com/storage/school_image/2/technical-university-of-munich.gif" },
-  { name: "MegaSense Oy", logo: "https://media.licdn.com/dms/image/v2/D4D0BAQE6drGi9EEHKA/company-logo_200_200/B4DZk47wjqHsAI-/0/1757596814179/megasense_logo?e=1774483200&v=beta&t=jrkwyQf-T6HxeAOROZSKJhy99lMz9SxfDoxQO_MuDT0" },
+  { name: "MegaSense Oy", logo: "https://media.licdn.com/dms/image/v2/D4D0BAQE6drGi9EEHKA/company-logo_200_200/B4DZk47wjqHsAI-/0/1757596814179/megasense_logo?e=1776902400&v=beta&t=e7q2Z3OWGxfuxAfrPLpjKNYRALzIzHYBIjuNIUkGPdI" },
   { name: "Jacobs China Limited", logo: "https://commons.erau.edu/assets/md5images/aaa14d0d72e875282b549f0f9510fab2.jpg" },
   { name: "Aalto University", logo: "https://aaltologo.fi/dl.php?type=png&file=logo-86628-1.png" },
   { name: "Finnish Meteorological Institute", logo: "https://www.clipartmax.com/png/middle/141-1412934_finnish-meteorological-institute.png" },
@@ -222,10 +229,17 @@ export default function ScientistView() {
   const [showAllEducation, setShowAllEducation] = useState(false);
   const [showAllExperience, setShowAllExperience] = useState(false);
   const [showAllBlogPosts, setShowAllBlogPosts] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
   
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -277,29 +291,14 @@ export default function ScientistView() {
   const displayedExperience = showAllExperience ? work : work.slice(0, 3);
   const displayedBlogPosts = showAllBlogPosts ? blogPosts : blogPosts.slice(0, 2);
 
-  const heroImages = [
-    "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800&h=400",
-    "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800&h=400",
-    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800&h=400",
-    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800&h=400",
-    "https://images.unsplash.com/photo-1545143333-11ad2b04f147?auto=format&fit=crop&q=80&w=800&h=400"
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="bg-slate-50 min-h-screen scientific-grid pb-20 px-[10%]">
       {/* Hero Section */}
       <section id="about" className="max-w-7xl mx-auto pt-24 pb-16 scroll-mt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
             className="max-w-3xl"
           >
             <span className="text-emerald-600 font-mono text-sm tracking-widest uppercase mb-4 block">Air Quality & Climate Research</span>
@@ -308,7 +307,7 @@ export default function ScientistView() {
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed mb-8">
               Specializing in air quality modelling, climate change, sustainability, and traffic emissions. 
-              My work focuses on developing machine learning solutions and spatial analysis to quantify 
+              My work focuses on developing machine learning solutions, low-cost sensing, and spatial analysis to quantify 
               environmental impacts in urban road networks.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -335,48 +334,36 @@ export default function ScientistView() {
               </a>
             </div>
           </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="space-y-8"
-          >
-            <div className="aspect-[2/1] rounded-2xl overflow-hidden border-8 border-white shadow-2xl relative">
+
+          <div className="lg:col-span-1 space-y-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="relative aspect-[5/3] rounded-3xl overflow-hidden shadow-2xl w-2/3 mx-auto lg:w-full"
+            >
               <AnimatePresence mode="wait">
-                <motion.img 
+                <motion.img
                   key={currentImageIndex}
-                  src={heroImages[currentImageIndex]} 
-                  alt="Environmental Research" 
+                  src={heroImages[currentImageIndex].url}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 1 }}
-                  className="w-full h-full object-cover absolute inset-0"
+                  className="absolute inset-0 w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
               </AnimatePresence>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
-              <p className="text-[10px] font-mono tracking-widest text-emerald-600 uppercase mb-3">Research Area</p>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-bold text-slate-900">
-                <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  Air Quality & Traffic Emissions
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  Machine Learning Solutions
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  Sustainability & Systems Change
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  Urban Geospatial Analysis
-                </li>
-              </ul>
-            </div>
-          </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
+            </motion.div>
+            <motion.p 
+              key={`caption-${currentImageIndex}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-[10px] font-mono text-slate-400 text-center uppercase tracking-widest"
+            >
+              {heroImages[currentImageIndex].caption}
+            </motion.p>
+          </div>
         </div>
       </section>
 
@@ -535,7 +522,7 @@ export default function ScientistView() {
       <section id="blog" className="max-w-7xl mx-auto py-32 border-t border-slate-200 mt-20 scroll-mt-32">
         <div className="flex items-center gap-3 mb-12">
           <Newspaper className="text-emerald-600" size={24} />
-          <h2 className="text-2xl font-sans font-semibold tracking-tight">Science & Art Blog</h2>
+          <h2 className="text-2xl font-sans font-semibold tracking-tight">Science Blog</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <AnimatePresence mode="popLayout">
@@ -549,7 +536,7 @@ export default function ScientistView() {
                 viewport={{ once: true }}
                 className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-lg transition-all group"
               >
-                <div className="h-48 overflow-hidden">
+                <div className="aspect-[5/3] overflow-hidden">
                   <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
                 </div>
                 <div className="p-6">

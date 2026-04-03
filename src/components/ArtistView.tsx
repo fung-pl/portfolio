@@ -114,32 +114,49 @@ const outreach: Outreach[] = [
 
 const blogPosts: BlogPost[] = [
   {
-    id: '1',
-    title: "The Intersection of Data and Aesthetics",
-    date: "March 2024",
-    excerpt: "How visualizing air quality data can change public perception of climate change.",
-    content: "In the realm of environmental science, data is often perceived as cold, hard, and purely objective. However, when we translate these complex datasets into visual narratives, we bridge the gap between scientific understanding and public engagement. \n\nAir quality data, specifically, carries a weight that numbers alone cannot convey. By using aesthetics to represent pollutant concentrations, we can create an emotional resonance that motivates action. This blog post explores the techniques used to transform nitrogen dioxide and black carbon measurements into compelling visual art that speaks to the urgency of our planetary boundaries.",
-    category: 'both',
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800&h=400"
+    id: '9',
+    title: "New Column Published in the Third Edition of Vancouver On Ink",
+    date: "March 2026",
+    excerpt: "I’m happy to share that the third edition of Vancouver On Ink has now been published, featuring my latest piece on how climate change is affecting pets.",
+    content: "I’m happy to share that the third edition of Vancouver On Ink has now been published, and I had the opportunity to contribute another column through the invitation of West Coast Cultural Lab. This issue features my latest piece, “A hotter year ahead: Don’t overlook how climate change is affecting pets,” which explores how rising temperatures are already reshaping the behaviour and wellbeing of animals in Vancouver.\n\nWith extreme heat events becoming more frequent, veterinarians across Canada have reported sharp increases in dehydration and heat‑related illnesses in pets. From dogs refusing midday walks to cats seeking out cooler corners, animals often sense and respond to heat stress long before we do. My column looks at these subtle behavioural cues and why paying attention to them matters—especially as 2026 is expected to be one of the hottest years on record.\n\nIt’s been meaningful to continue contributing science‑based perspectives to the magazine, and I’m grateful for the chance to help readers connect climate change to everyday life, including the wellbeing of the animals we share our homes with.\n\nRead the columns here: https://recherche-collection-search.bac-lac.gc.ca/eng/Home/Preservica?IdNumber=1535654463&pId=4dfeab2b-a0db-4384-a42c-2e6301e2d1f0&app=laccat&resource=listserial",
+    category: 'art',
+    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800&h=400"
   },
   {
-    id: '3',
-    title: "Neural Networks as a Creative Medium",
-    date: "February 2024",
-    excerpt: "Exploring the aesthetic potential of latent spaces in generative performance art.",
-    content: "Generative Adversarial Networks (GANs) offer a unique window into the 'subconscious' of machine learning models. By navigating the latent space of custom-trained networks, we can uncover visual forms that are both alien and strangely familiar. \n\nThis post delves into the process of using neural networks as a collaborative partner in performance art. We discuss how the unpredictability of AI output can be harnessed to create visceral theatrical experiences that reflect on identity, memory, and the evolving relationship between humans and technology.",
+    id: '8',
+    title: "Excited to Continue Writing for Vancouver On Ink",
+    date: "November 2025",
+    excerpt: "I’m delighted to share that I’ve been invited to continue contributing as a column writer for Vancouver On Ink, focusing on air quality and climate issues.",
+    content: "I’m delighted to share that I’ve been invited by West Coast Cultural Lab to continue contributing as a column writer for Vancouver On Ink, focusing on air quality and climate issues relevant to life in Vancouver. Last year, I wrote two pieces for the magazine—one on understanding the Air Quality Health Index (AQHI) during wildfire season, and another on why indoor air quality matters as we move into the colder months. Both articles appear in the issue available through Library and Archives Canada.\n\nVancouver’s air is generally clean, but it’s shaped by a mix of local and regional factors—from traffic along Highway 1 and the Lions Gate Bridge to smoke drifting in from Interior and North Shore wildfires. Tools like the AQHI help translate these conditions into meaningful health guidance, especially when PM2.5 levels rise and the index reaches the 10+ (very high risk) range.\n\nIndoor air quality is equally important during Canadian winters. Tightly sealed homes can trap pollutants such as dust, pet dander, and cooking fumes, and heating systems require proper ventilation to avoid carbon monoxide buildup. Simple habits—changing filters, using exhaust fans, maintaining healthy humidity, or adding an air purifier—can make a real difference in comfort and well‑being.\n\nI’m grateful for the opportunity to continue sharing accessible, science‑based insights with Vancouver readers, and I look forward to contributing more pieces in the months ahead.",
     category: 'art',
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800&h=400"
+    image: "https://images.unsplash.com/photo-1559511260-66a654ae982a?auto=format&fit=crop&q=80&w=800&h=400"
   },
   {
-    id: '5',
-    title: "The Sound of Sea Level Rise",
-    date: "December 2023",
-    excerpt: "Sonifying climate data for immersive theatrical experiences.",
-    content: "Data sonification transforms numbers into sound, offering a different sensory path to understanding complex phenomena. In our project 'The echo from the Earth', we converted decades of sea level rise data into a multi-layered soundscape. \n\nBy assigning different frequencies and timbres to various environmental parameters, we created an immersive auditory experience that allows the audience to 'hear' the melting of glaciers and the rising of the oceans. This approach moves beyond visual charts, creating a more visceral and emotional connection to the data of climate change.",
+    id: '10',
+    title: "Curating Inner Complexity in Vantaa — A Performance About Space, Thought, and Becoming",
+    date: "May 2025",
+    excerpt: "In May 2025, I had the privilege of presenting my performance piece Inner Complexity in Vantaa, Finland, as part of a programme curated by theotherside.",
+    content: "In May 2025, I had the privilege of presenting my performance piece Inner Complexity in Vantaa, Finland, as part of a programme curated by theotherside (@the.other.side.pap). The invitation was an honour, and the experience of performing on the evening of 17 May 2025 remains one of the most meaningful moments in my artistic practice.\n\nInner Complexity is a 20‑minute exploration of how inner space transforms over time—how emptiness gradually becomes structure, and how structure can eventually become constraint. Using threads, strings, and lines, I created a shifting environment around myself. Each time I found a gap to pass through, I added another line, dividing the space further. With every movement, the environment grew denser, more intricate, more restrictive.\n\nWhat began as openness slowly evolved into a web-like architecture—one that I had built myself. Eventually, I reached a point where no passage remained. The space had become too tight, too tangled. To continue, I had to break through the very structure I had created. This moment marked the end of the piece, symbolising how our own thoughts, habits, and internal patterns can accumulate until they hinder our movement, clarity, or growth.\n\nThe audience received the work with warmth and curiosity. Many shared afterwards that they found themselves wondering how the performance would end, and whether it could evolve into a durational piece if time allowed. Their engagement—watching the tension build, sensing the narrowing possibilities—became an integral part of the atmosphere.\n\nI’m grateful to theotherside for the invitation and to everyone who joined us that evening. Inner Complexity continues to shape how I think about space, constraint, and the architectures we build within ourselves. It was a privilege to share this work in Vantaa, and I look forward to developing it further in future contexts.",
     category: 'art',
-    image: "https://images.unsplash.com/photo-1503095396549-807039045349?auto=format&fit=crop&q=80&w=800&h=450"
+    image: "https://assets.zyrosite.com/A8526V7xnpu7WGDB/ods4-credit-aman-askarizad-106-of-112-m7VboqQJj3ILJaR5.jpg"
+  },
+  {
+    id: '13',
+    title: "My planetary boundary — Now Exhibited in Vantaa",
+    date: "October 2024",
+    excerpt: "I’m delighted to share that the documented version of my performance piece My planetary boundary is now on view in Vantaa, Finland, as part of a group exhibition organised by theotherside.",
+    content: "I’m delighted to share that the documented version of my performance piece My planetary boundary is now on view in Vantaa, Finland, as part of a group exhibition organised by theotherside (@the.other.side.pap). This marks my first time participating in a group exhibition, and I’m deeply grateful to everyone who has supported me on this artistic path. The exhibition, held at Galleria K, showcases recorded works developed through the Sidewalk project—an initiative that brought together local participants for eight performance‑art workshops and culminated in site‑specific performances across Vantaa. \n\nThe exhibition captures the energy of this collective journey: glimpses of the installation, moments from the performances, and the community that gathered around them, all reflecting how performance art can reshape our understanding of public and gallery spaces. It’s an honour to have My planetary boundary included among these works, and I’m excited to continue exploring how performance can speak to the tensions, limits, and possibilities within our shared environments.",
+    category: 'art',
+    image: "/images/planetary-boundary-2.JPG"
   }
+];
+
+const heroImages = [
+  { url: "https://assets.zyrosite.com/A8526V7xnpu7WGDB/ods4-credit-aman-askarizad-106-of-112-m7VboqQJj3ILJaR5.jpg", caption: "One-Day Stand No.4 - Inner Complexity Performance" },
+  { url: "https://iibawards-prod.s3.amazonaws.com/posts/main_images/000/000/676/page.png?1752210877", caption: "Information is Beautiful Awards - Volunteer Work" },
+  { url: "/images/planetary-boundary.jpg", caption: "SideWalk 1st Ed. - My Planetary Boundary" },
+  { url: "/images/inner-complexity.jpg", caption: "Inner Complexity Visuals" },
+  { url: "/images/planetary-boundary-2.JPG", caption: "My Planetary Boundary Exhibition" }
 ];
 
 const collaborators = [
@@ -156,10 +173,17 @@ export default function ArtistView() {
   const [showAllOutreach, setShowAllOutreach] = useState(false);
   const [showAllArtworks, setShowAllArtworks] = useState(false);
   const [showAllBlogPosts, setShowAllBlogPosts] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -211,21 +235,6 @@ export default function ArtistView() {
   const displayedArtworks = showAllArtworks ? artworks : artworks.slice(0, 2);
   const displayedBlogPosts = showAllBlogPosts ? blogPosts : blogPosts.slice(0, 2);
 
-  const heroImages = [
-    "https://images.unsplash.com/photo-1503095396549-807039045349?auto=format&fit=crop&q=80&w=900&h=450",
-    "https://images.unsplash.com/photo-1514525253361-bee8718a340b?auto=format&fit=crop&q=80&w=900&h=450",
-    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=900&h=450",
-    "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80&w=900&h=450",
-    "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=900&h=450"
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="bg-black min-h-screen text-white artistic-gradient pb-20 px-[10%]">
       {/* Hero Section */}
@@ -235,13 +244,14 @@ export default function ArtistView() {
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            className="max-w-3xl"
           >
             <span className="text-rose-500 font-sans text-sm tracking-[0.4em] uppercase mb-6 block">Data Art & Performance</span>
             <h1 className="text-5xl md:text-6xl font-serif italic mb-8 leading-tight">
               Where <span className="text-rose-500">Data</span> Meets the Stage.
             </h1>
-            <p className="max-w-2xl text-xl text-zinc-400 font-light leading-relaxed mb-10">
-              Specializing in data art, science editorial, and performance art. 
+            <p className="text-xl text-zinc-400 font-light leading-relaxed mb-10">
+              Specializing in performance art, science editorial, and data art. 
               My work bridges the gap between complex environmental data and visceral 
               theatrical experiences.
             </p>
@@ -266,48 +276,36 @@ export default function ArtistView() {
               </a>
             </div>
           </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="space-y-8"
-          >
-            <div className="aspect-[2/1] rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl shadow-rose-500/10 relative">
+
+          <div className="lg:col-span-1 space-y-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="relative aspect-[5/3] rounded-3xl overflow-hidden shadow-2xl w-2/3 mx-auto lg:w-full"
+            >
               <AnimatePresence mode="wait">
-                <motion.img 
+                <motion.img
                   key={currentImageIndex}
-                  src={heroImages[currentImageIndex]} 
-                  alt="Performance Art" 
+                  src={heroImages[currentImageIndex].url}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 1 }}
-                  className="w-full h-full object-cover absolute inset-0"
+                  className="absolute inset-0 w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
               </AnimatePresence>
-            </div>
-            <div className="bg-zinc-900/90 backdrop-blur-md p-8 rounded-2xl border border-rose-500/30 shadow-xl">
-              <p className="text-[10px] font-mono tracking-widest text-rose-500 uppercase mb-3">Current Projects</p>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-serif italic text-white">
-                <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                  Atmospheric Data Play
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                  Inner Complexity Performance
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                  My Planetary Boundary
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                  Generative Latent Portraits
-                </li>
-              </ul>
-            </div>
-          </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            </motion.div>
+            <motion.p 
+              key={`caption-${currentImageIndex}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-[10px] font-mono text-zinc-500 text-center uppercase tracking-widest"
+            >
+              {heroImages[currentImageIndex].caption}
+            </motion.p>
+          </div>
         </div>
       </section>
 
@@ -430,7 +428,7 @@ export default function ArtistView() {
         <section id="blog" className="scroll-mt-32">
           <div className="flex items-center gap-4 mb-12">
             <Newspaper className="text-rose-500" size={32} />
-            <h2 className="text-4xl font-serif italic">Science & Art Blog</h2>
+            <h2 className="text-4xl font-serif italic">Art Blog</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <AnimatePresence mode="popLayout">
@@ -444,7 +442,7 @@ export default function ArtistView() {
                   viewport={{ once: true }}
                   className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-rose-500 transition-all group"
                 >
-                  <div className="h-64 overflow-hidden">
+                  <div className="aspect-[5/3] overflow-hidden">
                     <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
                   </div>
                   <div className="p-8">

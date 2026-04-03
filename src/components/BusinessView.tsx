@@ -32,32 +32,34 @@ const certifications = [
   }
 ];
 
-const blogPosts: BlogPost[] = [
-  {
-    id: '1',
-    title: "The Intersection of Data and Aesthetics",
-    date: "March 2024",
-    excerpt: "How visualizing air quality data can change public perception of climate change.",
-    content: "In the realm of environmental science, data is often perceived as cold, hard, and purely objective. However, when we translate these complex datasets into visual narratives, we bridge the gap between scientific understanding and public engagement. \n\nAir quality data, specifically, carries a weight that numbers alone cannot convey. By using aesthetics to represent pollutant concentrations, we can create an emotional resonance that motivates action. This blog post explores the techniques used to transform nitrogen dioxide and black carbon measurements into compelling visual art that speaks to the urgency of our planetary boundaries.",
-    category: 'both',
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800&h=400"
-  },
-  {
-    id: '6',
-    title: "ESG Integration in the Modern Enterprise",
-    date: "February 2024",
-    excerpt: "Why double materiality is the key to sustainable value creation.",
-    content: "The shift from traditional CSR to integrated ESG reporting represents a fundamental change in how businesses perceive value. Double materiality—considering both financial materiality and impact materiality—is no longer optional; it is a strategic necessity. \n\nThis post explores how organizations can leverage ESRS frameworks to not only comply with regulations but to uncover new opportunities for innovation and resilience. By aligning corporate strategy with global megatrends, businesses can ensure long-term sustainability while driving positive environmental and social impact.",
-    category: 'business',
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=400"
-  }
-];
+const blogPosts: BlogPost[] = [];
 
 export default function BusinessView() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
 
+  // Coming soon view
+  return (
+    <div className="bg-amber-50 min-h-screen flex items-center justify-center px-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center"
+      >
+        <h1 className="text-5xl md:text-7xl font-sans font-bold text-slate-900 mb-6 tracking-tighter">
+          Coming <span className="text-amber-600 italic">soon.</span>
+        </h1>
+        <p className="text-slate-500 font-mono text-sm tracking-widest uppercase">
+          Business Portfolio Under Construction
+        </p>
+      </motion.div>
+    </div>
+  );
+}
+
+// Original content preserved below for later use
+/*
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -94,7 +96,7 @@ export default function BusinessView() {
 
   return (
     <div className="bg-amber-50 min-h-screen pb-20 px-[10%]">
-      {/* Hero / About Section */}
+      // Hero / About Section
       <section id="about" className="max-w-7xl mx-auto pt-32 pb-24 scroll-mt-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -137,7 +139,7 @@ export default function BusinessView() {
         </motion.div>
       </section>
 
-      {/* Education Section */}
+      // Education Section
       <section id="education" className="max-w-7xl mx-auto py-24 border-t border-amber-200 scroll-mt-32">
         <div className="flex items-center gap-3 mb-12">
           <GraduationCap className="text-amber-600" size={24} />
@@ -170,7 +172,7 @@ export default function BusinessView() {
         </div>
       </section>
 
-      {/* Certification Section */}
+      // Certification Section
       <section id="certification" className="max-w-7xl mx-auto py-24 border-t border-amber-200 scroll-mt-32">
         <div className="flex items-center gap-3 mb-12">
           <Award className="text-amber-600" size={24} />
@@ -196,7 +198,7 @@ export default function BusinessView() {
         </div>
       </section>
 
-      {/* Blog Section */}
+      // Blog Section
       <section id="blog" className="max-w-7xl mx-auto py-24 border-t border-amber-200 scroll-mt-32">
         <div className="flex items-center gap-3 mb-12">
           <Newspaper className="text-amber-600" size={24} />
@@ -233,14 +235,14 @@ export default function BusinessView() {
         </div>
       </section>
 
-      {/* Blog Overlay */}
+      // Blog Overlay
       <BlogOverlay 
         post={selectedPost} 
         onClose={() => setSelectedPost(null)} 
         view="business"
       />
 
-      {/* Contact Section */}
+      // Contact Section
       <section id="contact" className="max-w-7xl mx-auto py-24 border-t border-amber-200 scroll-mt-32">
         <div className="bg-white rounded-[2rem] border border-amber-100 shadow-xl p-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -286,3 +288,4 @@ export default function BusinessView() {
     </div>
   );
 }
+*/
