@@ -27,19 +27,6 @@ export default function App() {
     }
   }, []);
 
-  // Handle Stripe redirect params
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('success')) {
-      setNotification({ type: 'success', message: 'Thank you for your generous support!' });
-      // Clean up URL
-      window.history.replaceState({}, '', window.location.pathname);
-    } else if (params.get('canceled')) {
-      setNotification({ type: 'error', message: 'Payment was canceled.' });
-      window.history.replaceState({}, '', window.location.pathname);
-    }
-  }, []);
-
   // Auto-hide notification
   useEffect(() => {
     if (notification) {

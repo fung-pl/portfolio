@@ -256,7 +256,7 @@ export default function ArtistView() {
               theatrical experiences.
             </p>
             <div className="flex flex-wrap gap-6">
-              <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="bg-rose-500 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-rose-600 transition-colors flex items-center gap-2">
+              <a href="https://calendar.app.google/wvWJo3iS6SNkDjJt9" target="_blank" className="bg-rose-500 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-rose-600 transition-colors flex items-center gap-2">
                 <Calendar size={14} /> BOOK A MEETING
               </a>
               <a href="/cv-artist.pdf" download className="border border-zinc-800 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-zinc-900 transition-colors flex items-center gap-2">
@@ -523,13 +523,13 @@ export default function ArtistView() {
                 please reach out via the form or my social channels.
               </p>
               <div className="space-y-6">
-                <a href="mailto:pleakley9@gmail.com" className="flex items-center gap-4 text-white hover:text-rose-500 transition-colors">
+                <a href="mailto:drfungpaklun@gmail.com" className="flex items-center gap-4 text-white hover:text-rose-500 transition-colors">
                   <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
                     <Mail size={20} />
                   </div>
-                  <span className="font-mono text-sm tracking-widest uppercase text-white">pleakley9@gmail.com</span>
+                  <span className="font-mono text-sm tracking-widest uppercase text-white">drfungpaklun@gmail.com</span>
                 </a>
-                <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="flex items-center gap-4 text-white hover:text-rose-500 transition-colors">
+                <a href="https://calendar.app.google/wvWJo3iS6SNkDjJt9" target="_blank" className="flex items-center gap-4 text-white hover:text-rose-500 transition-colors">
                   <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
                     <Calendar size={20} />
                   </div>

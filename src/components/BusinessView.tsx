@@ -129,7 +129,7 @@ export default function BusinessView() {
           </div>
 
           <div className="flex flex-wrap gap-6">
-            <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="bg-amber-600 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-amber-700 transition-colors flex items-center gap-2">
+            <a href="https://calendar.app.google/wvWJo3iS6SNkDjJt9" target="_blank" className="bg-amber-600 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-amber-700 transition-colors flex items-center gap-2">
               <Calendar size={14} /> SCHEDULE CONSULTATION
             </a>
             <a href="https://www.linkedin.com/in/alan-pak-lun-fung/" target="_blank" className="border border-amber-200 text-amber-900 px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-amber-100 transition-colors flex items-center gap-2">
@@ -253,13 +253,13 @@ export default function BusinessView() {
                 I'm available for consulting and collaborative projects.
               </p>
               <div className="space-y-6">
-                <a href="mailto:pleakley9@gmail.com" className="flex items-center gap-4 text-slate-900 hover:text-amber-600 transition-colors">
+                <a href="mailto:drfungpaklun@gmail.com" className="flex items-center gap-4 text-slate-900 hover:text-amber-600 transition-colors">
                   <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
                     <Mail size={20} className="text-amber-600" />
                   </div>
-                  <span className="font-mono text-sm tracking-widest uppercase">pleakley9@gmail.com</span>
+                  <span className="font-mono text-sm tracking-widest uppercase">drfungpaklun@gmail.com</span>
                 </a>
-                <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="flex items-center gap-4 text-slate-900 hover:text-amber-600 transition-colors">
+                <a href="https://calendar.app.google/wvWJo3iS6SNkDjJt9" target="_blank" className="flex items-center gap-4 text-slate-900 hover:text-amber-600 transition-colors">
                   <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
                     <Calendar size={20} className="text-amber-600" />
                   </div>

@@ -311,7 +311,7 @@ export default function ScientistView() {
               environmental impacts in urban road networks.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="bg-slate-900 text-white px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-emerald-600 transition-colors flex items-center gap-2">
+              <a href="https://calendar.app.google/wvWJo3iS6SNkDjJt9" target="_blank" className="bg-slate-900 text-white px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-emerald-600 transition-colors flex items-center gap-2">
                 <Calendar size={14} /> BOOK A MEETING
               </a>
               <a href="/cv-scientist.pdf" download className="border border-slate-200 text-slate-900 px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-slate-100 transition-colors flex items-center gap-2">
@@ -618,13 +618,13 @@ export default function ScientistView() {
                 I'm always open to new ideas and partnerships.
               </p>
               <div className="space-y-6">
-                <a href="mailto:pleakley9@gmail.com" className="flex items-center gap-4 text-slate-900 hover:text-emerald-600 transition-colors">
+                <a href="mailto:drfungpaklun@gmail.com" className="flex items-center gap-4 text-slate-900 hover:text-emerald-600 transition-colors">
                   <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
                     <Mail size={20} />
                   </div>
-                  <span className="font-mono text-sm tracking-widest uppercase">pleakley9@gmail.com</span>
+                  <span className="font-mono text-sm tracking-widest uppercase">drfungpaklun@gmail.com</span>
                 </a>
-                <a href="https://calendar.app.google/B5RbC99xpbNb7aBR6" target="_blank" className="flex items-center gap-4 text-slate-900 hover:text-emerald-600 transition-colors">
+                <a href="https://calendar.app.google/wvWJo3iS6SNkDjJt9" target="_blank" className="flex items-center gap-4 text-slate-900 hover:text-emerald-600 transition-colors">
                   <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
                     <Calendar size={20} />
                   </div>
