@@ -90,7 +90,7 @@ export default function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <LandingPage onSelect={handleSetView} />
+            <LandingPage onSelect={handleSetView} onOpenNutshell={() => setShowNutshell(true)} />
           </motion.div>
         ) : (
           <motion.div

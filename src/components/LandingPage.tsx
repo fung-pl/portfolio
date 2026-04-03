@@ -5,9 +5,10 @@ import { Beaker, Palette, Briefcase, ChevronRight } from 'lucide-react';
 
 interface LandingPageProps {
   onSelect: (view: ViewMode) => void;
+  onOpenNutshell: () => void;
 }
 
-export default function LandingPage({ onSelect }: LandingPageProps) {
+export default function LandingPage({ onSelect, onOpenNutshell }: LandingPageProps) {
   const [hoveredView, setHoveredView] = useState<ViewMode | null>(null);
 
   const profilePic = `${import.meta.env.BASE_URL}images/profile.gif`.replace('//', '/');
@@ -52,12 +53,13 @@ export default function LandingPage({ onSelect }: LandingPageProps) {
         <motion.div 
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-slate-100 shadow-sm overflow-hidden bg-white"
+          onClick={onOpenNutshell}
+          className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-slate-100 shadow-sm overflow-hidden bg-white cursor-pointer hover:border-rose-500 transition-colors group"
         >
           <img 
             src={profilePic} 
             alt="Dr. Fung" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             referrerPolicy="no-referrer"
           />
         </motion.div>
