@@ -178,6 +178,44 @@ export default function ArtistView() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Sync selectedPost with URL
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get('post');
+    if (postId) {
+      const post = blogPosts.find(p => p.id === postId);
+      if (post) {
+        setSelectedPost(post);
+      }
+    }
+
+    const handlePopState = () => {
+      const currentParams = new URLSearchParams(window.location.search);
+      const currentPostId = currentParams.get('post');
+      if (currentPostId) {
+        const post = blogPosts.find(p => p.id === currentPostId);
+        setSelectedPost(post || null);
+      } else {
+        setSelectedPost(null);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const handleSelectPost = (post: BlogPost | null) => {
+    const url = new URL(window.location.href);
+    if (post) {
+      url.searchParams.set('post', post.id);
+      window.history.pushState({ ...window.history.state, post: post.id }, '', url.toString());
+    } else {
+      url.searchParams.delete('post');
+      window.history.pushState({ ...window.history.state, post: null }, '', url.toString());
+    }
+    setSelectedPost(post);
+  };
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
@@ -238,7 +276,7 @@ export default function ArtistView() {
   return (
     <div className="bg-black min-h-screen text-white artistic-gradient pb-20 px-[10%]">
       {/* Hero Section */}
-      <section id="about" className="max-w-7xl mx-auto pt-32 pb-24 scroll-mt-32">
+      <section id="about" className="max-w-7xl mx-auto pt-24 pb-16 scroll-mt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -251,29 +289,31 @@ export default function ArtistView() {
               Where <span className="text-rose-500">Data</span> Meets the Stage.
             </h1>
             <p className="text-xl text-zinc-400 font-light leading-relaxed mb-10">
-              Specializing in performance art, science editorial, and data art. 
+              Specialising in performance art, science editorial, and data art. 
               My work bridges the gap between complex environmental data and visceral 
               theatrical experiences.
             </p>
-            <div className="flex flex-wrap gap-6">
-              <a href="https://calendar.app.google/wvWJo3iS6SNkDjJt9" target="_blank" className="bg-rose-500 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-rose-600 transition-colors flex items-center gap-2">
-                <Calendar size={14} /> BOOK A MEETING
-              </a>
-              <a href="/cv-artist.pdf" download className="border border-zinc-800 text-white px-8 py-4 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-zinc-900 transition-colors flex items-center gap-2">
-                <Download size={14} /> DOWNLOAD CV
-              </a>
-            </div>
-            
-            <div className="mt-12 flex items-center gap-6">
-              <a href="https://www.art-mate.net/doc/8272" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
-                <ExternalLink size={14} /> ART MATE
-              </a>
-              <a href="https://www.instagram.com/fpl.hki/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
-                <Instagram size={14} /> INSTAGRAM
-              </a>
-              <a href="https://www.linkedin.com/in/alan-pak-lun-fung/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 transition-colors">
-                <Linkedin size={14} /> LINKEDIN
-              </a>
+            <div className="mt-12 space-y-8">
+              <div className="flex flex-wrap items-center gap-4">
+                <a href={`${import.meta.env.BASE_URL}cv-artist.pdf`.replace('//', '/')} download className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-rose-500 hover:bg-rose-600 transition-all px-6 py-3 rounded-full shadow-lg shadow-rose-500/20">
+                  <Download size={14} /> DOWNLOAD CV
+                </a>
+                <a href="mailto:drfungpaklun@gmail.com" className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-rose-500 hover:bg-rose-600 transition-all px-6 py-3 rounded-full shadow-lg shadow-rose-500/20">
+                  <Mail size={14} /> SEND EMAIL
+                </a>
+              </div>
+              
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-4 border-t border-zinc-800">
+                <a href="https://www.art-mate.net/doc/8272" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-rose-500 hover:text-rose-400 transition-colors">
+                  <ExternalLink size={14} /> ART MATE
+                </a>
+                <a href="https://www.instagram.com/fpl.hki/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-rose-500 hover:text-rose-400 transition-colors">
+                  <Instagram size={14} /> INSTAGRAM
+                </a>
+                <a href="https://www.linkedin.com/in/alan-pak-lun-fung/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-rose-500 hover:text-rose-400 transition-colors">
+                  <Linkedin size={14} /> LINKEDIN
+                </a>
+              </div>
             </div>
           </motion.div>
 
@@ -309,7 +349,7 @@ export default function ArtistView() {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto space-y-32">
+      <div className="max-w-7xl mx-auto space-y-24">
         {/* Artwork Section */}
         <section id="works" className="scroll-mt-32">
           <div className="flex items-center gap-4 mb-12">
@@ -425,12 +465,12 @@ export default function ArtistView() {
         </section>
 
         {/* Blog Section */}
-        <section id="blog" className="scroll-mt-32">
+        <section id="blog" className="py-12 border-t border-zinc-800 mt-12 scroll-mt-32">
           <div className="flex items-center gap-4 mb-12">
             <Newspaper className="text-rose-500" size={32} />
             <h2 className="text-4xl font-serif italic">Art Blog</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <AnimatePresence mode="popLayout">
               {displayedBlogPosts.map((post) => (
                 <motion.div 
@@ -440,7 +480,7 @@ export default function ArtistView() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-rose-500 transition-all group"
+                  className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-rose-500 transition-all group"
                 >
                   <div className="aspect-[5/3] overflow-hidden">
                     <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
@@ -453,7 +493,7 @@ export default function ArtistView() {
                     <h3 className="text-2xl font-serif italic mb-4 group-hover:text-rose-500 transition-colors text-white">{post.title}</h3>
                     <p className="text-zinc-400 font-light text-sm leading-relaxed mb-6">{post.excerpt}</p>
                     <button 
-                      onClick={() => setSelectedPost(post)}
+                      onClick={() => handleSelectPost(post)}
                       className="text-xs font-mono font-bold text-white hover:text-rose-500 transition-colors flex items-center gap-2"
                     >
                       READ MORE <ExternalLink size={12} />
@@ -467,22 +507,15 @@ export default function ArtistView() {
           {!showAllBlogPosts && blogPosts.length > 2 && (
             <button 
               onClick={() => setShowAllBlogPosts(true)}
-              className="w-full mt-12 py-4 border border-dashed border-zinc-800 rounded-3xl text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 hover:border-rose-500 hover:bg-rose-500/5 transition-all flex items-center justify-center gap-2"
+              className="w-full mt-12 py-4 border border-dashed border-zinc-800 rounded-2xl text-xs font-mono font-bold text-zinc-500 hover:text-rose-500 hover:border-rose-500 hover:bg-rose-500/5 transition-all flex items-center justify-center gap-2"
             >
               <Plus size={14} /> SEE MORE POSTS
             </button>
           )}
         </section>
 
-        {/* Blog Overlay */}
-      <BlogOverlay 
-        post={selectedPost} 
-        onClose={() => setSelectedPost(null)} 
-        view="artist"
-      />
-
       {/* Collaborators Section */}
-        <section id="collaborators" className="py-32 border-t border-zinc-800 scroll-mt-32 overflow-hidden">
+        <section id="collaborators" className="py-12 border-t border-zinc-800 mt-12 scroll-mt-32 overflow-hidden">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif italic mb-4 text-white">Collaborators</h2>
             <p className="text-zinc-500 font-mono text-xs tracking-widest uppercase">Institutions & Partners</p>
@@ -514,7 +547,7 @@ export default function ArtistView() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-32 bg-zinc-900/50 rounded-[3rem] border border-zinc-800 px-12 scroll-mt-32">
+        <section id="contact" className="py-12 bg-zinc-900/50 rounded-[3rem] border border-zinc-800 px-12 mt-12 scroll-mt-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
               <h2 className="text-5xl font-serif italic mb-8 text-white">Get in Touch.</h2>
@@ -533,7 +566,7 @@ export default function ArtistView() {
                   <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
                     <Calendar size={20} />
                   </div>
-                  <span className="font-mono text-sm tracking-widest text-white">BOOK A TIME (GOOGLE CALENDAR)</span>
+                  <span className="font-mono text-sm tracking-widest text-white">BOOK A TIME</span>
                 </a>
               </div>
             </div>
@@ -558,7 +591,12 @@ export default function ArtistView() {
           </div>
         </section>
       </div>
-      <StatsWidget view="artist" />
+      <BlogOverlay 
+        post={selectedPost} 
+        onClose={() => handleSelectPost(null)} 
+        view="artist"
+      />
+      {!selectedPost && <StatsWidget view="artist" />}
     </div>
   );
 }

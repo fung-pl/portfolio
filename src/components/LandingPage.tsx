@@ -58,7 +58,7 @@ export default function LandingPage({ onSelect, onOpenNutshell }: LandingPagePro
         >
           <img 
             src={profilePic} 
-            alt="Dr. Fung" 
+            alt="Dr. FUNG Pak Lun" 
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             referrerPolicy="no-referrer"
           />
@@ -69,7 +69,7 @@ export default function LandingPage({ onSelect, onOpenNutshell }: LandingPagePro
           animate={{ x: 0, opacity: 1 }}
           className="text-2xl md:text-4xl font-bold tracking-tighter text-slate-900"
         >
-          DR. FUNG
+          Dr. FUNG Pak Lun
         </motion.h1>
       </header>
 

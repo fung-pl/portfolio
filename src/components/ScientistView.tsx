@@ -20,7 +20,7 @@ const education: Education[] = [
     institution: "Lapland University of Applied Science",
     year: "9/2023 − 12/2025",
     description: [
-      "Specialized in Managing Sustainability and Systems Change.",
+      "Specialised in Managing Sustainability and Systems Change.",
       <span>Master thesis: <a href="https://urn.fi/URN:NBN:fi:amk-2025121034323" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Challenges and Insights from Pioneer Higher Education Institutions Utilising Carbon Roadmap.</a></span>
     ]
   },
@@ -47,7 +47,7 @@ const work: WorkExperience[] = [
     company: "MegaSense Oy",
     period: "4/2025 − Present",
     description: [
-      "Data analytics of urban traffic and air quality modeling to support the implementation of green navigation application by using multiple sources of geospatial data",
+      "Data analytics of urban traffic and air quality modelling to support the implementation of green navigation application by using multiple sources of geospatial data",
       "Develped novel digital solutions to high spatio-temporal emission model for anthropogenic pollution sources"
     ]
   },
@@ -98,7 +98,7 @@ const research: ResearchOutput[] = [
     year: "2025",
     thumbnail: "https://ars.els-cdn.com/content/image/1-s2.0-S0269749125X00117-cov200h.gif",
     link: "https://doi.org/10.1016/j.envpol.2025.126361",
-    summary: "This study explores the machine learning (ML) models, including IAP, LASSO, RF, and SNN, to develop a robust BC prediction model for the YRD, based on BC behavior at the Dianshan Lake (DSL) site in Yangtsz River Delta, China."
+    summary: "This study explores the machine learning (ML) models, including IAP, LASSO, RF, and SNN, to develop a robust BC prediction model for the YRD, based on BC behaviour at the Dianshan Lake (DSL) site in Yangtsz River Delta, China."
   },
   {
     title: "A geospatial approach for dynamic on-road emission through open-access floating car data",
@@ -234,6 +234,44 @@ export default function ScientistView() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Sync selectedPost with URL
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get('post');
+    if (postId) {
+      const post = blogPosts.find(p => p.id === postId);
+      if (post) {
+        setSelectedPost(post);
+      }
+    }
+
+    const handlePopState = () => {
+      const currentParams = new URLSearchParams(window.location.search);
+      const currentPostId = currentParams.get('post');
+      if (currentPostId) {
+        const post = blogPosts.find(p => p.id === currentPostId);
+        setSelectedPost(post || null);
+      } else {
+        setSelectedPost(null);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const handleSelectPost = (post: BlogPost | null) => {
+    const url = new URL(window.location.href);
+    if (post) {
+      url.searchParams.set('post', post.id);
+      window.history.pushState({ ...window.history.state, post: post.id }, '', url.toString());
+    } else {
+      url.searchParams.delete('post');
+      window.history.pushState({ ...window.history.state, post: null }, '', url.toString());
+    }
+    setSelectedPost(post);
+  };
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
@@ -306,32 +344,34 @@ export default function ScientistView() {
               Modelling a <span className="font-medium text-emerald-600">Sustainable</span> Future.
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed mb-8">
-              Specializing in air quality modelling, climate change, sustainability, and traffic emissions. 
+              Specialising in air quality modelling, climate change, sustainability, and traffic emissions. 
               My work focuses on developing machine learning solutions, low-cost sensing, and spatial analysis to quantify 
               environmental impacts in urban road networks.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a href="https://calendar.app.google/wvWJo3iS6SNkDjJt9" target="_blank" className="bg-slate-900 text-white px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-emerald-600 transition-colors flex items-center gap-2">
-                <Calendar size={14} /> BOOK A MEETING
-              </a>
-              <a href="/cv-scientist.pdf" download className="border border-slate-200 text-slate-900 px-8 py-3 rounded-full font-mono text-xs font-bold tracking-widest hover:bg-slate-100 transition-colors flex items-center gap-2">
-                <Download size={14} /> DOWNLOAD CV
-              </a>
-            </div>
-            
-            <div className="mt-12 flex items-center gap-6">
-              <a href="https://orcid.org/0000-0003-3493-1383" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
-                <BookOpen size={14} /> ORCID
-              </a>
-              <a href="https://scholar.google.com/citations?user=AGbCZG4AAAAJ&hl=en" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
-                <BookOpen size={14} /> GOOGLE SCHOLAR
-              </a>
-              <a href="https://www.linkedin.com/in/alan-pak-lun-fung/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
-                <Linkedin size={14} /> LINKEDIN
-              </a>
-              <a href="https://github.com/fung-pl" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-slate-400 hover:text-emerald-600 transition-colors">
-                <Github size={14} /> GITHUB
-              </a>
+            <div className="mt-12 space-y-8">
+              <div className="flex flex-wrap items-center gap-4">
+                <a href={`${import.meta.env.BASE_URL}cv-scientist.pdf`.replace('//', '/')} download className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all px-6 py-3 rounded-full shadow-lg shadow-emerald-500/20">
+                  <Download size={14} /> DOWNLOAD CV
+                </a>
+                <a href="mailto:drfungpaklun@gmail.com" className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all px-6 py-3 rounded-full shadow-lg shadow-emerald-500/20">
+                  <Mail size={14} /> SEND EMAIL
+                </a>
+              </div>
+              
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-4 pt-4 border-t border-slate-200">
+                <a href="https://orcid.org/0000-0003-3493-1383" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-600 hover:text-emerald-800 transition-colors">
+                  <BookOpen size={14} /> ORCID
+                </a>
+                <a href="https://scholar.google.com/citations?user=AGbCZG4AAAAJ&hl=en" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-600 hover:text-emerald-800 transition-colors">
+                  <BookOpen size={14} /> GOOGLE SCHOLAR
+                </a>
+                <a href="https://www.linkedin.com/in/alan-pak-lun-fung/" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-600 hover:text-emerald-800 transition-colors">
+                  <Linkedin size={14} /> LINKEDIN
+                </a>
+                <a href="https://github.com/fung-pl" target="_blank" className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-600 hover:text-emerald-800 transition-colors">
+                  <Github size={14} /> GITHUB
+                </a>
+              </div>
             </div>
           </motion.div>
 
@@ -519,7 +559,7 @@ export default function ScientistView() {
       </div>
 
       {/* Blog Section */}
-      <section id="blog" className="max-w-7xl mx-auto py-32 border-t border-slate-200 mt-20 scroll-mt-32">
+      <section id="blog" className="max-w-7xl mx-auto py-12 border-t border-slate-200 mt-12 scroll-mt-32">
         <div className="flex items-center gap-3 mb-12">
           <Newspaper className="text-emerald-600" size={24} />
           <h2 className="text-2xl font-sans font-semibold tracking-tight">Science Blog</h2>
@@ -547,7 +587,7 @@ export default function ScientistView() {
                   <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">{post.title}</h3>
                   <p className="text-sm text-slate-500 mb-4">{post.excerpt}</p>
                   <button 
-                    onClick={() => setSelectedPost(post)}
+                    onClick={() => handleSelectPost(post)}
                     className="text-xs font-mono font-bold text-slate-900 hover:text-emerald-600 transition-colors flex items-center gap-2"
                   >
                     READ MORE <ExternalLink size={12} />
@@ -571,12 +611,12 @@ export default function ScientistView() {
       {/* Blog Overlay */}
       <BlogOverlay 
         post={selectedPost} 
-        onClose={() => setSelectedPost(null)} 
+        onClose={() => handleSelectPost(null)} 
         view="scientist"
       />
 
       {/* Collaborators Section */}
-      <section id="collaborators" className="max-w-7xl mx-auto py-32 border-t border-slate-200 mt-20 scroll-mt-32 overflow-hidden">
+      <section id="collaborators" className="max-w-7xl mx-auto py-12 border-t border-slate-200 mt-12 scroll-mt-32 overflow-hidden">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-sans font-bold tracking-tight text-slate-900 mb-4">Collaborators & Partners</h2>
           <p className="text-slate-500 font-mono text-xs tracking-widest uppercase">Institutions I've worked with</p>
@@ -609,7 +649,7 @@ export default function ScientistView() {
 
       {/* Contact Section */}
       <div className="max-w-7xl mx-auto">
-        <section id="contact" className="py-32 bg-white rounded-3xl border border-slate-200 shadow-sm px-12 scroll-mt-32">
+        <section id="contact" className="py-12 bg-white rounded-3xl border border-slate-200 shadow-sm px-12 scroll-mt-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
               <h2 className="text-4xl font-sans font-bold tracking-tight text-slate-900 mb-6">Let's Collaborate.</h2>
@@ -628,7 +668,7 @@ export default function ScientistView() {
                   <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center">
                     <Calendar size={20} />
                   </div>
-                  <span className="font-mono text-sm tracking-widest">BOOK A TIME (GOOGLE CALENDAR)</span>
+                  <span className="font-mono text-sm tracking-widest">BOOK A TIME</span>
                 </a>
               </div>
             </div>
@@ -653,7 +693,7 @@ export default function ScientistView() {
           </div>
         </section>
       </div>
-      <StatsWidget view="scientist" />
+      {!selectedPost && <StatsWidget view="scientist" />}
     </div>
   );
 }

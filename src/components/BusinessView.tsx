@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { Briefcase, Mail, Calendar, Linkedin, GraduationCap, Award, Newspaper, ExternalLink } from 'lucide-react';
 import StatsWidget from './StatsWidget';
@@ -11,7 +11,7 @@ const education = [
     institution: "Lapland University of Applied Science",
     year: "9/2023 − 12/2025",
     description: [
-      "Specialized in Managing Sustainability and Systems Change.",
+      "Specialised in Managing Sustainability and Systems Change.",
       <span>Master thesis: <a href="https://urn.fi/URN:NBN:fi:amk-2025121034323" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline">Challenges and Insights from Pioneer Higher Education Institutions Utilising Carbon Roadmap.</a></span>
     ]
   }
@@ -38,6 +38,44 @@ export default function BusinessView() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+
+  // Sync selectedPost with URL
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get('post');
+    if (postId) {
+      const post = blogPosts.find(p => p.id === postId);
+      if (post) {
+        setSelectedPost(post);
+      }
+    }
+
+    const handlePopState = () => {
+      const currentParams = new URLSearchParams(window.location.search);
+      const currentPostId = currentParams.get('post');
+      if (currentPostId) {
+        const post = blogPosts.find(p => p.id === currentPostId);
+        setSelectedPost(post || null);
+      } else {
+        setSelectedPost(null);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const handleSelectPost = (post: BlogPost | null) => {
+    const url = new URL(window.location.href);
+    if (post) {
+      url.searchParams.set('post', post.id);
+      window.history.pushState({ ...window.history.state, post: post.id }, '', url.toString());
+    } else {
+      url.searchParams.delete('post');
+      window.history.pushState({ ...window.history.state, post: null }, '', url.toString());
+    }
+    setSelectedPost(post);
+  };
 
   // Coming soon view
   return (
@@ -109,7 +147,7 @@ export default function BusinessView() {
           </h1>
           <p className="max-w-2xl text-xl text-slate-600 leading-relaxed mb-10">
             Bridging the gap between scientific insight and corporate sustainability. 
-            I analyze ESG adjustments to help companies create long-term value aligned with global megatrends, 
+            I analyse ESG adjustments to help companies create long-term value aligned with global megatrends, 
             leveraging deep proficiency in ESRS reporting, disclosure style, and double materiality assessments.
           </p>
           
@@ -238,7 +276,7 @@ export default function BusinessView() {
       // Blog Overlay
       <BlogOverlay 
         post={selectedPost} 
-        onClose={() => setSelectedPost(null)} 
+        onClose={() => handleSelectPost(null)} 
         view="business"
       />
 
