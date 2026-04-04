@@ -1,49 +1,17 @@
 {
   "version": 2,
-  "headers": [
+  "headers": [],
+  "routes": [
     {
-      "source": "/cv-scientist.pdf",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/pdf"
-        },
-        {
-          "key": "Content-Disposition",
-          "value": "inline"
-        }
-      ]
+      "src": "/api/(.*)",
+      "dest": "/api/index.ts"
     },
     {
-      "source": "/cv-artist.pdf",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/pdf"
-        },
-        {
-          "key": "Content-Disposition",
-          "value": "inline"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/index.ts"
+      "handle": "filesystem"
     },
     {
-      "source": "/cv-scientist.pdf",
-      "destination": "/cv-scientist.pdf"
-    },
-    {
-      "source": "/cv-artist.pdf",
-      "destination": "/cv-artist.pdf"
-    },
-    {
-      "source": "/((?!api/|cv-scientist\\.pdf|cv-artist\\.pdf).*)",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
