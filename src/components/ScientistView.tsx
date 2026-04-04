@@ -351,7 +351,7 @@ export default function ScientistView() {
             <div className="mt-12 space-y-8">
               <div className="flex flex-wrap items-center gap-4">
                 <a 
-                  href="/cv-scientist.pdf" 
+                  href="/cv-scientist-fung.pdf" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all px-6 py-3 rounded-full shadow-lg shadow-emerald-500/20"
