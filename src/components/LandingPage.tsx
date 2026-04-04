@@ -11,7 +11,7 @@ interface LandingPageProps {
 export default function LandingPage({ onSelect, onOpenNutshell }: LandingPageProps) {
   const [hoveredView, setHoveredView] = useState<ViewMode | null>(null);
 
-  const profilePic = `${import.meta.env.BASE_URL}images/profile.gif`.replace('//', '/');
+  const profilePic = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/images/profile.gif`;
 
   const views = [
     {

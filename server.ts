@@ -41,6 +41,9 @@ async function startServer() {
   app.use(cors());
   app.use(express.json());
 
+  // Serve static files from the public directory
+  app.use(express.static("public"));
+
   // API Routes
   app.post("/api/contact", async (req, res) => {
     const { name, email, message, view } = req.body;

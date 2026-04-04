@@ -350,7 +350,7 @@ export default function ScientistView() {
             </p>
             <div className="mt-12 space-y-8">
               <div className="flex flex-wrap items-center gap-4">
-                <a href={`${import.meta.env.BASE_URL}cv-scientist.pdf`.replace('//', '/')} download className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all px-6 py-3 rounded-full shadow-lg shadow-emerald-500/20">
+                <a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/cv-scientist.pdf`} download className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all px-6 py-3 rounded-full shadow-lg shadow-emerald-500/20">
                   <Download size={14} /> DOWNLOAD CV
                 </a>
                 <a href="mailto:drfungpaklun@gmail.com" className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all px-6 py-3 rounded-full shadow-lg shadow-emerald-500/20">
