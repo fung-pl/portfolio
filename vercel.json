@@ -2,7 +2,20 @@
   "version": 2,
   "headers": [
     {
-      "source": "/(.*)\\.pdf",
+      "source": "/cv-scientist.pdf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/pdf"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "inline"
+        }
+      ]
+    },
+    {
+      "source": "/cv-artist.pdf",
       "headers": [
         {
           "key": "Content-Type",
@@ -15,17 +28,22 @@
       ]
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/index.ts"
+      "source": "/api/(.*)",
+      "destination": "/api/index.ts"
     },
     {
-      "handle": "filesystem"
+      "source": "/cv-scientist.pdf",
+      "destination": "/cv-scientist.pdf"
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/cv-artist.pdf",
+      "destination": "/cv-artist.pdf"
+    },
+    {
+      "source": "/((?!api/|cv-scientist\\.pdf|cv-artist\\.pdf).*)",
+      "destination": "/index.html"
     }
   ]
 }
