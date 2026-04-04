@@ -295,7 +295,11 @@ export default function ArtistView() {
             </p>
             <div className="mt-12 space-y-8">
               <div className="flex flex-wrap items-center gap-4">
-                <a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/cv-artist.pdf`} download className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-rose-500 hover:bg-rose-600 transition-all px-6 py-3 rounded-full shadow-lg shadow-rose-500/20">
+                <a 
+                  href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/cv-artist.pdf`} 
+                  download="cv-artist.pdf" 
+                  className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-rose-500 hover:bg-rose-600 transition-all px-6 py-3 rounded-full shadow-lg shadow-rose-500/20"
+                >
                   <Download size={14} /> DOWNLOAD CV
                 </a>
                 <a href="mailto:drfungpaklun@gmail.com" className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-rose-500 hover:bg-rose-600 transition-all px-6 py-3 rounded-full shadow-lg shadow-rose-500/20">
