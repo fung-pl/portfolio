@@ -17,18 +17,6 @@ const artworks: Artwork[] = [
     year: "2024",
     vimeoId: "1067876496",
     description: "A documented art performance that investigates the boundaries of human impact on the planet. Through a series of ritualistic movements and data sonification, the work reflects on our interconnectedness with the Earth's systems."
-  },
-  {
-    title: "The Latent Self",
-    year: "2023",
-    vimeoId: "987654321",
-    description: "A series of generative portraits created using custom-trained GANs, reflecting on identity in the age of AI."
-  },
-  {
-    title: "Kinetic Entropy",
-    year: "2022",
-    vimeoId: "456789123",
-    description: "A physical kinetic sculpture that responds to real-time environmental data, creating a dance of controlled chaos."
   }
 ];
 
