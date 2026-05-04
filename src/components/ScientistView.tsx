@@ -205,18 +205,18 @@ const blogPosts: BlogPost[] = [
 ];
 
 const heroImages = [
-  { url: "/images/defence2026.JPG", caption: "Celebrating Dr. Omar Al‑Jaghbeer’s Successful PhD Defence" },
+  { url: "/images/defence2026.jpg", caption: "Celebrating Dr. Omar Al‑Jaghbeer’s Successful PhD Defence" },
   { url: "https://megasense.com/_astro/assets.08fe3bf4_Z1JUpMt.webp", caption: "Representing MegaSense at the Riyadh Construction Expo 2025" },
-  { url: "/images/EGU2025.JPG", caption: "Attending EGU25 in Vienna as an Independent Researcher" },
+  { url: "/images/EGU2025.jpg", caption: "Attending EGU25 in Vienna as an Independent Researcher" },
   { url: "https://megasense.com/_astro/staff.61802cc7_VElfp.webp", caption: "MegaSense Team" }
 ];
 
 const collaborators = [
   { name: "University of Helsinki", logo: "https://mrvian.com/wp-content/uploads/2023/06/university-of-helsinki-LOGO.png" },
   { name: "Lund University", logo: "https://researchtweet.com/wp-content/uploads/2025/04/Lund-University.png" },
-  { name: "University of Hong Kong", logo: "https://academicminute.org/wp-content/uploads/2014/07/hku_logo_1d.png" },
+  { name: "University of Hong Kong", logo: "https://logonoid.com/images/university-of-hong-kong-logo.png" },
   { name: "Technical University of Munich", logo: "https://www.jeduka.com/storage/school_image/2/technical-university-of-munich.gif" },
-  { name: "MegaSense Oy", logo: "https://media.licdn.com/dms/image/v2/D4D0BAQE6drGi9EEHKA/company-logo_200_200/B4DZk47wjqHsAI-/0/1757596814179/megasense_logo?e=1776902400&v=beta&t=e7q2Z3OWGxfuxAfrPLpjKNYRALzIzHYBIjuNIUkGPdI" },
+  { name: "MegaSense Oy", logo: "https://megasense.com/_astro/Megasense_logo_lossless_white.1fcc34df.svg" },
   { name: "Jacobs China Limited", logo: "https://commons.erau.edu/assets/md5images/aaa14d0d72e875282b549f0f9510fab2.jpg" },
   { name: "Aalto University", logo: "https://aaltologo.fi/dl.php?type=png&file=logo-86628-1.png" },
   { name: "Finnish Meteorological Institute", logo: "https://www.clipartmax.com/png/middle/141-1412934_finnish-meteorological-institute.png" },
