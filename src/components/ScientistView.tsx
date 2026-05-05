@@ -216,7 +216,7 @@ const collaborators = [
   { name: "Lund University", logo: "https://researchtweet.com/wp-content/uploads/2025/04/Lund-University.png" },
   { name: "University of Hong Kong", logo: "https://logonoid.com/images/university-of-hong-kong-logo.png" },
   { name: "Technical University of Munich", logo: "https://www.jeduka.com/storage/school_image/2/technical-university-of-munich.gif" },
-  { name: "MegaSense Oy", logo: "https://megasense.com/_astro/Megasense_logo_lossless_white.1fcc34df.svg" },
+  { name: "MegaSense Oy", logo: "/images/megasense.svg" },
   { name: "Jacobs China Limited", logo: "https://commons.erau.edu/assets/md5images/aaa14d0d72e875282b549f0f9510fab2.jpg" },
   { name: "Aalto University", logo: "https://aaltologo.fi/dl.php?type=png&file=logo-86628-1.png" },
   { name: "Finnish Meteorological Institute", logo: "https://www.clipartmax.com/png/middle/141-1412934_finnish-meteorological-institute.png" },
