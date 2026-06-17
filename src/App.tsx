@@ -5,6 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { ViewMode } from './types';
 import LandingPage from './components/LandingPage';
 import ScientistView from './components/ScientistView';
@@ -69,6 +70,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen font-sans">
+      <SpeedInsights />
       <AnimatePresence mode="wait">
         {view === 'landing' ? (
           <motion.div
