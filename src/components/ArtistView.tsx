@@ -45,7 +45,7 @@ const outreach: Outreach[] = [
     thumbnail: "https://www.live-art.ie/wp-content/uploads/2026/07/LFAS-eventbrite-1260x600.png",
     description: [
       "Conducted a live art performance 'The Two Gate Climbers' during the art residency at Live Art Ireland. Performance explored human and non-human interactions through space.",
-      <span>Link to the residency: <a href="https://www.live-art.ie/2026/05/01/flesh-as-witness/" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Live Art Ireland</a> | Link to the video: <a href="https://vimeo.com/1220443474" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Inner Complexity</a></span>
+      <span>Link to the residency: <a href="https://www.live-art.ie/2026/05/01/flesh-as-witness/" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Live Art Ireland</a> | Link to the video: <a href="https://vimeo.com/1220443474" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">The Two Gate Climbers</a></span>
     ]
   },  
   {
@@ -171,6 +171,7 @@ const collaborators = [
   { name: "Data Visualisation Society", logo: "https://images.squarespace-cdn.com/content/v1/5c6055b5fb18206d45d6b27e/1562601203642-ZHLHUGGYNWOIZHZK46U9/Data+Visualization+Society+logo+2019-05-transparent.png?format=1500w" },
   { name: "West Coast Cultural Lab", logo: "https://wcculturallab.ca/wp-content/uploads/2025/07/1-a86299.svg" },
   { name: "theotherside", logo: "https://assets.zyrosite.com/A8526V7xnpu7WGDB/b-w-red-background-A8548oE97yc4Zp1n.png" },
+  { name: "Live Art Ireland", logo: "https://www.live-art.ie/wp-content/uploads/2023/02/cropped-BW-Inverse-Logo1.png" },
 ];
 
 export default function ArtistView() {
