@@ -43,16 +43,25 @@ const education: Education[] = [
 
 const work: WorkExperience[] = [
   {
-    role: "Air Quality Expert/Data Analyst",
-    company: "MegaSense Oy",
-    period: "4/2025 − Present",
+    role: "Post-doctoral Researcher",
+    company: "Finnish Meteorological Institute",
+    period: "6/2026 − Present",
     description: [
-      "Data analytics of urban traffic and air quality modelling to support the implementation of green navigation application by using multiple sources of geospatial data",
-      "Develped novel digital solutions to high spatio-temporal emission model for anthropogenic pollution sources"
+      "Developed machine learning models to identify heat island hotspots at Helsinki Metropolitan Area",
+      "Determined urban features that contribute to heat island impacts using urban climate sensors across the city"
     ]
   },
   {
-    role: "Post-doctoral researcher",
+    role: "Air Quality Expert/Data Analyst",
+    company: "MegaSense Oy",
+    period: "4/2025 − 2/2026",
+    description: [
+      "Data analytics of urban traffic and air quality modelling to support the implementation of green navigation application by using multiple sources of geospatial data",
+      "Developed novel digital solutions to high spatio-temporal emission model for anthropogenic pollution sources"
+    ]
+  },
+  {
+    role: "Post-doctoral Researcher",
     company: "University of Helsinki",
     period: "3/2022 − 12/2024",
     description: [
@@ -62,7 +71,7 @@ const work: WorkExperience[] = [
     ]
   },
   {
-    role: "Doctoral researcher",
+    role: "Doctoral Researcher",
     company: "University of Helsinki",
     period: "3/2019 − 2/2022",
     description: [
@@ -80,7 +89,7 @@ const work: WorkExperience[] = [
     ]
   },
   {
-    role: "Assistant geologist",
+    role: "Assistant Geologist",
     company: "Jacobs China Limited",
     period: "12/2011 − 1/2015",
     description: [
