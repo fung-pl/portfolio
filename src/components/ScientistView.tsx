@@ -191,7 +191,7 @@ const blogPosts: BlogPost[] = [
     excerpt: "I am delighted to share that I have joined the Finnish Meteorological Institute as a Postdoctoral Researcher this month.",
     content: "I am delighted to share that I have joined the Climate Impacts and Adaptation Unit at the Finnish Meteorological Institute (FMI) as a Postdoctoral Researcher.\n\nMy research focuses on developing a machine learning model to identify urban heat island hotspots in the Helsinki Metropolitan Area. The model will be trained using data from urban climate sensors deployed across the city, helping to better understand local heat patterns and support climate adaptation efforts.\n\nThis project provides an exciting opportunity to apply the skills I have developed over the years in integrating diverse environmental and geospatial datasets. I look forward to contributing to new approaches for urban climate analysis and decision-making.\n\nI am especially thrilled to be working under the supervision of Thomas Kuhn and to be part of FMI's vibrant research community.\n\nUrban climate challenges require collaboration across disciplines, and I warmly welcome opportunities to connect with researchers, data scientists, city planners, and others interested in climate adaptation, machine learning, and urban climate research.\n\nI am excited about the journey ahead and look forward to new collaborations and discoveries.",
     category: 'science',
-    image: "https://th.bing.com/th/id/OIP.FPaPq54MDduPXM5LpkYmIwHaEK?w=305&h=180&c=7&r=0&o=7&dpr=2&pid=1.7&rm=3"
+    image: "https://en.ilmatieteenlaitos.fi/hli0qi7fbbos/5oTy73i4bSS2eCKq6PrD9B/0204227755b4c06ee553946ec12cf635/dynamicum_evallinheimo_9__IL_web_1200x675.jpg"
   },
   {
     id: '7',
