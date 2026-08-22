@@ -125,7 +125,7 @@ const blogPosts: BlogPost[] = [
     content: "During the first two weeks of August, I had the privilege of participating in the Flesh as Witness Art Residency in Tipperary, Ireland. The residency was mentored and documented by Rubiane Maia and Manuel Vason, creating a supportive environment for artistic exploration, experimentation, and dialogue.\n\nAlongside fellow artists Jennifer Ng, Nadia Tamerji, Sara Monteiro, Zoe Marzeau, and Brenden Egan, I developed and presented a work-in-progress site-specific performance that responded to the natural surroundings and our own ancestral narratives. The public sharing took place on 15 August at Live Art Ireland, where an audience of around thirty-five people joined us for an afternoon of performances from 3:00 pm to 6:30 pm.\n\nThe event was opened by Deej Fabyc, Director of Live Art Ireland, before each of the emerging artists shared their work. As the fourth performer in the programme, I created a performance at Milford House that used an anchored farm gate as a climbing trellis. Through movement and physical engagement with the structure, I explored ideas of nature's return to the yard and the relationships between landscape, memory, and the body.\n\nThe audience's positive feedback and conversations after the performances made the experience especially rewarding. Beyond presenting our work, the residency provided valuable opportunities to connect with fellow artists and visitors, expanding both professional and creative networks.\n\nThe residency was an incredibly fruitful experience that challenged me creatively and strengthened my confidence as an artist. I leave Tipperary with new perspectives, lasting connections, and renewed motivation for future artistic projects.",
     category: 'art',
     image: "/images/Flesh_As_Witness_387.jpg"
-  }
+  },
   {
     id: '9',
     title: "New Column Published in the Third Edition of Vancouver On Ink",
@@ -169,7 +169,7 @@ const heroImages = [
   { url: "https://iibawards-prod.s3.amazonaws.com/posts/main_images/000/000/676/page.png?1752210877", caption: "Information is Beautiful Awards - Volunteer Work" },
   { url: "/images/planetary-boundary.jpg", caption: "SideWalk 1st Ed. - My Planetary Boundary. Photo: Aman Askarizad." },
   { url: "/images/inner-complexity.jpg", caption: "Inner Complexity Visuals. Photo: Aman Askarizad." },
-  { url: "/images/planetary-boundary-2.JPG", caption: "My Planetary Boundary Performance. Photo: Aman Askarizad." }
+  { url: "/images/planetary-boundary-2.JPG", caption: "My Planetary Boundary Performance. Photo: Aman Askarizad." },
   { url: "/images/Alan_and_Manuel_028.jpg", caption: "The Two Gate Climbers Performance. Photo: Manuel Vanson." }  
 ];
 
@@ -181,7 +181,7 @@ const collaborators = [
   { name: "Data Visualisation Society", logo: "https://images.squarespace-cdn.com/content/v1/5c6055b5fb18206d45d6b27e/1562601203642-ZHLHUGGYNWOIZHZK46U9/Data+Visualization+Society+logo+2019-05-transparent.png?format=1500w" },
   { name: "West Coast Cultural Lab", logo: "https://wcculturallab.ca/wp-content/uploads/2025/07/1-a86299.svg" },
   { name: "theotherside", logo: "https://assets.zyrosite.com/A8526V7xnpu7WGDB/b-w-red-background-A8548oE97yc4Zp1n.png" },
-  { name: "Live Art Ireland", logo: "https://www.live-art.ie/wp-content/uploads/2023/02/cropped-BW-Inverse-Logo1.png" },
+  { name: "Live Art Ireland", logo: "https://www.live-art.ie/wp-content/uploads/2023/02/cropped-BW-Inverse-Logo1.png" }
 ];
 
 export default function ArtistView() {
