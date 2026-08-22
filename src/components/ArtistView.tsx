@@ -7,6 +7,12 @@ import StatsWidget from './StatsWidget';
 
 const artworks: Artwork[] = [
   {
+    title: "The Two Gate Climbers",
+    year: "2026",
+    vimeoId: "1220443474",
+    description: "The performance at Live Art Ireland stages an encounter between a human body and climbing plants as they grow through space together. Supported by a rusted gate from Milford House, they navigate a shared structure that carries both physical function and historical memory."
+  },
+  {
     title: "Inner Complexity",
     year: "2025",
     vimeoId: "1170295236",
@@ -32,6 +38,16 @@ const outreach: Outreach[] = [
       <span>Link to Vancouver On Ink: <a href="https://recherche-collection-search.bac-lac.gc.ca/eng/Home/Preservica?IdNumber=1535654463&pId=4dfeab2b-a0db-4384-a42c-2e6301e2d1f0&app=laccat&resource=listserial" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Vancouver On Ink</a></span>
     ]
   },
+  {
+    title: "Flesh as Witness Art Residency Performance",
+    role: "Performer",
+    date: "2026",
+    thumbnail: "https://www.live-art.ie/wp-content/uploads/2026/07/LFAS-eventbrite-1260x600.png",
+    description: [
+      "Conducted a live art performance 'The Two Gate Climbers' during the art residency at Live Art Ireland. Performance explored human and non-human interactions through space.",
+      <span>Link to the residency: <a href="https://www.live-art.ie/2026/05/01/flesh-as-witness/" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Live Art Ireland</a> | Link to the video: <a href="https://vimeo.com/1220443474" target="_blank" rel="noopener noreferrer" className="text-rose-500 hover:underline">Inner Complexity</a></span>
+    ]
+  },  
   {
     title: "One-Day Stand No.4",
     role: "Performer",
