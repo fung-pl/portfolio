@@ -170,7 +170,7 @@ const heroImages = [
   { url: "/images/planetary-boundary.jpg", caption: "SideWalk 1st Ed. - My Planetary Boundary. Photo: Aman Askarizad." },
   { url: "/images/inner-complexity.jpg", caption: "Inner Complexity Visuals. Photo: Aman Askarizad." },
   { url: "/images/planetary-boundary-2.JPG", caption: "My Planetary Boundary Performance. Photo: Aman Askarizad." }
-  { url: "/images/Alan and Manuel_028.jpg", caption: "The Two Gate Climbers Performance. Photo: Manuel Vanson." }  
+  { url: "/images/Alan_and_Manuel_028.jpg", caption: "The Two Gate Climbers Performance. Photo: Manuel Vanson." }  
 ];
 
 const collaborators = [
