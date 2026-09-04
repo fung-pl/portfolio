@@ -16,13 +16,13 @@ const artworks: Artwork[] = [
     title: "Inner Complexity",
     year: "2025",
     vimeoId: "1170295236",
-    description: "A live art performance exploring human and non-human interactions involving personal issues and the planetary crisis. The performance uses data-driven visuals and physical movement to bridge the gap between individual experience and global environmental change."
+    description: "A live art performance exploring human and non-human interactions involving personal issues and the planetary crisis. The performance uses physical movement and yarn web to bridge the gap between individual experience and complex environmental change."
   },
   {
     title: "My Planetary Boundary",
     year: "2024",
     vimeoId: "1067876496",
-    description: "A documented art performance that investigates the boundaries of human impact on the planet. Through a series of ritualistic movements and data sonification, the work reflects on our interconnectedness with the Earth's systems."
+    description: "A documented art performance that investigates the boundaries of human impact on the planet. Through a series of ritualistic movements, the work reflects on our interconnectedness with the Earth's systems."
   }
 ];
 
@@ -301,12 +301,12 @@ export default function ArtistView() {
           >
             <span className="text-rose-500 font-sans text-sm tracking-[0.4em] uppercase mb-6 block">Data Art & Performance</span>
             <h1 className="text-5xl md:text-6xl font-serif italic mb-8 leading-tight">
-              Where <span className="text-rose-500">Data</span> Meets the Stage.
+              Where <span className="text-rose-500">Nature</span> Meets the Stage.
             </h1>
             <p className="text-xl text-zinc-400 font-light leading-relaxed mb-10">
               Specialising in performance art, science editorial, and data art. 
-              My work bridges the gap between complex environmental data and visceral 
-              theatrical experiences.
+              My work bridges the gap between complex environmental behaviour and visceral 
+              theatrical experiences through body mapping.
             </p>
             <div className="mt-12 space-y-8">
               <div className="flex flex-wrap items-center gap-4">
