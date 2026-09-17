@@ -165,12 +165,13 @@ const blogPosts: BlogPost[] = [
 ];
 
 const heroImages = [
+  { url: "/images/Alan_and_Manuel_028.jpg", caption: "The Two Gate Climbers Performance. Photo: Manuel Vanson." },
   { url: "https://assets.zyrosite.com/A8526V7xnpu7WGDB/ods4-credit-aman-askarizad-106-of-112-m7VboqQJj3ILJaR5.jpg", caption: "One-Day Stand No.4 - Inner Complexity Performance. Photo: Aman Askarizad." },
-  { url: "https://iibawards-prod.s3.amazonaws.com/posts/main_images/000/000/676/page.png?1752210877", caption: "Information is Beautiful Awards - Volunteer Work" },
+//  { url: "https://iibawards-prod.s3.amazonaws.com/posts/main_images/000/000/676/page.png?1752210877", caption: "Information is Beautiful Awards - Volunteer Work" },
   { url: "/images/planetary-boundary.jpg", caption: "SideWalk 1st Ed. - My Planetary Boundary. Photo: Aman Askarizad." },
   { url: "/images/inner-complexity.jpg", caption: "Inner Complexity Visuals. Photo: Aman Askarizad." },
-  { url: "/images/planetary-boundary-2.JPG", caption: "My Planetary Boundary Performance. Photo: Aman Askarizad." },
-  { url: "/images/Alan_and_Manuel_028.jpg", caption: "The Two Gate Climbers Performance. Photo: Manuel Vanson." }  
+  { url: "/images/planetary-boundary-2.JPG", caption: "My Planetary Boundary Performance. Photo: Aman Askarizad." }
+  { url: "images/Flesh_As_Witness_478_lr.jpg", caption: "The Two Gate Climbers live performance. Photo: Manuel Vanson." }  
 ];
 
 const collaborators = [
