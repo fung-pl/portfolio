@@ -170,7 +170,7 @@ const heroImages = [
 //  { url: "https://iibawards-prod.s3.amazonaws.com/posts/main_images/000/000/676/page.png?1752210877", caption: "Information is Beautiful Awards - Volunteer Work" },
   { url: "/images/planetary-boundary.jpg", caption: "SideWalk 1st Ed. - My Planetary Boundary. Photo: Aman Askarizad." },
   { url: "/images/inner-complexity.jpg", caption: "Inner Complexity Visuals. Photo: Aman Askarizad." },
-  { url: "/images/planetary-boundary-2.JPG", caption: "My Planetary Boundary Performance. Photo: Aman Askarizad." }
+  { url: "/images/planetary-boundary-2.JPG", caption: "My Planetary Boundary Performance. Photo: Aman Askarizad." },
   { url: "images/Flesh_As_Witness_478_lr.jpg", caption: "The Two Gate Climbers live performance. Photo: Manuel Vanson." }  
 ];
 
