@@ -118,6 +118,16 @@ const outreach: Outreach[] = [
 
 const blogPosts: BlogPost[] = [
   {
+    id: '16',
+    title: "Artist in Residence for West Coast Cultural Lab",
+    date: "October 2026",
+    excerpt: "I am delighted to be selected for the West Coast Cultural Lab's Artist in Residence programme 2027, where I will be exploring the intersection of art and climate science.",
+    content: "I am delighted to share that I will be joining West Coast Cultural Lab as its Artist in Residence for 2027. The residency will contribute to The Invisible City, an interdisciplinary project exploring environmental systems, data, and the unseen forces that shape urban life.\n\nMy relationship with West Coast Cultural Lab goes back to 2012, when we first collaborated through theatre. Since then, my journey has moved across different disciplines and ways of thinking. My artistic practice has expanded from theatre and performance towards installation and experimentation, while my scientific research has developed around urban climate, air quality, environmental modelling, and machine learning.\n\nAt first glance, these may seem like two separate worlds. Increasingly, however, I find myself asking similar questions in both: How do we perceive an environment that is constantly changing around us? How can we make processes that are normally invisible more tangible?\n\nA city is much more than its buildings, streets, and people. Temperature, wind, air pollution, vegetation, sunlight, human activities, and the materials making up our cities continuously interact across space and time.\n\nIn scientific research, we try to understand these processes through observations, spatial datasets, models, and increasingly machine learning. These tools allow us to discover patterns that would otherwise remain hidden.\n\nBut there is a gap between measuring an environment and experiencing it.\n\nA temperature value is a number. An urban heat map is a scientific representation. Being inside an unusually hot urban space, however, is a physical and emotional experience.\n\nThis is where I find the intersection between art and science particularly interesting.\n\nDuring the residency, I hope to explore how environmental data can move beyond graphs, maps, and computer screens to become visual, spatial, physical, and perhaps emotional experiences. The Invisible City provides a context for exploring these questions through knowledge exchange, creative experiments, and conversations with artists and communities.\n\nIt feels particularly meaningful to return to a collaboration that began through theatre in 2012, now from a very different point in my artistic and scientific journey.\n\nAs I look towards 2027, I am excited to see what happens when data leave the screen and enter physical, social, and artistic spaces.\n\nLink to the announcement: https://wcculturallab.ca/artist-in-residence-2027/",
+    category: 'art',
+    image: "https://wcculturallab.ca/wp-content/uploads/2026/09/WCCL-Banner-1-scaled.jpg"
+  },
+
+  {
     id: '14',
     title: "Reflections from the Flesh as Witness Art Residency",
     date: "August 2026",
