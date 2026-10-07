@@ -196,7 +196,7 @@ const blogPosts: BlogPost[] = [
   {
     id: '17',
     title: "New paper in IEEE Internet of Things Journal",
-    date: "June 2026",
+    date: "September 2026",
     excerpt: "Happy to share our new co-authored paper published in the IEEE Internet of Things Journal.",
     content: "Happy to share our new co-authored paper “Measuring the Atmosphere: Environmental Sensing for Occupant Flows in Commercial Spaces” published in the IEEE Internet of Things Journal (Impact Factor: 8.7, Q1).\n\nThe idea behind the study is: can we use the environmental sensors already found in buildings to understand how busy a space is?\n\nAt Tripla shopping mall in Helsinki, we deployed 14 sensors measuring multiple environmental conditions for up to 79 days. Instead of depending on a single measurement such as CO₂, which responds too slowly to sudden changes in visitor numbers, we combined information from different environmental variables using a lightweight attention-based model.\n\nThe results show that this approach can distinguish between low, medium, and high occupancy, reaching 76.5% balanced accuracy under a realistic temporal evaluation. The model is also tiny, at only around 23 kB, opening up possibilities for running occupancy estimation directly on low-power sensing devices.\n\nThe work provides an interesting step towards privacy-preserving and scalable visitor monitoring, where the atmosphere of a building itself becomes a source of information about how the space is being used.\n\nThank you Naser for leading the work. It's a great pleasure to work with all the collaborators! Read the paper here: http://doi.org/10.1109/JIOT.2026.3738935",
     category: 'science',
@@ -241,8 +241,8 @@ const blogPosts: BlogPost[] = [
 ];
 
 const heroImages = [
-  { url: "/images/defence2026.jpg", caption: "Celebrating Dr. Omar Al‑Jaghbeer’s Successful PhD Defence" },
   { url: "https://megasense.com/_astro/assets.08fe3bf4_Z1JUpMt.webp", caption: "Representing MegaSense at the Riyadh Construction Expo 2025" },
+  { url: "/images/defence2026.jpg", caption: "Celebrating Dr. Omar Al‑Jaghbeer’s Successful PhD Defence" },
   { url: "/images/EGU2025.jpg", caption: "Attending EGU25 in Vienna as an Independent Researcher" },
   { url: "https://megasense.com/_astro/staff.61802cc7_VElfp.webp", caption: "MegaSense Team" }
 ];
