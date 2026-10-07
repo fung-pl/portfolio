@@ -102,10 +102,10 @@ const work: WorkExperience[] = [
 const research: ResearchOutput[] = [
   {
     title: "Measuring the Atmosphere: Environmental Sensing for Occupant Flows in Commercial Spaces",
-    authors: "Hossein Motlagh, N., Varol, A., Zaidan, M. A., Fung, P. L., Varjonen, S., & Nurmi P.",
+    authors: "Hossein Motlagh, N., Varol, A., Zaidan, M. A., Fung, P. L., Varjonen, S., & Nurmi, P.",
     journal: "IEEE Internet of Things Journal",
     year: "2026",
-    thumbnail: "https://ieeexplore.ieee.org/ielx8/6488907/11723284/11723306.jpg",
+    thumbnail: "https://iot.ieee.org/images/files/template/ieee-internet-of-things.png",
     link: "http://doi.org/10.1109/JIOT.2026.3738935",
     summary: "In this work, we investigate whether environmental sensing can provide a privacy-preserving alternative for monitoring visitor flows in commercial spaces using 14 multivariable sensors deployed at Tripla shopping mall in Helsinki."
   },
@@ -197,10 +197,10 @@ const blogPosts: BlogPost[] = [
     id: '17',
     title: "New paper in IEEE Internet of Things Journal",
     date: "June 2026",
-    excerpt: "Happy to share our new co-authored paper “Measuring the Atmosphere: Environmental Sensing for Occupant Flows in Commercial Spaces” published in the IEEE Internet of Things Journal.",
-    content: "Happy to share our new co-authored paper “Measuring the Atmosphere: Environmental Sensing for Occupant Flows in Commercial Spaces” published in the IEEE Internet of Things Journal (Impact Factor: 8.7, Q1).\n\nIn this work, we investigate whether environmental sensing can provide a privacy-preserving alternative for monitoring visitor flows in commercial spaces. Using 14 multivariable sensors deployed at Tripla shopping mall in Helsinki, we show that combining different environmental signals with a compact attention-based model can distinguish between low, medium, and high occupancy levels. Our model achieves 76.5% balanced accuracy under a realistic temporally separated evaluation, while requiring only about 23 kB, making it particularly promising for low-power edge sensing applications.\n\nThank you Naser for leading the work. It's a great pleasure to work with all the collaborators!\n\nRead the paper here: http://doi.org/10.1109/JIOT.2026.3738935",
+    excerpt: "Happy to share our new co-authored paper published in the IEEE Internet of Things Journal.",
+    content: "Happy to share our new co-authored paper “Measuring the Atmosphere: Environmental Sensing for Occupant Flows in Commercial Spaces” published in the IEEE Internet of Things Journal (Impact Factor: 8.7, Q1).\n\nThe idea behind the study is: can we use the environmental sensors already found in buildings to understand how busy a space is?\n\nAt Tripla shopping mall in Helsinki, we deployed 14 sensors measuring multiple environmental conditions for up to 79 days. Instead of depending on a single measurement such as CO₂, which responds too slowly to sudden changes in visitor numbers, we combined information from different environmental variables using a lightweight attention-based model.\n\nThe results show that this approach can distinguish between low, medium, and high occupancy, reaching 76.5% balanced accuracy under a realistic temporal evaluation. The model is also tiny, at only around 23 kB, opening up possibilities for running occupancy estimation directly on low-power sensing devices.\n\nThe work provides an interesting step towards privacy-preserving and scalable visitor monitoring, where the atmosphere of a building itself becomes a source of information about how the space is being used.\n\nThank you Naser for leading the work. It's a great pleasure to work with all the collaborators! Read the paper here: http://doi.org/10.1109/JIOT.2026.3738935",
     category: 'science',
-    image: "https://ieeexplore.ieee.org/ielx8/6488907/11723284/11723306.jpg"
+    image: "https://iot.ieee.org/images/files/template/ieee-internet-of-things.png"
   },
   {
     id: '15',
