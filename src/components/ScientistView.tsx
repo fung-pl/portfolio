@@ -101,6 +101,15 @@ const work: WorkExperience[] = [
 
 const research: ResearchOutput[] = [
   {
+    title: "Measuring the Atmosphere: Environmental Sensing for Occupant Flows in Commercial Spaces",
+    authors: "Hossein Motlagh, N., Varol, A., Zaidan, M. A., Fung, P. L., Varjonen, S., & Nurmi P.",
+    journal: "IEEE Internet of Things Journal",
+    year: "2026",
+    thumbnail: "https://ieeexplore.ieee.org/ielx8/6488907/11723284/11723306.jpg",
+    link: "http://doi.org/10.1109/JIOT.2026.3738935",
+    summary: "In this work, we investigate whether environmental sensing can provide a privacy-preserving alternative for monitoring visitor flows in commercial spaces using 14 multivariable sensors deployed at Tripla shopping mall in Helsinki."
+  },
+  {
     title: "A robust black carbon prediction model derived from observational datasets in the Yangtze River Delta region, China",
     authors: "Duan, L., Fung, P. L., Fu, Q., Chen, J., Huo, J., Huang, K., Wang, G., Zaidan, M. A., Guo, Z., & Hussein, T.",
     journal: "Environmental Pollution",
@@ -184,6 +193,15 @@ const research: ResearchOutput[] = [
 ];
 
 const blogPosts: BlogPost[] = [
+  {
+    id: '17',
+    title: "New paper in IEEE Internet of Things Journal",
+    date: "June 2026",
+    excerpt: "Happy to share our new co-authored paper “Measuring the Atmosphere: Environmental Sensing for Occupant Flows in Commercial Spaces” published in the IEEE Internet of Things Journal.",
+    content: "Happy to share our new co-authored paper “Measuring the Atmosphere: Environmental Sensing for Occupant Flows in Commercial Spaces” published in the IEEE Internet of Things Journal (Impact Factor: 8.7, Q1).\n\nIn this work, we investigate whether environmental sensing can provide a privacy-preserving alternative for monitoring visitor flows in commercial spaces. Using 14 multivariable sensors deployed at Tripla shopping mall in Helsinki, we show that combining different environmental signals with a compact attention-based model can distinguish between low, medium, and high occupancy levels. Our model achieves 76.5% balanced accuracy under a realistic temporally separated evaluation, while requiring only about 23 kB, making it particularly promising for low-power edge sensing applications.\n\nThank you Naser for leading the work. It's a great pleasure to work with all the collaborators!\n\nRead the paper here: http://doi.org/10.1109/JIOT.2026.3738935",
+    category: 'science',
+    image: "https://ieeexplore.ieee.org/ielx8/6488907/11723284/11723306.jpg"
+  },
   {
     id: '15',
     title: "Joining the Climate Impacts and Adaptation Unit at FMI",
