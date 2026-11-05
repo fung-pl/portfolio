@@ -118,6 +118,15 @@ const outreach: Outreach[] = [
 
 const blogPosts: BlogPost[] = [
   {
+    id: '18',
+    title: "Short film screened at Night Visions Film Festival 2026",
+    date: "November 2026",
+    excerpt: "It has been a great weekend to work on my first short film ever with Euphoria Borealis ry.",
+    content: "The previous has been a great success! I have made my first short film ever with Euphoria Borealis ry as part of Cult of Euphoria 2026.\n\n Cult of Euphoria 2026 shorts will be showcased in the Night Visions Film Festival at Finnkino Kinopalatsi cinema in Helsinki on Saturday, November 14, 2026. The filmmakers will be attending the screening, presenting their work to the audience in addition to which they'll be open and available to discuss their audiovisual achievements after the screening.\n\n While people around the world keep partying and going about their daily routines, a strange phenomenon begins: random individuals suddenly lose consciousness without warning. These collapses are the first signs of a disaster triggered by climate change, as a melting environment releases an ancient bacteria that quickly throws human society into absolute chaos. In a final twist, this sudden downfall is not an accident; it is a calculated plan by a sovereign intelligence that has been secretly taking over human thoughts like a virus, using the outbreak to push humanity past the point of no return...\n\nMore details about the film festival: https://www.nightvisions.info/wp/en/portfolio/cult-of-euphoria-2026-lyhytelokuvat/",
+    category: 'art',
+    image: "https://www.nightvisions.info/wp/wp-content/uploads/2026/10/cult_poster.jpg"
+  },
+  {
     id: '16',
     title: "Artist in Residence for West Coast Cultural Lab",
     date: "October 2026",
