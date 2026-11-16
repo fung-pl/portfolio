@@ -10,7 +10,7 @@ const artworks: Artwork[] = [
     title: "The Tipping Point.",
     year: "2026",
     vimeoId: "1247268272",
-    description: "The short film portraysa massive collapse case triggered by global warming found to be associated with sovereign intelligence."
+    description: "My first-ever directed short film that portrays a massive collapse case triggered by global warming found to be associated with sovereign intelligence."
   },
   {
     title: "The Two Gate Climbers",
